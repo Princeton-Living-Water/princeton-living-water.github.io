@@ -1,0 +1,64 @@
+html {
+  font-family: "Source Code Pro", monospace;
+  overflow-x: hidden;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: "Source Code Pro", monospace;
+  max-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Shadows Into Light", cursive;
+  margin-top: 0.5rem;
+}
+
+ul {
+  max-width: 80vw;
+}
+
+li {
+  padding-bottom: 15px;
+  overflow-wrap: normal;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color: #EB162A;
+}
+
+a:visited {
+}
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 95vw;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
