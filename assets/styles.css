@@ -53,11 +53,10 @@ a:visited {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding-top: 1rem;
 }
 
-.subpage a {
-  text-decoration: none;
+.subpage hr {
+  width: 10vw;
 }
 
 .main {
@@ -81,8 +80,20 @@ a:visited {
   justify-content: space-between;
   align-items: center;
   width: 16vw;
+  text-decoration: none;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
 }
 
 .title .logo {
   width: 3rem;
+}
+
+.content {
+  display: none;
+  width: 50vw;
+}
+
+.contact {
+  display: none;
 }
