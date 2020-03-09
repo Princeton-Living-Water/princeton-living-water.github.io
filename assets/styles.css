@@ -94,6 +94,10 @@ a:visited {
   width: 50vw;
 }
 
+.longcontent {
+  width: 50vw;
+}
+
 .contact {
   display: none;
 }
