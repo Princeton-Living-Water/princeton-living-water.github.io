@@ -8,32 +8,9 @@ html {
 }
 
 @media only screen and (max-width: 600px) {
-  /* .title {
-    width: 5vw;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  .content {
+    width: 90vw;
   }
-
-  html {
-    max-width: 10vw;
-  }
-
-  .title .logo {
-    width: 1rem;
-  }
-
-  .main {
-    width: 10vw;
-  }
-
-  body {
-    max-width: 10vw;
-  }
-
-  ul {
-    max-width: 8vw;
-  } */
-
 }
 
 body {
@@ -116,6 +93,7 @@ a:visited {
 
 .title .logo {
   width: 3rem;
+  align-items: center;
 }
 
 .content {
