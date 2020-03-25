@@ -107,12 +107,16 @@ a:visited {
   text-align: center
 }
 
+h2 {
+  text-align: center
+}
+h3 {
+  text-align: center
+}
+
 @media (max-width: 600px) {
   .content {
     width: 90vw;
-  }
-  body {
-    background-color: lightblue;
   }
   .title {
     width: 25vw;
