@@ -9,12 +9,7 @@ html {
 
 @media only screen and (max-width: 600px) {
   .title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
     width: 5vw;
-    text-decoration: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -24,12 +19,17 @@ html {
   }
 
   .main {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     width: 10vw;
   }
+
+  body {
+    max-width: 10vw;
+  }
+
+  ul {
+    max-width: 8vw;
+  }
+
 }
 
 body {
