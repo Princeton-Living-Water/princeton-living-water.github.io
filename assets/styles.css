@@ -11,6 +11,17 @@ html {
   .content {
     width: 90vw;
   }
+  body {
+    background-color: lightblue;
+  }
+  .title {
+    width: 25vw;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .page {
+    height: vh;
+  }
 }
 
 body {
