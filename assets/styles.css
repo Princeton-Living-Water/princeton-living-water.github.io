@@ -7,22 +7,7 @@ html {
   align-items: center;
 }
 
-@media only screen and (max-width: 600px) {
-  .content {
-    width: 90vw;
-  }
-  body {
-    background-color: lightblue;
-  }
-  .title {
-    width: 25vw;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  .page {
-    height: vh;
-  }
-}
+
 
 body {
   font-family: "Source Code Pro", monospace;
@@ -118,4 +103,18 @@ a:visited {
 
 .contact {
   display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .content {
+    width: 90vw;
+  }
+  body {
+    background-color: lightblue;
+  }
+  .title {
+    width: 25vw;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }
