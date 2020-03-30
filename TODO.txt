@@ -1,0 +1,25 @@
+COVID-19.html
+- simple page, list all the different pages for the events and resources
+- Comments can be submitted here as well
+
+zoomevents.html
+- relatively simple as well, list of events and their descriptions and a picture as well
+- links to be posted that are scheduled so people can click on them when the events start
+- form for the Zoom meals things
+
+resources.html
+- literally a list of resources (links and embed videos)
+- subpaged with:
+  * sermons
+  * songs/playlists (spotify embed? for now use some stand in playlist -- I'll add a playlist)
+  * fellowships on campus
+  * churches near campus and their times
+
+devos.html
+- daily devos set to the current day devo
+- prev, and next buttons to navigate between devos
+- for now, use just js and some separate html files to be embedded into the page frame
+
+testimonies.html (hold off on for now)
+- just a list of Christian testimonies
+- video? text?
