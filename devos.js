@@ -1,4 +1,4 @@
-var url = "https://princetonlivingwater.org/devos/day1.txt";
+var url = "https://princetonlivingwater.org/devos/day9.txt";
 
 // Parse devo text and place into an object
 function parseText(text) {
@@ -34,9 +34,9 @@ fetch(url).then(function(res) {
   res.text().then(function(text) {
     let devo = parseText(text);
 
-    let title = document.createElement("h3");
-    let titleNode = document.createTextNode(devo["title"]);
-    title.appendChild(titleNode);
+    let header = document.createElement("h3");
+    let headerHTML = devo["date"] + "<br/>" + devo["title"];
+    header.innerHTML = headerHTML;
 
     let passage = linesToElem(devo["passage"]);
     let instruction1 = document.createElement("div");
@@ -49,13 +49,35 @@ fetch(url).then(function(res) {
 
     // Append all elements to the devo box
     let devoBox = document.getElementById("devo-box");
-    devoBox.appendChild(title);
+    devoBox.appendChild(header);
     devoBox.appendChild(passage);
     devoBox.appendChild(instruction1);
     devoBox.appendChild(content);
     devoBox.appendChild(instruction2);
     devoBox.appendChild(questions);
+
+    // Disable next button
+    document.getElementById("next-button").classList.add("disabled");
   });
 });
 
-// Add handlers for buttons
+// Handlers for button
+function nextDevo() {
+  if (document.getElementById("next-button").classList.contains("disabled")) {
+    return;
+  }
+
+  // Scroll to top of page
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+function prevDevo() {
+  if (document.getElementById("prev-button").classList.contains("disabled")) {
+    return;
+  }
+
+  // Scroll to top of page
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
