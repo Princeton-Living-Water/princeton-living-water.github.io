@@ -1,7 +1,14 @@
 #devo-box {
   border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 0.5em 1.5em;
-  max-width: 80vw;
+  width: 60vw;
+}
+
+@media (max-width: 1000px) {
+  #devo-box {
+    width: 80vw;
+  }
 }
 
 .nav-buttons {
