@@ -107,6 +107,14 @@ a:visited {
   text-align: center
 }
 
+.zoomImg {
+ width: 50vmin;
+ height: auto;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
 h2 {
   text-align: center
 }
