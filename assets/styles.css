@@ -112,6 +112,10 @@ a:visited {
   border-radius: 5px;
 }
 
+.colcontainer a {
+  text-decoration: none;
+}
+
 .main {
   display: flex;
   flex-direction: column;
@@ -172,10 +176,6 @@ a:visited {
   width: 50vmin;
   height: 50vh;
   display: block;
-}
-
-.zoomMeeting {
-  text-decoration: none;
 }
 
 @media (max-width: 1000px) {
