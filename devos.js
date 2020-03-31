@@ -1,4 +1,5 @@
-var url = "https://princetonlivingwater.org/devos/day9.txt";
+var max = 9;
+var current = 9;
 
 // Parse devo text and place into an object
 function parseText(text) {
@@ -28,41 +29,64 @@ function linesToElem(lines) {
 }
 
 // Fill in current devo
-fetch(url).then(function(res) {
-  res.text().then(function(text) {
-    let devo = parseText(text);
+function renderDevo(day) {
+  let url = `https://princetonlivingwater.org/devos/day${day}.txt`;
+  fetch(url).then(function(res) {
+    res.text().then(function(text) {
+      let devo = parseText(text);
 
-    let header = document.createElement("h3");
-    let headerHTML = devo["date"] + "<br/>" + devo["title"];
-    header.innerHTML = headerHTML;
+      let header = document.createElement("h3");
+      let headerHTML = devo["date"] + "<br/>" + devo["title"];
+      header.innerHTML = headerHTML;
 
-    let passage = linesToElem(devo["passage"]);
-    let instruction1 = document.createElement("div");
-    instruction1.innerHTML =
-      "<p><em>Please read the verses and pray through it before reading our own takes.</em></p> <hr/>";
-    let content = linesToElem(devo["content"]);
-    let instruction2 = document.createElement("div");
-    instruction2.innerHTML = "<hr/> <p><em>Consider</em></p>";
-    let questions = linesToElem(devo["questions"]);
+      let passage = linesToElem(devo["passage"]);
+      let instruction1 = document.createElement("div");
+      instruction1.innerHTML =
+        "<p><em>Please read the verses and pray through it before reading our own takes.</em></p> <hr/>";
+      let content = linesToElem(devo["content"]);
+      let instruction2 = document.createElement("div");
+      instruction2.innerHTML = "<hr/> <p><em>Consider</em></p>";
+      let questions = linesToElem(devo["questions"]);
 
-    // Append all elements to the devo box
-    let devoBox = document.getElementById("devo-box");
-    devoBox.appendChild(header);
-    devoBox.appendChild(passage);
-    devoBox.appendChild(instruction1);
-    devoBox.appendChild(content);
-    devoBox.appendChild(instruction2);
-    devoBox.appendChild(questions);
-
-    // Disable next button
-    document.getElementById("next-button").classList.add("disabled");
+      // Append all elements to the devo box
+      let devoBox = document.getElementById("devo-box");
+      devoBox.appendChild(header);
+      devoBox.appendChild(passage);
+      devoBox.appendChild(instruction1);
+      devoBox.appendChild(content);
+      devoBox.appendChild(instruction2);
+      devoBox.appendChild(questions);
+    });
   });
-});
+}
+
+renderDevo(current);
+// Disable next button
+document.getElementById("next-button").classList.add("disabled");
 
 // Handlers for button
+function removeDevo() {
+  let devoBox = document.getElementById("devo-box");
+  devoBox.innerHTML = "";
+}
+
 function nextDevo() {
   if (document.getElementById("next-button").classList.contains("disabled")) {
     return;
+  }
+
+  // Replace devo with next
+  removeDevo();
+  current += 1;
+  renderDevo(current);
+
+  // Activate/deactivate buttons
+  prevButton = document.getElementById("prev-button");
+  if (prevButton.classList.contains("disabled")) {
+    prevButton.classList.remove("disabled");
+  }
+  if (current == max) {
+    document.getElementById("next-button").classList.add("disabled");
   }
 
   // Scroll to top of page
@@ -73,6 +97,21 @@ function nextDevo() {
 function prevDevo() {
   if (document.getElementById("prev-button").classList.contains("disabled")) {
     return;
+  }
+
+  // Replace devo with previous
+  removeDevo();
+  current -= 1;
+  renderDevo(current);
+
+  // Activate/deactivate buttons
+  nextButton = document.getElementById("next-button");
+  if (nextButton.classList.contains("disabled")) {
+    nextButton.classList.remove("disabled");
+    console.log(nextButton.classList);
+  }
+  if (current == 1) {
+    document.getElementById("prev-button").classList.add("disabled");
   }
 
   // Scroll to top of page
