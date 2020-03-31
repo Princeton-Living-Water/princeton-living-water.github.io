@@ -84,7 +84,14 @@ True Christian education fills our hearts and minds with a joy so serious and st
 songs/playlists:
 
 
-podcasts:
+Podcasts:
+	Solid Joys
+	Jesus & Jollof
+	Grace to You
+	The BEMA Podcasts
+	Episodes: 
+	Where the Gospel Meets Politics (https://podcasts.apple.com/us/podcast/love-thy-neighborhood/id1191558444?i=1000460544195)
+	Where the Gospel Meets Body Image(https://podcasts.apple.com/kr/podcast/love-thy-neighborhood/id1191558444?l=en&i=1000455382603)
 
 
 articles:
