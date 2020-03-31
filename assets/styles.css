@@ -17,7 +17,18 @@ body {
 
 h1 {
   font-family: "Shadows Into Light", cursive;
+  text-align: center;
   margin-top: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+h3 {
+  text-align: center;
 }
 
 ul {
@@ -53,10 +64,49 @@ a:visited {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 7rem;
 }
 
 .subpage hr {
   width: 10vw;
+}
+
+.blockpage {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 7rem;
+}
+
+.colcontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 80vw;
+}
+
+.tworowcol {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 40vw;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 20vw;
+  height: auto;
+  margin: 2rem;
+  padding: 2rem;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
 }
 
 .main {
@@ -77,7 +127,7 @@ a:visited {
 .title {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 16vw;
   text-decoration: none;
@@ -109,26 +159,31 @@ a:visited {
 
 .zoomImg {
  width: 50vmin;
- height: auto;
+ height: 50vh;
  display: block;
- margin-left: auto;
- margin-right: auto;
 }
 
-h2 {
-  text-align: center
-}
-h3 {
-  text-align: center
+@media (max-width: 900px) {
+  .content {
+    width: 80vw;
+  }
+  .title {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .block {
+    width: 32vw;
+    margin: 3vw;
+  }
 }
 
 @media (max-width: 600px) {
-  .content {
-    width: 90vw;
+  .twocolrow {
+    flex-direction: column;
   }
-  .title {
-    width: 25vw;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+
+  .block {
+    width: 70vw;
   }
 }
