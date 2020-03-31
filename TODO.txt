@@ -7,7 +7,7 @@ zoomevents.html
 - links to be posted that are scheduled so people can click on them when the events start
 - form for the Zoom meals things
 
-resources.html
+resources.html (Justin)
 - literally a list of resources (links and embed videos)
 - subpaged with:
   * sermons
