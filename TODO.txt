@@ -20,7 +20,7 @@ devos.html (Justin)
 - prev, and next buttons to navigate between devos
 - for now, use just js and some separate html files to be embedded into the page frame
 
-testimonies.html (Brendan)
+testimonies.html (Brendan/Allen)
 - just a list of Christian testimonies
 - video? text?
 - maybe a form to submit testimony?
