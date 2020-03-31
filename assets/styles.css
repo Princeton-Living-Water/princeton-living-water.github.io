@@ -161,9 +161,21 @@ a:visited {
 }
 
 .zoomImg {
- width: 50vmin;
- height: 50vh;
- display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 20vw;
+  height: auto;
+  margin-bottom: none;
+  padding: 3vw;
+  width: 50vmin;
+  height: 50vh;
+  display: block;
+}
+
+.zoomMeeting {
+  text-decoration: none;
 }
 
 @media (max-width: 1000px) {
@@ -178,6 +190,12 @@ a:visited {
   .block {
     width: 28vw;
     padding: 4vw;
+  }
+
+  .zoomImg {
+    width: 28vw;
+    height: auto;
+    padding: none;
   }
 }
 
