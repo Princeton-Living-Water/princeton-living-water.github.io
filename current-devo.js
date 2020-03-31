@@ -1,5 +1,7 @@
 var extern = document.getElementsByTagName("link")[2].import;
 
+console.log(extern);
+
 window.addEventListener("load", function() {
   this.document
     .getElementById("devo-wrapper")
