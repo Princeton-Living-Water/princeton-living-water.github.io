@@ -1,12 +1,11 @@
-var url = "https://princetonlivingwater.org/devos/day1.txt";
+var max = 9;
+var current = 9;
 
 // Parse devo text and place into an object
 function parseText(text) {
   let devo = {};
   let lines = text.split(/\r?\n/).filter(x => x !== "");
-  let start = lines.indexOf(
-    "*** Please read the verses and pray through it before reading our own takes. ***"
-  );
+  let start = lines.findIndex(x => x.startsWith("***"));
   let end = lines.lastIndexOf("Consider");
 
   devo["title"] = lines[0];
@@ -30,32 +29,92 @@ function linesToElem(lines) {
 }
 
 // Fill in current devo
-fetch(url).then(function(res) {
-  res.text().then(function(text) {
-    let devo = parseText(text);
+function renderDevo(day) {
+  let url = `https://princetonlivingwater.org/devos/day${day}.txt`;
+  fetch(url).then(function(res) {
+    res.text().then(function(text) {
+      let devo = parseText(text);
 
-    let title = document.createElement("h3");
-    let titleNode = document.createTextNode(devo["title"]);
-    title.appendChild(titleNode);
+      let header = document.createElement("h3");
+      let headerHTML = devo["date"] + "<br/>" + devo["title"];
+      header.innerHTML = headerHTML;
 
-    let passage = linesToElem(devo["passage"]);
-    let instruction1 = document.createElement("div");
-    instruction1.innerHTML =
-      "<p><em>Please read the verses and pray through it before reading our own takes.</em></p> <hr/>";
-    let content = linesToElem(devo["content"]);
-    let instruction2 = document.createElement("div");
-    instruction2.innerHTML = "<hr/> <p><em>Consider</em></p>";
-    let questions = linesToElem(devo["questions"]);
+      let passage = linesToElem(devo["passage"]);
+      let instruction1 = document.createElement("div");
+      instruction1.innerHTML =
+        "<p><em>Please read the verses and pray through it before reading our own takes.</em></p> <hr/>";
+      let content = linesToElem(devo["content"]);
+      let instruction2 = document.createElement("div");
+      instruction2.innerHTML = "<hr/> <p><em>Consider</em></p>";
+      let questions = linesToElem(devo["questions"]);
 
-    // Append all elements to the devo box
-    let devoBox = document.getElementById("devo-box");
-    devoBox.appendChild(title);
-    devoBox.appendChild(passage);
-    devoBox.appendChild(instruction1);
-    devoBox.appendChild(content);
-    devoBox.appendChild(instruction2);
-    devoBox.appendChild(questions);
+      // Append all elements to the devo box
+      let devoBox = document.getElementById("devo-box");
+      devoBox.appendChild(header);
+      devoBox.appendChild(passage);
+      devoBox.appendChild(instruction1);
+      devoBox.appendChild(content);
+      devoBox.appendChild(instruction2);
+      devoBox.appendChild(questions);
+    });
   });
-});
+}
 
-// Add handlers for buttons
+renderDevo(current);
+// Disable next button
+document.getElementById("next-button").classList.add("disabled");
+
+// Handlers for button
+function removeDevo() {
+  let devoBox = document.getElementById("devo-box");
+  devoBox.innerHTML = "";
+}
+
+function nextDevo() {
+  if (document.getElementById("next-button").classList.contains("disabled")) {
+    return;
+  }
+
+  // Replace devo with next
+  removeDevo();
+  current += 1;
+  renderDevo(current);
+
+  // Activate/deactivate buttons
+  prevButton = document.getElementById("prev-button");
+  if (prevButton.classList.contains("disabled")) {
+    prevButton.classList.remove("disabled");
+  }
+  if (current == max) {
+    document.getElementById("next-button").classList.add("disabled");
+  }
+
+  // Scroll to top of page
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+function prevDevo() {
+  if (document.getElementById("prev-button").classList.contains("disabled")) {
+    return;
+  }
+
+  // Replace devo with previous
+  removeDevo();
+  current -= 1;
+  renderDevo(current);
+
+  // Activate/deactivate buttons
+  nextButton = document.getElementById("next-button");
+  if (nextButton.classList.contains("disabled")) {
+    nextButton.classList.remove("disabled");
+    console.log(nextButton.classList);
+  }
+  if (current == 1) {
+    document.getElementById("prev-button").classList.add("disabled");
+  }
+
+  // Scroll to top of page
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
