@@ -1,4 +1,4 @@
-var url = "https://princetonlivingwater.org/devos/3-23-2020.txt";
+var url = "https://princetonlivingwater.org/devos/day1.txt";
 
 // Parse devo text and place into an object
 function parseText(text) {
