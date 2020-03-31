@@ -107,8 +107,8 @@ songs/playlists:
 	Confidence by Sanctus Real
 	Way Maker by Leeland
 	The Power of Your Love by Hillsong
-	Draw Me Close - Michael W. Smith
-	10,000 Reasons - Matt Redman
+	Draw Me Close by Michael W. Smith
+	10,000 Reasons by Matt Redman
 	Fear of the Lord by Matt Gilman
 	Grace by Laura Story
 	Indescribable by Chris Tomlin
