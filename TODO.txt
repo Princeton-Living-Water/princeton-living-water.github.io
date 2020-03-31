@@ -1,8 +1,8 @@
-COVID-19.html
+COVID-19.html (Handa)
 - simple page, list all the different pages for the events and resources
 - Comments can be submitted here as well
 
-zoomevents.html
+zoomevents.html (Richard)
 - relatively simple as well, list of events and their descriptions and a picture as well
 - links to be posted that are scheduled so people can click on them when the events start
 - form for the Zoom meals things
