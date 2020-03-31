@@ -4,9 +4,7 @@ var url = "https://princetonlivingwater.org/devos/day9.txt";
 function parseText(text) {
   let devo = {};
   let lines = text.split(/\r?\n/).filter(x => x !== "");
-  let start = lines.indexOf(
-    "*** Please read the verses and pray through it before reading our own takes. ***"
-  );
+  let start = lines.findIndex(x => x.startsWith("***"));
   let end = lines.lastIndexOf("Consider");
 
   devo["title"] = lines[0];
