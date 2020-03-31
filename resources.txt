@@ -137,4 +137,20 @@ Podcasts:
 
 articles:
 
+books: 
+	Religious Affections by Jonathan Edwards
+	Institutes of the Christian Religion by John Calvin
+	William Tyndale: A Biography by David Daniell
+	Mere Christianity by C.S. Lewis
+	Screwtape Letters by C.S. Lewis
+	The Problem of Pain by C.S. Lewis
+	Why Everything Matters by Philip G. Ryken
+	Making Sense of God by Tim Keller
+	The Reason for God by Tim Keller
+	Walking with God through Pain & Suffering by Tim Keller
+	A Praying Life by Paul Miller
+	Delighting in the Trinity: An Introduction to the Christian Faith by Michael Reeves
+	How Long, O Lord? by D.A. Carson
+
+
 
