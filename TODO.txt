@@ -7,7 +7,7 @@ zoomevents.html (Richard)
 - links to be posted that are scheduled so people can click on them when the events start
 - form for the Zoom meals things
 
-resources.html (Justin)
+resources.html (Handa)
 - literally a list of resources (links and embed videos)
 - subpaged with:
   * sermons
@@ -15,7 +15,7 @@ resources.html (Justin)
   * fellowships on campus
   * churches near campus and their times
 
-devos.html
+devos.html (Justin)
 - daily devos set to the current day devo
 - prev, and next buttons to navigate between devos
 - for now, use just js and some separate html files to be embedded into the page frame
