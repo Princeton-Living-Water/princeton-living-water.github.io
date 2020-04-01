@@ -29,7 +29,6 @@ h2 {
 }
 
 h3 {
-  margin-top: 3.0rem;
   text-align: center;
 }
 
@@ -156,6 +155,10 @@ a:visited {
 
 .article {
   width: 50vw;
+}
+
+.article h3 {
+  margin-top: 3.0rem;
 }
 
 .contact {
