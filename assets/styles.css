@@ -180,8 +180,9 @@ a:visited {
 
 @media (max-width: 1000px) {
   .content {
-    width: 80vw;
+    width: 60vw;
   }
+
   .title {
     margin-top: 1rem;
     margin-bottom: 1rem;
