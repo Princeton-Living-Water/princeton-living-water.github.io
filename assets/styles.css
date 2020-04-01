@@ -204,6 +204,10 @@ a:visited {
     width: 60vw;
   }
 
+  .article {
+    width: 60vw;
+  }
+
   .title {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -222,6 +226,13 @@ a:visited {
 }
 
 @media (max-width: 600px) {
+  .content {
+    width: 80vw;
+  }
+
+  .article {
+    width: 80vw;
+  }
   .colcontainer {
     flex-direction: column;
     align-items: center;
