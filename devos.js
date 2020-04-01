@@ -108,7 +108,6 @@ function prevDevo() {
   nextButton = document.getElementById("next-button");
   if (nextButton.classList.contains("disabled")) {
     nextButton.classList.remove("disabled");
-    console.log(nextButton.classList);
   }
   if (current == 1) {
     document.getElementById("prev-button").classList.add("disabled");
