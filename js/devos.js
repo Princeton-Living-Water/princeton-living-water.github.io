@@ -1,5 +1,5 @@
-var max = 9;
-var current = 9;
+const MAX_DAY = 10;
+var current = 10;
 
 // Parse devo text and place into an object
 function parseText(text) {
@@ -86,7 +86,7 @@ function nextDevo() {
   if (prevButton.classList.contains("disabled")) {
     prevButton.classList.remove("disabled");
   }
-  if (current == max) {
+  if (current == MAX_DAY) {
     document.getElementById("next-button").classList.add("disabled");
   }
 
