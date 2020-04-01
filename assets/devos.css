@@ -1,7 +1,9 @@
 #devo-box {
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 0.5em 1.5em;
+  padding: 0em 1.5em;
+  padding-bottom: 0.5em;
+  margin-top: 1em;
   width: 50vw;
 }
 
@@ -9,6 +11,10 @@
   #devo-box {
     width: 80vw;
   }
+}
+
+.devo-header {
+  margin-top: 1em;
 }
 
 .nav-buttons {

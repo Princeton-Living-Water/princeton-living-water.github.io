@@ -38,6 +38,7 @@ function renderDevo(day) {
       let header = document.createElement("h3");
       let headerHTML = devo["date"] + "<br/>" + devo["title"];
       header.innerHTML = headerHTML;
+      header.classList.add("devo-header");
 
       let passage = linesToElem(devo["passage"]);
       let instruction1 = document.createElement("div");
