@@ -171,6 +171,19 @@ a:visited {
   text-align: center
 }
 
+.resource-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.resourcelogo {
+  max-width: 75px;
+  max-height: 75px;
+  padding: 10px;
+}
+
 .iframe-container {
   overflow: hidden;
   padding-top: 56.25%;
@@ -184,20 +197,6 @@ a:visited {
   position: absolute;
   top: 0;
   width: 100%
-}
-
-.zoomImg {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 20vw;
-  height: auto;
-  margin-bottom: none;
-  padding: 3vw;
-  width: 50vmin;
-  height: 50vh;
-  display: block;
 }
 
 @media (max-width: 1000px) {
