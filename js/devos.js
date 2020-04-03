@@ -1,11 +1,11 @@
-const MAX_DAY = 11;
-var current = 11;
+const MAX_DAY = 12;
+var current = 12;
 
 // Parse devo text and place into an object
 function parseText(text) {
   let devo = {};
-  let lines = text.split(/\r?\n/).filter(x => x !== "");
-  let start = lines.findIndex(x => x.startsWith("***"));
+  let lines = text.split(/\r?\n/).filter((x) => x !== "");
+  let start = lines.findIndex((x) => x.startsWith("***"));
   let end = lines.lastIndexOf("Consider");
 
   devo["title"] = lines[0];
@@ -31,8 +31,8 @@ function linesToElem(lines) {
 // Fill in current devo
 function renderDevo(day) {
   let url = `https://princetonlivingwater.org/resources/devos/day${day}.txt`;
-  fetch(url).then(function(res) {
-    res.text().then(function(text) {
+  fetch(url).then(function (res) {
+    res.text().then(function (text) {
       let devo = parseText(text);
 
       let header = document.createElement("h3");
