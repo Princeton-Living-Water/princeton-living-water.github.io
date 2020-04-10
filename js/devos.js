@@ -20,9 +20,14 @@ function parseText(text) {
 function linesToElem(lines) {
   let elem = document.createElement("div");
   for (l of lines) {
-    let node = document.createElement("p");
-    node.appendChild(document.createTextNode(l));
-    elem.appendChild(node);
+    if (l == "###") {
+      let node = document.createElement("hr");
+      elem.appendChild(node);
+    } else {
+      let node = document.createElement("p");
+      node.appendChild(document.createTextNode(l));
+      elem.appendChild(node);
+    }
   }
 
   return elem;
