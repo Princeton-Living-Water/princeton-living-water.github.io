@@ -41,7 +41,6 @@ function setContents(data) {
   secretdiv.appendChild(todo);
   secretdiv.appendChild(todocontent);
 
-  console.log(username);
   if (username === "admin") {
     const todopost = document.createElement("textarea");
     todopost.setAttribute("id", "todopost");
@@ -50,7 +49,7 @@ function setContents(data) {
     const todosend = document.createElement("input");
     todosend.setAttribute("id", "todosend");
     todosend.setAttribute("type", "button");
-    todosend.setAttribute("onclick", "sendTodo");
+    todosend.setAttribute("onclick", "sendTodo()");
 
     secretdiv.appendChild(todopost);
     secretdiv.appendChild(todosend);
@@ -61,6 +60,7 @@ function setContents(data) {
 function sendTodo() {
   const todo = document.getElementById("todopost").value;
 
+  console.log(todo);
   fetch("https://bawp.glitch.me/todo", {
     method: 'POST',
     credentials: 'include',
@@ -69,19 +69,13 @@ function sendTodo() {
       'Access-Control-Allow-Credentials': 'true',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Headers': '*',
-      'Authorization': username + ":" + password
+      'Authorization': username + ":" + password,
+      'Content-Type': 'application/json',
     },
-    body: { "todo": todo },
+    body: JSON.stringify({ "todo": todo }),
   }).then((response) => {
     return response.json();
   }).then((data) => {
     console.log(data);
-    if (data.status === "content retrieved") {
-      setContents(data);
-    } else {
-      const secretdiv = document.getElementById("secretcontent");
-      secretdiv.style.color = "red";
-      secretdiv.appendChild(document.createTextNode("wrong username/password combo"));
-    }
   });
 }
