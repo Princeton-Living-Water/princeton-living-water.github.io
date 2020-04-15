@@ -18,6 +18,7 @@ function login() {
   }).then((response) => {
     return response.json();
   }).then((data) => {
+    console.log(data);
     if (data.status === "content retrieved") {
       setContents(data);
     } else {
@@ -39,4 +40,48 @@ function setContents(data) {
   const todocontent = document.createTextNode(data.content);
   secretdiv.appendChild(todo);
   secretdiv.appendChild(todocontent);
+
+  console.log(username);
+  if (username === "admin") {
+    const todopost = document.createElement("textarea");
+    todopost.setAttribute("id", "todopost");
+    todopost.setAttribute("rows", "7");
+    todopost.setAttribute("cols", "50");
+    const todosend = document.createElement("input");
+    todosend.setAttribute("id", "todosend");
+    todosend.setAttribute("type", "button");
+    todosend.setAttribute("onclick", "sendTodo");
+
+    secretdiv.appendChild(todopost);
+    secretdiv.appendChild(todosend);
+  }
+}
+
+// TODO: need to fix some stuff
+function sendTodo() {
+  const todo = document.getElementById("todopost").value;
+
+  fetch("https://bawp.glitch.me/todo", {
+    method: 'POST',
+    credentials: 'include',
+    cache: 'no-cache',
+    headers: {
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Authorization': username + ":" + password
+    },
+    body: { "todo": todo },
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    console.log(data);
+    if (data.status === "content retrieved") {
+      setContents(data);
+    } else {
+      const secretdiv = document.getElementById("secretcontent");
+      secretdiv.style.color = "red";
+      secretdiv.appendChild(document.createTextNode("wrong username/password combo"));
+    }
+  });
 }
