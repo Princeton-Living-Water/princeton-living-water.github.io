@@ -1,7 +1,6 @@
 const MAX_DAY = 42;
 var current = 42;
 
-
 // Parse devo text and place into an object
 function parseText(text) {
   let devo = {};
