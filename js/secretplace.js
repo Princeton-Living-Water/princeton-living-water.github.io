@@ -52,6 +52,7 @@ function login() {
       secretdiv.appendChild(document.createTextNode("wrong username/password combo"));
     }
   });
+
 }
 
 function setTodoContents(data) {
@@ -143,13 +144,21 @@ function setPrayerContents(data) {
   prayersend.setAttribute("type", "button");
   prayersend.setAttribute("onclick", "sendPrayer()");
   prayersend.setAttribute("value", "Send Prayer Requests for Self (Overwrite Current)");
-  
+
   form.appendChild(prayerpost);
   form.appendChild(prayersend);
 
   secretdiv.appendChild(form);
 
   secretdiv.appendChild(document.createElement("hr"));
+
+
+  for (let [key, val] of Object.entries(content)) {
+    if(key == username){
+      document.getElementById("prayerpost").innerHTML = val;
+    }
+  }
+
 }
 
 function sendPrayer() {
@@ -177,7 +186,7 @@ function sendPrayer() {
 }
 
 
-/* TESTING 
+/* TESTING
 setTodoContents({ 'content': "hello"});
 setPrayerContents({ 'content': {'john': "fsadfasf", 'jane': "fasfas"}});
 */
