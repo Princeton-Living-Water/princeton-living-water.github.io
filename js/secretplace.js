@@ -85,10 +85,11 @@ function setTodoContents(data) {
     form.appendChild(todosend);
 
     secretdiv.appendChild(form);
+    document.getElementById("todopost").innerHTML = data.content;
+
   }
 
   secretdiv.appendChild(document.createElement("hr"));
-  document.getElementById("todopost").innerHTML = data.content;
 }
 
 function sendTodo() {
