@@ -75,6 +75,9 @@ function setTodoContents(data) {
     todopost.setAttribute("id", "todopost");
     todopost.setAttribute("rows", "7");
     todopost.setAttribute("cols", "50");
+
+    document.getElementById("todopost").innerHTML = data.content;
+
     const todosend = document.createElement("input");
     todosend.setAttribute("id", "todosend");
     todosend.setAttribute("type", "button");
