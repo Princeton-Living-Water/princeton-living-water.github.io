@@ -1,5 +1,5 @@
-const MAX_DAY = 56;
-var current = 56;
+const MAX_DAY = 59;
+var current = 59;
 
 // Parse devo text and place into an object
 function parseText(text) {
