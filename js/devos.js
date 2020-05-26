@@ -10,9 +10,18 @@ function parseText(text) {
 
   devo["title"] = lines[0];
   devo["date"] = lines[1];
-  devo["passage"] = lines.slice(2, start);
-  devo["content"] = lines.slice(start + 1, end);
-  devo["questions"] = lines.slice(end + 1);
+
+  if (start < 0) {
+    devo["passage"] = "";
+    devo["content"] = lines.slice(2);
+    devo["questions"] = "";
+  }
+  else {
+    devo["passage"] = lines.slice(2, start);
+    devo["content"] = lines.slice(start + 1, end);
+    devo["questions"] = lines.slice(end + 1);
+  }
+  
   return devo;
 }
 
