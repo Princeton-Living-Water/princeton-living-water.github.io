@@ -66,11 +66,15 @@ function renderDevo(day) {
       // Append all elements to the devo box
       let devoBox = document.getElementById("devo-box");
       devoBox.appendChild(header);
-      devoBox.appendChild(passage);
-      devoBox.appendChild(instruction1);
+      if (devo["passage"] != "") {
+        devoBox.appendChild(passage);
+        devoBox.appendChild(instruction1);
+      }
       devoBox.appendChild(content);
-      devoBox.appendChild(instruction2);
-      devoBox.appendChild(questions);
+      if (devo["questions"] != "") {
+        devoBox.appendChild(instruction2);
+        devoBox.appendChild(questions);
+      }
     });
   });
 }
