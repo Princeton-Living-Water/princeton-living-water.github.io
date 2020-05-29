@@ -3,8 +3,8 @@ var auth_token;
 function signup() {
   axios
     .post("http://localhost:5000/createUser", {
-      username: username,
-      password: password,
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value,
     })
     .then(
       (response) => {
