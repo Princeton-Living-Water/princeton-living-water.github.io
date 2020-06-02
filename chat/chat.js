@@ -54,8 +54,9 @@ function login() {
 }
 
 function connectSocket() {
-  console.log(document.cookie);
   const cookies = getCookies();
+  console.log(cookies["user"]);
+  console.log(cookies["token"]);
   var socket = io("http://localhost:8000");
   socket.on("connect", function () {
     socket.emit("authenticate", {
@@ -70,6 +71,6 @@ function connectSocket() {
 
   socket.on("unauthenticated", function () {
     console.log("unauthenticated");
-    window.location.replace("https://princetonlivingwater.org/login/");
+    window.location.replace("https://princetonlivingwater.org/login");
   });
 }
