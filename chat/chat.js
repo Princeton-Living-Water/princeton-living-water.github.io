@@ -2,7 +2,7 @@ function getCookies() {
   let cookies = {};
   const cookiePairs = document.cookies.split(";");
   for (let cookiePair of cookiePairs) {
-    const keyValue = cookiePair.split(":");
+    const keyValue = cookiePair.split("=");
     const key = keyValue[0].trim();
     const value = keyValue[1].trim();
 
@@ -43,7 +43,6 @@ function login() {
         if (response.data.status == "success") {
           document.cookie = "username=" + user_input;
           document.cookie = "token=" + response.data.token;
-          console.log(document.cookie);
           window.location.href = "./chat.html";
         }
       },
@@ -55,6 +54,7 @@ function login() {
 }
 
 function connectSocket() {
+  console.log(document.cookie);
   const cookies = getCookies();
   var socket = io("http://localhost:8000");
   socket.on("connect", function () {
