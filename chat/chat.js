@@ -44,7 +44,7 @@ function login() {
           document.cookie = "username=" + user_input;
           document.cookie = "token=" + response.data.token;
           console.log(document.cookie);
-          // window.location.href = "./chat.html";
+          window.location.href = "./chat.html";
         }
       },
       (error) => {
