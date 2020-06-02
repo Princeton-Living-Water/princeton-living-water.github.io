@@ -1,6 +1,6 @@
 function getCookies() {
   let cookies = {};
-  const cookiePairs = document.cookies.split(";");
+  const cookiePairs = document.cookie.split(";");
   for (let cookiePair of cookiePairs) {
     const keyValue = cookiePair.split("=");
     const key = keyValue[0].trim();
