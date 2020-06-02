@@ -1,17 +1,3 @@
-function getCookies() {
-  let cookies = {};
-  const cookiePairs = document.cookie.split(";");
-  for (let cookiePair of cookiePairs) {
-    const keyValue = cookiePair.split("=");
-    const key = keyValue[0].trim();
-    const value = keyValue[1].trim();
-
-    cookies[key] = value;
-  }
-
-  return cookies;
-}
-
 function signup() {
   axios
     .post("http://localhost:5000/createUser", {
@@ -43,7 +29,7 @@ function login() {
         if (response.data.status == "success") {
           document.cookie = "username=" + user_input;
           document.cookie = "token=" + response.data.token;
-          window.location.href = "./chat.html";
+          window.location.href = "./chat";
         }
       },
       (error) => {
@@ -53,11 +39,30 @@ function login() {
   return false;
 }
 
+function getCookies() {
+  let cookies = {};
+  const cookiePairs = document.cookie.split(";");
+  for (let cookiePair of cookiePairs) {
+    const keyValue = cookiePair.split("=");
+    const key = keyValue[0].trim();
+    const value = keyValue[1].trim();
+
+    cookies[key] = value;
+  }
+
+  return cookies;
+}
+
+var socket;
+
 function connectSocket() {
   const cookies = getCookies();
-  console.log(cookies["username"]);
-  console.log(cookies["token"]);
-  var socket = io("http://localhost:8000");
+  if (!("username" in cookies) || !("token" in cookies)) {
+    window.location.replace("https://princetonlivingwater.org/login");
+    return;
+  }
+
+  socket = io("http://localhost:8000");
   socket.on("connect", function () {
     socket.emit("authenticate", {
       user: cookies["username"],
@@ -65,12 +70,23 @@ function connectSocket() {
     });
   });
 
-  socket.on("authenticated", function () {
+  socket.on("authenticated", function (data) {
     console.log("authenticated");
+    const usernameDiv = document.getElementById("username");
+    const usernameText = document.createTextNode(data["username"]);
+    usernameDiv.appendChild(usernameText);
   });
 
   socket.on("unauthenticated", function () {
     console.log("unauthenticated");
     window.location.replace("https://princetonlivingwater.org/login");
   });
+
+  socket.on("chatUpdate", function () {
+    console.log("chat update");
+  });
+}
+
+function sendMessage(message) {
+  socket.emit("message", message);
 }
