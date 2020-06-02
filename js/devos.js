@@ -1,5 +1,5 @@
-const MAX_DAY = 71;
-var current = 71;
+const MAX_DAY = 72;
+var current = 72;
 
 // Parse devo text and place into an object
 function parseText(text) {
@@ -15,13 +15,12 @@ function parseText(text) {
     devo["passage"] = "";
     devo["content"] = lines.slice(2);
     devo["questions"] = "";
-  }
-  else {
+  } else {
     devo["passage"] = lines.slice(2, start);
     devo["content"] = lines.slice(start + 1, end);
     devo["questions"] = lines.slice(end + 1);
   }
-  
+
   return devo;
 }
 
