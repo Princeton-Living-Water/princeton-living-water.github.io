@@ -55,7 +55,7 @@ function login() {
 
 function connectSocket() {
   const cookies = getCookies();
-  console.log(cookies["user"]);
+  console.log(cookies["username"]);
   console.log(cookies["token"]);
   var socket = io("http://localhost:8000");
   socket.on("connect", function () {
