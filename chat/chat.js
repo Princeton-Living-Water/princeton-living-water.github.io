@@ -1,3 +1,17 @@
+function getCookies() {
+  let cookies = {};
+  const cookiePairs = document.cookies.split(";");
+  for (let cookiePair of cookiePairs) {
+    const keyValue = cookiePair.split(":");
+    const key = keyValue[0].trim();
+    const value = keyValue[1].trim();
+
+    cookies[key] = value;
+  }
+
+  return cookies;
+}
+
 function signup() {
   axios
     .post("http://localhost:5000/createUser", {
@@ -40,12 +54,13 @@ function login() {
   return false;
 }
 
-function connect_socket() {
+function connectSocket() {
+  const cookies = getCookies();
   var socket = io("http://localhost:8000");
   socket.on("connect", function () {
     socket.emit("authenticate", {
-      user: username,
-      token: auth_token,
+      user: cookies["username"],
+      token: cookies["token"],
     });
   });
 
@@ -55,6 +70,6 @@ function connect_socket() {
 
   socket.on("unauthenticated", function () {
     console.log("unauthenticated");
-    window.location.replace("https://princetonlivingwater.org");
+    window.location.replace("https://princetonlivingwater.org/login/");
   });
 }
