@@ -58,7 +58,7 @@ var socket;
 function connectSocket() {
   const cookies = getCookies();
   if (!("username" in cookies) || !("token" in cookies)) {
-    window.location.replace("https://princetonlivingwater.org/login");
+    window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
   }
 
@@ -79,7 +79,7 @@ function connectSocket() {
 
   socket.on("unauthenticated", function () {
     console.log("unauthenticated");
-    window.location.replace("https://princetonlivingwater.org/login");
+    window.location.replace("https://princetonlivingwater.org/chat/login");
   });
 
   socket.on("chatUpdate", function () {
