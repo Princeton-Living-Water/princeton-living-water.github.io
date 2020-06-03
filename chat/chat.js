@@ -65,15 +65,16 @@ function connectSocket() {
   socket = io("http://localhost:8000");
   socket.on("connect", function () {
     socket.emit("authenticate", {
-      user: cookies["username"],
-      token: cookies["token"],
+      user: cookies.username,
+      token: cookies.token,
     });
   });
 
   socket.on("authenticated", function (data) {
     console.log("authenticated");
     const usernameDiv = document.getElementById("username");
-    const usernameText = document.createTextNode(data["username"]);
+    usernameDiv.innerHTML = "";
+    const usernameText = document.createTextNode(data.username);
     usernameDiv.appendChild(usernameText);
   });
 
@@ -82,7 +83,11 @@ function connectSocket() {
     window.location.replace("https://princetonlivingwater.org/chat/login");
   });
 
-  socket.on("chatUpdate", function () {
+  socket.on("chatUpdate", function (data) {
+    let messageWrapper = document.createElement("div");
+    messageWrapper.setAttribute("class", "messageWrapper");
+
+    console.log(data.message);
     console.log("chat update");
   });
 }
