@@ -115,7 +115,8 @@ function updateRooms() {
         return;
       }
 
-      for (room of response.data.chats) {
+      const chats = response.data.chats.split(";");
+      for (const room of chats) {
         const roomWrapper = document.createElement("div");
         roomWrapper.setAttribute("class", "roomWrapper");
         const roomName = document.createTextNode(room);
