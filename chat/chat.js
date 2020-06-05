@@ -1,6 +1,11 @@
+var API_URL = "http://localhost:5000/";
+var SOCKET_URL = "http://localhost:8000/";
+
+// Sign up / log in functions
+
 function signup() {
   axios
-    .post("http://localhost:5000/createUser", {
+    .post(API_URL + "createUser", {
       username: document.getElementById("username").value,
       password: document.getElementById("password").value,
     })
@@ -20,7 +25,7 @@ function login() {
   let user_input = document.getElementById("username").value;
   let pass_input = document.getElementById("password").value;
   axios
-    .post("http://localhost:5000/login", {
+    .post(API_URL + "login", {
       username: user_input,
       password: pass_input,
     })
@@ -53,6 +58,8 @@ function getCookies() {
   return cookies;
 }
 
+// Socket functions
+
 var socket;
 
 function connectSocket() {
@@ -62,7 +69,7 @@ function connectSocket() {
     return;
   }
 
-  socket = io("http://localhost:8000");
+  socket = io(SOCKET_URL);
   socket.on("connect", function () {
     socket.emit("authenticate", {
       user: cookies.username,
@@ -88,12 +95,35 @@ function connectSocket() {
     messageWrapper.appendChild(messageText);
 
     document.getElementById("messages").appendChild(messageWrapper);
-
-    console.log(data.message);
-    console.log("chat update");
   });
 }
 
 function sendMessage(message) {
   socket.emit("message", message);
+}
+
+// Admin functions
+
+function updateRooms() {
+  axios
+    .get(
+      API_URL + "getRooms",
+      {},
+      { headers: { Authorization: "Basic admin:justinthebestta" } }
+    )
+    .then((response) => {
+      if (response.data.status != "success") {
+        window.location.replace("https://princetonlivingwater.org/chat/login");
+        return;
+      }
+
+      for (room of response.data.chats) {
+        const roomWrapper = document.createElement("div");
+        roomWrapper.setAttribute("class", "roomWrapper");
+        const roomName = document.createTextNode(room);
+        roomWrapper.appendChild(roomName);
+
+        document.getElementById("rooms").appendChild(roomWrapper);
+      }
+    });
 }
