@@ -106,11 +106,9 @@ function sendMessage(message) {
 
 function updateRooms() {
   axios
-    .get(
-      API_URL + "getRooms",
-      {},
-      { headers: { Authorization: "Basic admin:justinthebestta" } }
-    )
+    .get(API_URL + "getRooms", {
+      headers: { Authorization: "Basic admin:justinthebestta" },
+    })
     .then((response) => {
       if (response.data.status != "success") {
         window.location.replace("https://princetonlivingwater.org/chat/login");
