@@ -15,12 +15,5 @@
 
     <script>
       updateRooms();
-      const form = document.getElementById("chat-form");
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        const message = document.getElementById("msg-input").value;
-        sendMessage(message);
-        form.reset();
-      });
     </script>
 </html>
