@@ -71,7 +71,6 @@ function connectSocket() {
   });
 
   socket.on("authenticated", function (data) {
-    console.log("authenticated");
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
     const usernameText = document.createTextNode(data.username);
@@ -79,13 +78,16 @@ function connectSocket() {
   });
 
   socket.on("unauthenticated", function () {
-    console.log("unauthenticated");
     window.location.replace("https://princetonlivingwater.org/chat/login");
   });
 
   socket.on("chatUpdate", function (data) {
     let messageWrapper = document.createElement("div");
     messageWrapper.setAttribute("class", "messageWrapper");
+    const messageText = document.createTextNode(data.message);
+    messageWrapper.appendChild(messageText);
+
+    document.getElementById("messages").appendChild(messageWrapper);
 
     console.log(data.message);
     console.log("chat update");
