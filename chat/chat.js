@@ -115,7 +115,7 @@ function updateRooms() {
         return;
       }
 
-      const chats = response.data.chats.split(";");
+      const chats = response.data.chats.split(";"); // ASSUMES ';' cannot be in username
       for (const room of chats) {
         const roomWrapper = document.createElement("div");
         roomWrapper.setAttribute("class", "roomWrapper");
