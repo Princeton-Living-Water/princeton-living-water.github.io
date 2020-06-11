@@ -31,6 +31,7 @@ function login() {
     })
     .then(
       (response) => {
+        console.log(response)
         if (response.data.status == "success") {
           document.cookie = "username=" + user_input;
           document.cookie = "token=" + response.data.token;
