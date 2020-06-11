@@ -82,6 +82,7 @@ function connectSocket() {
     usernameDiv.innerHTML = "";
     const usernameText = document.createTextNode(data.username);
     usernameDiv.appendChild(usernameText);
+    console.log(data);
   });
 
   socket.on("unauthenticated", function () {
