@@ -31,7 +31,6 @@ function login() {
     })
     .then(
       (response) => {
-        console.log(response)
         if (response.data.status == "success") {
           document.cookie = "username=" + user_input;
           document.cookie = "token=" + response.data.token;
@@ -83,6 +82,16 @@ function connectSocket() {
     usernameDiv.innerHTML = "";
     const usernameText = document.createTextNode(data.username);
     usernameDiv.appendChild(usernameText);
+
+    const messageLength = data.message.length;
+    const messagesDiv = document.getElementById("messages");
+    messagesDiv.innerHTML = "";
+
+    for (i = 0; i < messageLength; i++) {
+      const message = document.createElement('div');
+      message.innerHTML = data.message[i];
+      messagesDiv.appendChild(message);
+    }
     console.log(data);
   });
 
