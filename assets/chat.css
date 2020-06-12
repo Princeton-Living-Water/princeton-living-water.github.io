@@ -5,12 +5,9 @@ body {
   align-items: center;
 }
 
-.messages {
+#messages {
   margin-top: 30px;
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
-  border: solid 1px #EEE;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -23,6 +20,10 @@ body {
   margin-bottom: 5px;
   display: inline-block;
   width: wrap;
+  margin-right: 25%;
+  background-color: #EEE;
+  border: solid 1px #EEE;
+  position: relative;
 }
 
 #msg-input {
