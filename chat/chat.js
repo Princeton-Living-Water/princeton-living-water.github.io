@@ -90,7 +90,7 @@ function connectSocket() {
     for (i = 0; i < messageLength; i++) {
       const message = document.createElement('div');
       message.innerHTML = data.message[i];
-      message.setAttribute("class","userMessage");
+      message.setAttribute("class","messageWrapper");
       messagesDiv.appendChild(message);
     }
     console.log(data);
