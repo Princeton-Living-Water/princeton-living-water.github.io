@@ -1,18 +1,28 @@
-.userMessage {
-  width: 300px;
+body {
+  font-family: helvetica;
+  display: flex ;
+  flex-direction: column;
+  align-items: center;
+}
+
+.messages {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   border: solid 1px #EEE;
   display: flex;
   flex-direction: column;
   padding: 10px;
-  background-color: #EEE;
-  margin-right: 25%;
-  background-color: #EEE;
-  position: relative;
+}
+
+.userMessage {
   border-radius: 20px;
   padding: 8px 15px;
   margin-top: 5px;
   margin-bottom: 5px;
   display: inline-block;
+  width: wrap;
 }
 
 #msg-input {
