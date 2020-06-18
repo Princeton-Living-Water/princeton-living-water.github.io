@@ -7,7 +7,7 @@ var question = {
     options: [
       'The Son is always subordinate to the Father',
       'God is the Father, the Son, and the Holy Spirit but each are different persons',
-      'The Father, Son, and Holy Spirit are all the same and equally God'
+      'The Father, Son, and Holy Spirit are all the same persons and equally God'
     ],
     solution: 'option2',
     explanation: 'The Son is equally God and was subordinate to the Father while in the flesh to represent the relationship between humans and God but since he is fully God and fully human he is not subordinate to the Father forever. The Father, Son, and Holy Spirit are distinct persons but all equally God. Hence Option 2 is correct.'
