@@ -61,7 +61,7 @@ function getCookies() {
 // Socket functions
 
 var socket;
-var count=0;
+var earliest_message=0;
 
 function connectSocket() {
   const cookies = getCookies();
@@ -79,7 +79,7 @@ function connectSocket() {
   });
 
   socket.on("authenticated", function (data) {
-    count = data.messageCount;
+    earliest_message = data.messageCount;
 
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
@@ -89,7 +89,11 @@ function connectSocket() {
     const messageLength = data.message.length;
     const messagesDiv = document.getElementById("messages");
     messagesDiv.innerHTML = "";
+    
+    earliest_message = data.messageCount - messageLength + 1;
 
+    console.log(earliest_message);
+    
     for (i = 0; i < messageLength; i++) {
       const message = document.createElement('div');
       message.innerHTML = data.message[i]['message'];
@@ -114,8 +118,7 @@ function connectSocket() {
 }
 
 function sendMessage(message) {
-  count++;
-  socket.emit("message", message, count);
+  socket.emit("message", message);
 }
 
 // Admin functions
