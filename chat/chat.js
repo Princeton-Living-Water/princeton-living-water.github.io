@@ -78,7 +78,7 @@ function connectSocket() {
   });
 
   socket.on("authenticated", function (data) {
-    document.cookie = "count=" + response.data.messageCount;
+    document.cookie = "count=" + data.messageCount;
 
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
