@@ -34,7 +34,10 @@ function login() {
         if (response.data.status == "success") {
           document.cookie = "username=" + user_input;
           document.cookie = "token=" + response.data.token; 
-          window.location.href = "./chat";
+          if (response.data.admin === True)
+            window.location.href = "./admin";
+          else
+            window.location.href = "./chat";
         }
       },
       (error) => {
