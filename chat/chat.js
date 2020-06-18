@@ -34,7 +34,7 @@ function login() {
         if (response.data.status == "success") {
           document.cookie = "username=" + user_input;
           document.cookie = "token=" + response.data.token; 
-          if (response.data.admin === True)
+          if (response.data.admin === true)
             window.location.href = "./admin";
           else
             window.location.href = "./chat";
