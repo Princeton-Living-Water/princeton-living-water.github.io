@@ -133,8 +133,7 @@ function updateRooms() {
         window.location.replace("https://princetonlivingwater.org/chat/login");
         return;
       }
-      console.log(chats);
-      const chats = response.data.chats.split(";"); // ASSUMES ';' cannot be in username
+      const chats = response.data.chats;
       for (const room of chats) {
         const roomWrapper = document.createElement("div");
         roomWrapper.setAttribute("class", "roomWrapper");
