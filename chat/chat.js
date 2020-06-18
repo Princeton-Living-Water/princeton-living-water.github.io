@@ -61,6 +61,7 @@ function getCookies() {
 // Socket functions
 
 var socket;
+var count=0;
 
 function connectSocket() {
   const cookies = getCookies();
@@ -78,7 +79,7 @@ function connectSocket() {
   });
 
   socket.on("authenticated", function (data) {
-    document.cookie = "count=" + data.messageCount;
+    count = data.messageCount;
 
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
@@ -113,7 +114,8 @@ function connectSocket() {
 }
 
 function sendMessage(message) {
-  socket.emit("message", message);
+  count++;
+  socket.emit("message", message, count);
 }
 
 // Admin functions
