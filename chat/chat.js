@@ -78,6 +78,7 @@ function connectSocket() {
     socket.emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
+      admin: "no"
     });
   });
 
