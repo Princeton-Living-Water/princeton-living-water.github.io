@@ -141,7 +141,7 @@ function updateRooms() {
         const roomWrapper = document.createElement("div");
         const roomAnchor = document.createElement("a");
         roomAnchor.href = '#';
-        roomAnchor.setAttribute("onClick", "openChat()");
+        // roomAnchor.setAttribute("onClick", "openChat()");
         roomAnchor.addEventListener('click', function() {
           console.log(this.value);
           });
