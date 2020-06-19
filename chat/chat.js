@@ -179,7 +179,7 @@ function adminConnectSocket(chatUser) {
     console.log(data.message);
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
-    const usernameText = document.createTextNode("Admin Chat with: " + chatUser);
+    const usernameText = document.createTextNode("Admin Chat with " + chatUser);
     usernameDiv.appendChild(usernameText);
 
     const messageLength = data.message.length;
@@ -214,5 +214,5 @@ function adminConnectSocket(chatUser) {
 }
 
 function adminSendMessage(message, chatUser) {
-  socket.emit("message", message);
+  socket.emit("admimMessage", { message: message, chatUser: chatUser});
 }
