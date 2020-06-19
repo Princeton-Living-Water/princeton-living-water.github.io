@@ -168,6 +168,8 @@ function adminConnectSocket(chatUser) {
     socket.emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
+      admin: "yes",
+      chatUser: chatUser
     });
   });
 
