@@ -22,13 +22,12 @@
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       const chatUser = urlParams.get('user');
-      console.log(chatUser);
-      connectSocket();
+      adminConnectSocket(chatUser);
       const form = document.getElementById("chat-form");
       form.addEventListener('submit', e => {
         e.preventDefault();
         const message = document.getElementById("msg-input").value;
-        sendMessage(message);
+        adminSendMessage(message, chatUser);
         form.reset();
       });
     </script>

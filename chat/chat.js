@@ -155,3 +155,61 @@ function updateRooms() {
       }
     });
 }
+
+function adminConnectSocket(chatUser) {
+  const cookies = getCookies();
+  if (!("username" in cookies) || !("token" in cookies)) {
+    window.location.replace("https://princetonlivingwater.org/chat/login");
+    return;
+  }
+
+  socket = io(SOCKET_URL);
+  socket.on("connect", function () {
+    socket.emit("authenticate", {
+      user: cookies.username,
+      token: cookies.token,
+    });
+  });
+
+  socket.on("authenticated", function (data) {
+    earliest_message = data.messageCount;
+
+    const usernameDiv = document.getElementById("username");
+    usernameDiv.innerHTML = "";
+    const usernameText = "Admin Chat with: " + document.createTextNode(chatUser);
+    usernameDiv.appendChild(usernameText);
+
+    const messageLength = data.message.length;
+    const messagesDiv = document.getElementById("messages");
+    messagesDiv.innerHTML = "";
+    
+    earliest_message = data.messageCount - messageLength + 1;
+
+    console.log(earliest_message);
+    
+    for (i = 0; i < messageLength; i++) {
+      const message = document.createElement('div');
+      message.innerHTML = data.message[i]['message'];
+      message.setAttribute("class","messageWrapper");
+      messagesDiv.appendChild(message);
+    }
+    console.log(data);
+  });
+
+  socket.on("unauthenticated", function () {
+    window.location.replace("https://princetonlivingwater.org/chat/login");
+  });
+
+  socket.on("chatUpdate", function (data) {
+    let messageWrapper = document.createElement("div");
+    messageWrapper.setAttribute("class", "messageWrapper");
+    const messageText = document.createTextNode(data.message);
+    messageWrapper.appendChild(messageText);
+
+    document.getElementById("messages").appendChild(messageWrapper);
+  });
+}
+
+function adminSendMessage(message, chatUser) {
+  socket.emit("message", message);
+}
