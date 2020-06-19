@@ -142,6 +142,9 @@ function updateRooms() {
         const roomAnchor = document.createElement("a");
         roomAnchor.href = '#';
         roomAnchor.setAttribute("onClick", "openChat()");
+        roomAnchor.addEventListener('click', function() {
+          console.log(this.value);
+          });
 
         roomWrapper.setAttribute("class", "roomWrapper");
         const roomName = document.createTextNode(room);
