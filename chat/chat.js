@@ -141,7 +141,6 @@ function updateRooms() {
         const roomWrapper = document.createElement("div");
         const roomAnchor = document.createElement("a");
         roomAnchor.href = '#';
-        // roomAnchor.setAttribute("onClick", "openChat()");
         roomAnchor.addEventListener('click', function() {
           var newWindow = window.open();
           newWindow.document.location.href = "https://princetonlivingwater.org/chat/adminChat?user=" + this.innerHTML;

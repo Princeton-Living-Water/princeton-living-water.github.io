@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>hungry beaver</title>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+        <script src="./chat.js"></script>
+        <link rel="stylesheet" href="/assets/chat.css">
+    </head>
+
+    <body>
+        <h2 id="username"></h2>
+        <div id="messages"></div>
+        <form id="chat-form">
+            <input type="text" id="msg-input"></input>
+            <input type="submit" value="send"></input>
+        </form>
+    </body>
+
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const chatUser = urlParams.get('user');
+      console.log(chatUser);
+      connectSocket();
+      const form = document.getElementById("chat-form");
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const message = document.getElementById("msg-input").value;
+        sendMessage(message);
+        form.reset();
+      });
+    </script>
+</html>
