@@ -143,7 +143,7 @@ function updateRooms() {
         roomAnchor.href = '#';
         // roomAnchor.setAttribute("onClick", "openChat()");
         roomAnchor.addEventListener('click', function() {
-          console.log(this.value);
+          console.log(this.innerHTML);
           });
 
         roomWrapper.setAttribute("class", "roomWrapper");
