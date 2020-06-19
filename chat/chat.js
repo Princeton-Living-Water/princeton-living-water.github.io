@@ -215,5 +215,5 @@ function adminConnectSocket(chatUser) {
 
 function adminSendMessage(message) {
   console.log("admin message");
-  socket.emit("admimMessage", message});
+  socket.emit("admimMessage", message);
 }
