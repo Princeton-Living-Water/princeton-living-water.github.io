@@ -213,6 +213,7 @@ function adminConnectSocket(chatUser) {
   });
 }
 
-function adminSendMessage(message, chatUser) {
-  socket.emit("admimMessage", { message: message, chatUser: chatUser});
+function adminSendMessage(message) {
+  console.log("admin message");
+  socket.emit("admimMessage", message});
 }
