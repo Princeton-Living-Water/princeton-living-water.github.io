@@ -118,7 +118,7 @@ function connectSocket() {
 
   socket.on("chatUpdate", function (data) {
     let messageWrapper = document.createElement("div");
-    messageWrapper.setAttribute("class", "messageWrapper");
+    messageWrapper.setAttribute("class", "messageWrapper userMessage");
     const messageText = document.createTextNode(data.message);
     messageWrapper.appendChild(messageText);
 
@@ -215,7 +215,7 @@ function adminConnectSocket(chatUser) {
 
   socket.on("chatUpdate", function (data) {
     let messageWrapper = document.createElement("div");
-    messageWrapper.setAttribute("class", "messageWrapper");
+    messageWrapper.setAttribute("class", "messageWrapper adminMessage");
     const messageText = document.createTextNode(data.message);
     messageWrapper.appendChild(messageText);
 
