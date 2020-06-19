@@ -7,7 +7,6 @@ body {
 
 #messages {
   margin-top: 30px;
-  align-items: flex-start;
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -16,14 +15,28 @@ body {
 .messageWrapper {
   border-radius: 20px;
   padding: 8px 15px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  display: inline-block;
-  margin-right: 25%;
-  background-color: #EEE;
+  margin-top: 1px;
+  margin-bottom: 1px;
   border: solid 1px #EEE;
   position: relative;
+  display: inline-block;
 }
+
+.userMessage {
+  margin-left: 25%;
+  align-items: flex-end;
+  text-align: end;
+  background-color: #ca4e4e;
+  
+  color: white;
+}
+
+.adminMessage {
+  margin-right: 25%;
+  align-items: flex-start;
+  background-color: #EEE;
+}
+
 
 #msg-input {
 
