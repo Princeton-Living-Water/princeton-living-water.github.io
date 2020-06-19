@@ -101,7 +101,12 @@ function connectSocket() {
     for (i = 0; i < messageLength; i++) {
       const message = document.createElement('div');
       message.innerHTML = data.message[i]['message'];
-      message.setAttribute("class","messageWrapper");
+      if (data.message[i]['sender'] == 'admin') {
+        message.setAttribute("class","messageWrapper adminMessage");
+      }
+      else {
+        message.setAttribute("class","messageWrapper userMessage");
+      }
       messagesDiv.appendChild(message);
     }
     console.log(data);
@@ -193,7 +198,12 @@ function adminConnectSocket(chatUser) {
     for (i = 0; i < messageLength; i++) {
       const message = document.createElement('div');
       message.innerHTML = data.message[i]['message'];
-      message.setAttribute("class","messageWrapper");
+      if (data.message[i]['sender'] == 'admin') {
+        message.setAttribute("class","messageWrapper adminMessage");
+      }
+      else {
+        message.setAttribute("class","messageWrapper userMessage");
+      }
       messagesDiv.appendChild(message);
     }
     console.log(data);
