@@ -139,9 +139,14 @@ function updateRooms() {
       const chats = response.data.chats;
       for (const room of chats) {
         const roomWrapper = document.createElement("div");
+        const roomAnchor = document.createElement("a");
+        roomAnchor.href = '#';
+        roomAnchor.setAttribute("onClick", "openChat()");
+
         roomWrapper.setAttribute("class", "roomWrapper");
         const roomName = document.createTextNode(room);
-        roomWrapper.appendChild(roomName);
+        roomAnchor.appendChild(roomName);
+        roomWrapper.appendChild(roomAnchor);
 
         document.getElementById("rooms").appendChild(roomWrapper);
       }
