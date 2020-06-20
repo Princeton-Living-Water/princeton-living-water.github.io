@@ -43,7 +43,7 @@ function linesToElem(lines) {
 
 // Fill in current devo
 function renderDevo(day) {
-  let url = `https://princetonlivingwater.org/resources/devos/day${day}.txt`;
+  let url = `https://www.princetonlivingwater.org/resources/devos/day${day}.txt`;
   fetch(url).then(function (res) {
     res.text().then(function (text) {
       let devo = parseText(text);
