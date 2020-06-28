@@ -20,25 +20,25 @@ var options = [option1, option2, option3];
 
 function check(element) {
   id = element.id;
-  // Make sure this is what I think it is
   const index = options.indexOf(element);
   if (id == question.solution) {
-    element.style.backgroundColor = "#9acd32";
+    element.style.color = '#009900';
     element.className = "finished";
     explanation.innerText = question.options[index][1];
     options.splice(index, 1);
-    options.forEach(function(pizza) { 
-        pizza.style.backgroundColor = "#ff4500";
-        pizza.className = "finished";
+    options.forEach(function(z) { 
+        z.style.color = '#d73f3f';
+        z.className = "finished";
     });
   } else {
-     
-      element.style.backgroundColor = "#ff4500";
+      element.style.color = '#d73f3f';
       element.className = "finished";
       explanation.innerText = question.options[index][1];
       var y = document.getElementById("retry");
       y.style.display = "block";
-    
+      options.forEach(function(z) { 
+        z.className = "finished";
+    });    
   }
 }
 
@@ -46,4 +46,6 @@ function button(element) {
   check(element);
   var x = document.getElementById("explanation");
   x.style.display = "block";
+  var line = document.getElementById('line');
+  line.style.display = 'block';
 }
