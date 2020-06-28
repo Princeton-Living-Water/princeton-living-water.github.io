@@ -32,16 +32,13 @@ function check(element) {
         pizza.className = "finished";
     });
   } else {
-    options.forEach(function(ele) { 
-      ele.style.backgroundColor = "#ff4500";
-      ele.className = "finished";
+     
+      element.style.backgroundColor = "#ff4500";
+      element.className = "finished";
       explanation.innerText = question.options[index][1];
       var y = document.getElementById("retry");
       y.style.display = "block";
-    });
-    var objsoln = document.getElementById(question.solution);
-    objsoln.style.backgroundColor = "#9acd32";
-    objsoln.className = "finished";
+    
   }
 }
 
