@@ -1,6 +1,7 @@
 var option1 = document.getElementById("option1");
 var option2 = document.getElementById("option2");
 var option3 = document.getElementById("option3");
+var click = false;
 
 var question = {
   options: [
@@ -43,9 +44,12 @@ function check(element) {
 }
 
 function button(element) {
-  check(element);
+  if (click==false){
+  click=true;
+    check(element);
   var x = document.getElementById("explanation");
   x.style.display = "block";
   var line = document.getElementById('line');
   line.style.display = 'block';
+  }
 }
