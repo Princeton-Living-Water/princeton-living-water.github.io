@@ -139,10 +139,12 @@ function updateRooms() {
     return;
   }
   axios
-    .get(API_URL + "getRooms", 
-      {
+    .get(API_URL + "getRooms", {
+      user: cookies.username }, {
       headers: {
-        Authorization: "Basic admin:justinthebestta" 
+        'Authorization': 'Bearer ' + cookies.token, 
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json;charset=UTF-8'
       }
     })
     .then((response) => {
