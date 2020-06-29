@@ -137,6 +137,7 @@ function updateRooms() {
   if (!("username" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
+  }
   axios
     .get(API_URL + "getRooms", {
       user: cookies.username,
