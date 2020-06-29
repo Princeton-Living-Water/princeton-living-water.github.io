@@ -140,10 +140,11 @@ function updateRooms() {
   }
   axios
     .get(API_URL + "getRooms", {
-      user: "test" }, {
+      user: cookies.username }, {
       headers: {
-        'Authorization': 'Bearer ' + "test", 
-        'Content-Type': 'application/json;charset=UTF-8'
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',  // <-- here
+        'Authorization': authorization
       }
     })
     .then((response) => {
