@@ -142,9 +142,9 @@ function updateRooms() {
     .get(API_URL + "getRooms", {
       user: cookies.username }, {
       headers: {
+        'Authorization': 'Bearer ' + cookies.token, 
         'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',  // <-- here
-        'Authorization': authorization
+        'Content-Type': 'application/json;charset=UTF-8'
       }
     })
     .then((response) => {
