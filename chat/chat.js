@@ -142,7 +142,8 @@ function updateRooms() {
     .get(API_URL + "getRooms", 
       {
       headers: {
-        Authorization: "Basic admin:justinthebestta" 
+        Authorization: "Bearer admin:justinthebestta" ,
+        user: "test"
       }
     })
     .then((response) => {
