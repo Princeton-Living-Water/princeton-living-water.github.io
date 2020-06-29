@@ -133,6 +133,7 @@ function sendMessage(message) {
 // Admin functions
 
 function updateRooms() {
+  const cookies = getCookies();
   if (!("username" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
