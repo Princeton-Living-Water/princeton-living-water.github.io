@@ -15,11 +15,11 @@ const BooksPage = () => (
   <Layout>
     <SEO title="Books" />
     <Subpage>
-      <div class="article">
+      <div className="article">
         <h2>books</h2>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://www.desiringgod.org/books/all" target="_blank">
-            <img src={desiringgod} alt="Desiring God Books" class="resourcelogo" />
+            <img src={desiringgod} alt="Desiring God Books" className="resourcelogo" />
           </a>
           <p>
             <a href="https://www.desiringgod.org/books/all" target="_blank">
@@ -37,9 +37,9 @@ const BooksPage = () => (
             may be an interesting book to read!
           </p>
         </div>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://www.amazon.com/Knowing-God-J-I-Packer-ebook/dp/B006NZ66RC" target="_blank">
-            <img src={knowinggod} alt="Knowing God" class="resourcelogo" />
+            <img src={knowinggod} alt="Knowing God" className="resourcelogo" />
           </a>
           <p>
             <a href="https://www.amazon.com/Knowing-God-J-I-Packer-ebook/dp/B006NZ66RC" target="_blank">
@@ -49,9 +49,9 @@ const BooksPage = () => (
             claims to know this God.
           </p>
         </div>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://www.amazon.com/Who-Jesus-9Marks-Greg-Gilbert/dp/1433543508" target="_blank">
-            <img src={whoisjesus} alt="Who is Jesus?" class="resourcelogo" />
+            <img src={whoisjesus} alt="Who is Jesus?" className="resourcelogo" />
           </a>
           <p>
             <a href="https://www.amazon.com/Who-Jesus-9Marks-Greg-Gilbert/dp/1433543508" target="_blank">
@@ -60,9 +60,9 @@ const BooksPage = () => (
             is a book that shares the most central person of our faith -- Jesus.
           </p>
         </div>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="http://www.samizdat.qc.ca/vc/pdfs/MereChristianity_CSL.pdf" target="_blank">
-            <img src={merechristianity} alt="Mere Christianity" class="resourcelogo" />
+            <img src={merechristianity} alt="Mere Christianity" className="resourcelogo" />
           </a>
           <p>
             <a href="http://www.samizdat.qc.ca/vc/pdfs/MereChristianity_CSL.pdf" target="_blank">
@@ -79,9 +79,9 @@ const BooksPage = () => (
             .
           </p>
         </div>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://www.amazon.com/Reason-God-Belief-Age-Skepticism-ebook/dp/B000XPNUZE" target="_blank">
-            <img src={reasonforgod} alt="Reason For God" class="resourcelogo" />
+            <img src={reasonforgod} alt="Reason For God" className="resourcelogo" />
           </a>
           <p>
             <a href="https://www.amazon.com/Reason-God-Belief-Age-Skepticism-ebook/dp/B000XPNUZE" target="_blank">

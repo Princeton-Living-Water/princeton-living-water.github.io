@@ -9,7 +9,7 @@ const SongsPage = () => (
   <Layout>
     <SEO title="Songs" />
     <Subpage>
-      <div class="article">
+      <div className="article">
         <h2>songs</h2>
         <h3>Spotify playlist</h3>
         <p>
@@ -22,7 +22,7 @@ const SongsPage = () => (
         <h3>
           Featured song -- <i>Though You Slay Me</i> by Shane & Shane
         </h3>
-        <div class="iframe-container">
+        <div className="iframe-container">
           <iframe
             width="100%"
             height="100%"
@@ -30,6 +30,7 @@ const SongsPage = () => (
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
+            title="Though You Slay Me"
           ></iframe>
         </div>
         <p>

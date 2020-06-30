@@ -10,10 +10,10 @@ const ZoomEventsPage = () => (
     <SEO title="Zomm Events" />
     <Subpage>
       <h2> Zoom Events and Meetups </h2>
-      <div class="colcontainer">
-        <div class="leftblockcol">
+      <div className="colcontainer">
+        <div className="leftblockcol">
           <a href="/resources/zoomevents/learntopray">
-            <div class="block">
+            <div className="block">
               <h3>Learn to Pray!</h3>
               <p>
                 An alumni and a fellow student teaches how to pray! Whether you are a new Christian or someone curious
@@ -22,9 +22,9 @@ const ZoomEventsPage = () => (
             </div>
           </a>
         </div>
-        <div class="rightblockcol">
+        <div className="rightblockcol">
           <a href="/resources/zoomevents/zoommeet">
-            <div class="block">
+            <div className="block">
               <h3>Have Zoom Meal or Chat!</h3>
               <p>Meet someone new via Zoom for a virtual meal or a chat!</p>
             </div>

@@ -16,7 +16,7 @@ const HandSaniPage = () => {
       <SEO title="Hand Sanitizer" />
       <Subpage>
         <h3> what are you guys doing?</h3>
-        <p class="article">
+        <p className="article">
           We, the Christian students on campus, collected money together and got donations from the alumni to construct
           goody bags with a small bottle of water, some candy and a hand sanitizer.
           <br />
@@ -32,7 +32,7 @@ const HandSaniPage = () => {
           </a>
         </p>
         <h3> how are you staying safe? </h3>
-        <p class="article">
+        <p className="article">
           First of all, we will be following the school's safety guidelines that tell us not to get in contact with each
           other. We will be delivering the packages to your doors, but will not be touching anything in the process
           (this includes your doors, so we will not knock at your door -- instead we will message you guys).

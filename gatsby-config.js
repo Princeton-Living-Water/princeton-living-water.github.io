@@ -19,8 +19,6 @@ module.exports = {
         name: `livingwater-favicon`,
         short_name: `favicon`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#ffffff`,
         display: `standalone`,
         icon: `src/assets/favicons/favicon.png`,
       },

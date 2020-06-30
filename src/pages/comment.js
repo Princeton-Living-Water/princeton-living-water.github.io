@@ -13,6 +13,7 @@ const CommentPage = () => (
       <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
       <iframe
         className="airtable-embed airtable-dynamic-height"
+        title="Comment Form"
         src="https://airtable.com/embed/shrDkUm9NGBTrU60N?backgroundColor=green"
         frameborder="0"
         onmousewheel=""

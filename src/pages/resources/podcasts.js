@@ -16,11 +16,11 @@ const PodcastsPage = () => (
   <Layout>
     <SEO title="Podcasts" />
     <Subpage>
-      <div class="article">
+      <div className="article">
         <h2>podcasts</h2>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://open.spotify.com/show/0JhHz8XP7Zeuorxr2CllKQ" target="_blank">
-            <img src={solidjoys} alt="Solid Joys" class="resourcelogo" />
+            <img src={solidjoys} alt="Solid Joys" className="resourcelogo" />
           </a>
           <p>
             <a href="https://open.spotify.com/show/0JhHz8XP7Zeuorxr2CllKQ" target="_blank">
@@ -30,9 +30,9 @@ const PodcastsPage = () => (
             take on the verses.
           </p>
         </div>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://open.spotify.com/show/5vPg9kNdtiKdsjAaox2jOC" target="_blank">
-            <img src={apj} alt="Ask Pastor John" class="resourcelogo" />
+            <img src={apj} alt="Ask Pastor John" className="resourcelogo" />
           </a>
           <p>
             <a href="https://open.spotify.com/show/5vPg9kNdtiKdsjAaox2jOC" target="_blank">
@@ -41,9 +41,9 @@ const PodcastsPage = () => (
             is a podcast series where John Piper answers tough theological and pastoral questions.
           </p>
         </div>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://open.spotify.com/show/4mxQ8cMMIPs7Lls6OAL0M7" target="_blank">
-            <img src={gty} alt="Grace to You" class="resourcelogo" />
+            <img src={gty} alt="Grace to You" className="resourcelogo" />
           </a>
           <p>
             <a href="https://open.spotify.com/show/4mxQ8cMMIPs7Lls6OAL0M7" target="_blank">
@@ -53,9 +53,9 @@ const PodcastsPage = () => (
             Bible means by what it says.
           </p>
         </div>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://bemadiscipleship.com/how-to-listen" target="_blank">
-            <img src={bema} alt="The BEMA Podcasts" class="resourcelogo" />
+            <img src={bema} alt="The BEMA Podcasts" className="resourcelogo" />
           </a>
           <p>
             <a href="https://bemadiscipleship.com/how-to-listen" target="_blank">
@@ -66,9 +66,9 @@ const PodcastsPage = () => (
         </div>
         <br />
         <h2>video series</h2>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://www.youtube.com/playlist?list=PLH0Szn1yYNedn4FbBMMtOlGN-BPLQ54IH" target="_blank">
-            <img src={readbible} alt="How to read the Bible" class="resourcelogo" />
+            <img src={readbible} alt="How to read the Bible" className="resourcelogo" />
           </a>
           <p>
             <a href="https://www.youtube.com/playlist?list=PLH0Szn1yYNedn4FbBMMtOlGN-BPLQ54IH" target="_blank">
@@ -77,9 +77,9 @@ const PodcastsPage = () => (
             is a video series that discusses how to properly tackle scripture.
           </p>
         </div>
-        <div class="resource-container">
+        <div className="resource-container">
           <a href="https://www.youtube.com/playlist?list=PLH0Szn1yYNeclOdfwWBawnNT5ZkGFHxBf" target="_blank">
-            <img src={wordstudy} alt="Word Study" class="resourcelogo" />
+            <img src={wordstudy} alt="Word Study" className="resourcelogo" />
           </a>
           <p>
             <a href="https://www.youtube.com/playlist?list=PLH0Szn1yYNeclOdfwWBawnNT5ZkGFHxBf" target="_blank">

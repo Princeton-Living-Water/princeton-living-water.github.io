@@ -9,7 +9,7 @@ const LearnToPrayPage = () => (
   <Layout>
     <SEO title="Learn to Pray" />
     <Subpage>
-      <div class="article">
+      <div className="article">
         <h2>Learn to Pray</h2>
         <p>
           Are you curious about how to pray, or do you wonder "Does God exist? How can I ask him about things or make

@@ -16,10 +16,10 @@ const ChurchesPage = () => {
       <SEO title="Churches" />
       <Subpage>
         <h2> churches </h2>
-        <a class="collapsible">
+        <a className="collapsible">
           <h3> hope presbyterian church &#9660;</h3>
         </a>
-        <div class="content">
+        <div className="content">
           A gospel-centered, Presbyterian church.
           <ul>
             <li>Unfortunately, all church services temporarily suspended due to COVID-19.</li>
@@ -40,10 +40,10 @@ const ChurchesPage = () => {
           </ul>
         </div>
         <hr />
-        <a class="collapsible">
+        <a className="collapsible">
           <h3> grace community chapel (gcc) &#9660;</h3>
         </a>
-        <div class="content">
+        <div className="content">
           A gospel-centered, Bible-driven church.
           <ul>
             <li>
@@ -71,10 +71,10 @@ const ChurchesPage = () => {
           </ul>
         </div>
         <hr />
-        <a class="collapsible">
+        <a className="collapsible">
           <h3> princeton christian church (pcc) &#9660;</h3>
         </a>
-        <div class="content">
+        <div className="content">
           A gospel-centered, bi-lingual church.
           <ul>
             <li>
@@ -96,10 +96,10 @@ const ChurchesPage = () => {
         </div>
         <br />
         <h2> fellowships </h2>
-        <a class="collapsible">
+        <a className="collapsible">
           <h3> manna christian fellowship &#9660;</h3>
         </a>
-        <div class="content">
+        <div className="content">
           An evangelical, inter-denominational Christian Fellowship committed to the reality that the death,
           resurrection, and glory of Christ changes everything. Their main events include:
           <ul>
@@ -148,10 +148,10 @@ const ChurchesPage = () => {
           .
         </div>
         <hr />
-        <a class="collapsible">
+        <a className="collapsible">
           <h3> princeton christian fellowship (pcf) &#9660;</h3>
         </a>
-        <div class="content">
+        <div className="content">
           A non-denominational Christian campus ministry dedicated to teaching, serving, and building up students to
           live and love like Christ on Princeton's campus. Their main events include:
           <ul>
@@ -169,10 +169,10 @@ const ChurchesPage = () => {
           .
         </div>
         <hr />
-        <a class="collapsible">
+        <a className="collapsible">
           <h3> nova &#9660;</h3>
         </a>
-        <div class="content">
+        <div className="content">
           An evangelical, inter-denominational Christian Fellowship committed to the reality that the death,
           resurrection, and glory of Christ changes everything. Their main events include:
           <ul>

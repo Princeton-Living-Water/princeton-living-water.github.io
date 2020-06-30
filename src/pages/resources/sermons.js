@@ -9,10 +9,10 @@ const SermonsPage = () => (
   <Layout>
     <SEO title="Sermons" />
     <Subpage>
-      <div class="article">
+      <div className="article">
         <h2>sermons</h2>
         <h3>What is the Gospel - Paul Washer</h3>
-        <div class="iframe-container">
+        <div className="iframe-container">
           <iframe
             height="100%"
             width="100%"
@@ -20,6 +20,7 @@ const SermonsPage = () => (
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
+            title="What is the Gospel"
           ></iframe>
         </div>
         <p>
@@ -28,7 +29,7 @@ const SermonsPage = () => (
         </p>
         <hr />
         <h3>The All-Providing King Who Would Not Be King - John Piper</h3>
-        <div class="iframe-container">
+        <div className="iframe-container">
           <iframe
             height="100%"
             width="100%"
@@ -36,12 +37,13 @@ const SermonsPage = () => (
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
+            title="The All-Providing King"
           ></iframe>
         </div>
         <p>"When Jesus gives his flesh on the cross, he becomes bread for sinners who believe."</p>
         <hr />
         <h3>Jesus Died! - Paul Washer</h3>
-        <div class="iframe-container">
+        <div className="iframe-container">
           <iframe
             height="100%"
             width="100%"
@@ -49,6 +51,7 @@ const SermonsPage = () => (
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
+            title="Jesus Died"
           ></iframe>
         </div>
         <p>
@@ -57,7 +60,7 @@ const SermonsPage = () => (
         </p>
         <hr />
         <h3>Be Still And Know that I Am God (Covid-19) - Francis Chan</h3>
-        <div class="iframe-container">
+        <div className="iframe-container">
           <iframe
             height="100%"
             width="100%"
@@ -65,6 +68,7 @@ const SermonsPage = () => (
             frameborder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
+            title="Be Still and Know that I Am God"
           ></iframe>
         </div>
         <p>During this Covid-19 fear and worry is very real, but God is calling you to be still and see Him work.</p>

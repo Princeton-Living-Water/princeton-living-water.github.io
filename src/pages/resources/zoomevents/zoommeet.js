@@ -9,7 +9,7 @@ const ZoomMeetPage = () => (
   <Layout>
     <SEO title="Zoom Meet" />
     <Subpage>
-      <div class="article">
+      <div className="article">
         <h2>Grab a meal/chat via Zoom!</h2>
         <h3>What is it?</h3>
         <p>
@@ -20,13 +20,14 @@ const ZoomMeetPage = () => (
         <h3>Sign up below:</h3>
         <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
         <iframe
-          class="airtable-embed airtable-dynamic-height"
+          className="airtable-embed airtable-dynamic-height"
           src="https://airtable.com/embed/shrjKFGVKYJyXHiVR?backgroundColor=orange"
           frameborder="0"
           onmousewheel=""
           width="100%"
           height="780"
           style={{ background: "transparent", border: "1px solid #ccc" }}
+          title="Zoom Meeting Form"
         ></iframe>
       </div>
     </Subpage>
