@@ -133,9 +133,19 @@ function sendMessage(message) {
 // Admin functions
 
 function updateRooms() {
+  const cookies = getCookies();
+  if (!("username" in cookies) || !("token" in cookies)) {
+    window.location.replace("https://princetonlivingwater.org/chat/login");
+    return;
+  }
   axios
-    .get(API_URL + "getRooms", {
-      headers: { Authorization: "Basic admin:justinthebestta" },
+    .get(API_URL + "getRooms", 
+      {
+      params: { user: cookies.username},
+      headers: {
+        'Authorization': "Bearer " + cookies.token,
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
     })
     .then((response) => {
       if (response.data.status != "success") {
