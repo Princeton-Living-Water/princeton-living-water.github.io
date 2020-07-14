@@ -5,11 +5,11 @@ var click = false;
 
 var question = {
   options: [
-    ["Jesus has 2 different souls", "Two natures were united in One person which was Jesus. (Hypostatic Union) Jesus was truly God and truly man which means he had two different souls."],
-    ["Jesus only has 1 divine soul", "If this was true, He wouldn't have faced human struggles and furthermore he couldn't have been the sacrifice for our sins. Being able to distinguish Heresies is important since it compromises the gospel completely."],
-    ["Jesus has a soul that is neither completely man or God","Jesus was not partially man or partially God. Becoming man did not take away from his divine nature. Being able to distinguish Heresies is important since it compromises the gospel completely."]
+    ["In order to have genuine faith, a special set of explanations and books aside from the Bible are necessary to understand the Bible and to develop truth understanding.", "This heretical belief is held by Mormons who believe the Bible is too ambiguous and thus cannot be properly understood without outside help. In actuality, God provided us with sufficient information in scripture to know his Character. Through an exegetical study of scripture, many areas become much more clear. The Bible is the word of God while other books and resources are words from carnal men. God gave us enough in scripture which is the truth. Being able to distinguish Heresies is important since it compromises the gospel completely."],
+    ["The Bible is divinely inspired by God and helps us to understand God’s heart but is not inerrant and thus cannot all be taken as truth.", "Claiming that the Bible is divinely inspired but not inherent means that you believe God is wrong and made a mistake. Furthermore, claiming that parts of the Bible seem to be correct while other more controversial topics are not correct due to factors such as the culture at that time puts into question God’s sovereignty. Being able to distinguish Heresies is important since it compromises the gospel completely."],
+    ["The Bible is helped and guided by the special gifts of God who are the teachers, preachers, and evangelists who assist in the propagation and interpretation of the Bible.","The purpose of teachers, preachers, and evangelists is to not only share the gospel but also provide the congregation and audience with a proper understanding and grasp of scripture or more specifically God’s character. Being a teacher of the word is not open to everyone but to those who are disciplined and steadfast in the Lord."]
   ],
-  solution: "option1",
+  solution: "option3",
 };
 
 option1.innerText = question.options[0][0];
