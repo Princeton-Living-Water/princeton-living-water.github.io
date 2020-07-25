@@ -127,7 +127,17 @@ function connectSocket() {
 
     document.getElementById("messages").appendChild(messageWrapper);
   });
-}
+
+  socket.on("chatUpdateAdmin", function (data) {
+    console.log("admin update");
+    let messageWrapper = document.createElement("div");
+    messageWrapper.setAttribute("class", "messageWrapper adminMessage");
+    const messageText = document.createTextNode(data.message);
+    messageWrapper.appendChild(messageText);
+
+    document.getElementById("messages").appendChild(messageWrapper);
+  });
+ }
 
 function sendMessage(message) {
   socket.emit("message", message);
@@ -228,6 +238,16 @@ function adminConnectSocket(chatUser) {
   });
 
   socket.on("chatUpdate", function (data) {
+    console.log("user update");
+    let messageWrapper = document.createElement("div");
+    messageWrapper.setAttribute("class", "messageWrapper userMessage");
+    const messageText = document.createTextNode(data.message);
+    messageWrapper.appendChild(messageText);
+
+    document.getElementById("messages").appendChild(messageWrapper);
+  });
+
+  socket.on("chatUpdateAdmin", function (data) {
     console.log("admin update");
     let messageWrapper = document.createElement("div");
     messageWrapper.setAttribute("class", "messageWrapper adminMessage");
