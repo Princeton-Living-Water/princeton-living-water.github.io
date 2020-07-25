@@ -65,9 +65,10 @@ function getCookies() {
 
 var socket;
 var earliest_message=0;
-var cookies = getCookies();
+var cookies;
 
 function connectSocket() {
+  cookies = getCookies()
   if (!("username" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
@@ -75,7 +76,7 @@ function connectSocket() {
 
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
-    socket.join(cookies.username);
+    socket.emit('room', cookies.username);
     socket.to(cookies.username).emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
@@ -174,6 +175,7 @@ function updateRooms() {
 }
 
 function adminConnectSocket(chatUser) {
+  cookies = getCookies()
   if (!("username" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
@@ -181,7 +183,7 @@ function adminConnectSocket(chatUser) {
 
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
-    socket.join(chatUser);
+    socket.emit('room', cookies.username);
     socket.to(cookies.username).emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
