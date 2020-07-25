@@ -183,7 +183,7 @@ function adminConnectSocket(chatUser) {
 
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
-    socket.emit('room', cookies.username);
+    socket.emit('room', chatUser);
     socket.emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
