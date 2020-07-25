@@ -75,6 +75,7 @@ function connectSocket() {
 
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
+    socket.join(cookies.username);
     socket.emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
@@ -181,6 +182,7 @@ function adminConnectSocket(chatUser) {
 
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
+    socket.join(chatUser);
     socket.emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
