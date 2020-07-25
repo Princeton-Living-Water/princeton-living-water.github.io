@@ -65,9 +65,10 @@ function getCookies() {
 
 var socket;
 var earliest_message=0;
+const cookies;
 
 function connectSocket() {
-  const cookies = getCookies();
+  cookies = getCookies();
   if (!("username" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
@@ -76,7 +77,7 @@ function connectSocket() {
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
     socket.join(cookies.username);
-    socket.emit("authenticate", {
+    socket.to(cookies.username).emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
       admin: "no"
@@ -128,13 +129,13 @@ function connectSocket() {
 }
 
 function sendMessage(message) {
-  socket.emit("message", message);
+  socket.to(cookies.username).emit("message", message);
 }
 
 // Admin functions
 
 function updateRooms() {
-  const cookies = getCookies();
+  cookies = getCookies();
   if (!("username" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
@@ -183,7 +184,7 @@ function adminConnectSocket(chatUser) {
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
     socket.join(chatUser);
-    socket.emit("authenticate", {
+    socket.to(cookies.username).emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
       admin: "yes",
@@ -237,5 +238,5 @@ function adminConnectSocket(chatUser) {
 
 function adminSendMessage(message) {
   console.log("admin message");
-  socket.emit("admimMessage", message);
+  socket.to(cookies.username).emit("admimMessage", message);
 }
