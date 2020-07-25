@@ -65,10 +65,9 @@ function getCookies() {
 
 var socket;
 var earliest_message=0;
-const cookies;
+const cookies = getCookies();
 
 function connectSocket() {
-  cookies = getCookies();
   if (!("username" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
@@ -175,7 +174,6 @@ function updateRooms() {
 }
 
 function adminConnectSocket(chatUser) {
-  const cookies = getCookies();
   if (!("username" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
