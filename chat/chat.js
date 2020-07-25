@@ -65,7 +65,7 @@ function getCookies() {
 
 var socket;
 var earliest_message=0;
-const cookies = getCookies();
+var cookies = getCookies();
 
 function connectSocket() {
   if (!("username" in cookies) || !("token" in cookies)) {
