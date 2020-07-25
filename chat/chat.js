@@ -129,7 +129,7 @@ function connectSocket() {
 }
 
 function sendMessage(message) {
-  socket.to(cookies.username).emit("message", message);
+  socket.emit("message", message);
 }
 
 // Admin functions
@@ -184,7 +184,7 @@ function adminConnectSocket(chatUser) {
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
     socket.emit('room', cookies.username);
-    socket.to(cookies.username).emit("authenticate", {
+    socket.emit("authenticate", {
       user: cookies.username,
       token: cookies.token,
       admin: "yes",
