@@ -1,0 +1,34 @@
+#devo-box {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0rem 1.5rem;
+    padding-bottom: 0.5rem;
+    margin-top: 1rem;
+    width: 50vw;
+}
+
+@media (max-width: 1000px) {
+    #devo-box {
+        width: 80vw;
+    }
+}
+
+.devo-header {
+    margin-top: 1.5rem;
+}
+
+.nav-buttons {
+    margin-top: 1rem;
+    display: flex;
+}
+
+.devo-button {
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0rem 3rem;
+}
+
+.devo-button .disabled {
+    cursor: default;
+    color: #a0a0a0;
+}
