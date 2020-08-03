@@ -1,4 +1,4 @@
-var API_URL = "http://localhost:5000/";
+var API_URL = "http://localhost:8000/";
 var SOCKET_URL = "http://localhost:8000/";
 
 // Sign up / log in functions
