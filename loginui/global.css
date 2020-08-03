@@ -1,0 +1,45 @@
+html, body {
+  font-family: "Source Code Pro", monospace;
+  position: relative;
+	width: 100%;
+	height: 100%;
+	font-size: 18px;
+}
+
+.field {
+  display: flex;
+  flex-flow: column-reverse;
+  margin: 2.5rem;
+}
+
+input {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 1.5em;
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+  overflow: hidden;
+  font-weight: bold;
+  margin-bottom: -.2em;
+}
+
+input:placeholder-shown + label {
+  cursor: text;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform-origin: left bottom;
+  transform: translate(0, 2.125rem) scale(1.65);
+  transition: transform 500ms;
+}
+
+input:not(:placeholder-shown) + label,
+input:focus + label {
+  transform: translate(0, 0) scale(1);
+  cursor: pointer;
+}
+
+button {
+  font-family: "Source Code Pro", monospace;
+  display: none;
+}
