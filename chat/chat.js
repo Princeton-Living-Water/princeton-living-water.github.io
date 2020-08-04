@@ -1,4 +1,4 @@
-var API_URL = "http://localhost:5000/";
+var API_URL = "http://localhost:8000/";
 var SOCKET_URL = "http://localhost:8000/";
 
 // Sign up / log in functions
@@ -33,7 +33,7 @@ function login() {
       (response) => {
         if (response.data.status == "success") {
           document.cookie = "username=" + user_input;
-          document.cookie = "token=" + response.data.token;
+          document.cookie = "token=" + response.data.token; 
           if (response.data.admin !== "no")
             window.location.href = "./admin";
           else
@@ -89,7 +89,7 @@ function connectSocket() {
 
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
-    const usernameText = document.createTextNode(data.pseudo);
+    const usernameText = document.createTextNode(data.user);
     usernameDiv.appendChild(usernameText);
 
     const messageLength = data.message.length;
