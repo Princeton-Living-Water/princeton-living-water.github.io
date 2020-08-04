@@ -89,7 +89,7 @@ function connectSocket() {
 
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
-    const usernameText = document.createTextNode(data.user);
+    const usernameText = document.createTextNode(data.username);
     usernameDiv.appendChild(usernameText);
 
     const messageLength = data.message.length;
