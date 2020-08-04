@@ -33,7 +33,8 @@ function login() {
       (response) => {
         if (response.data.status == "success") {
           document.cookie = "username=" + user_input;
-          document.cookie = "token=" + response.data.token; 
+          document.cookie = "token=" + response.data.token;
+          console.log(document.cookie)
           if (response.data.admin !== "no")
             window.location.href = "./admin";
           else
