@@ -63,7 +63,7 @@ const DevosPage = ({ pageContext }) => {
   const linesToElem = lines => {
     let elem = document.createElement("div");
     for (const l of lines) {
-      if (l == "###") {
+      if (l === "###") {
         let node = document.createElement("hr");
         elem.appendChild(node);
       } else {

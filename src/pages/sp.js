@@ -164,7 +164,7 @@ const SecretPage = () => {
 
 
     for (let [key, val] of Object.entries(content)) {
-      if(key == username){
+      if(key === username){
         document.getElementById("prayerpost").innerHTML = val;
       }
     }

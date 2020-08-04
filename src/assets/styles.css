@@ -32,6 +32,10 @@ h3 {
     text-align: center;
 }
 
+p {
+    max-width: 80vw;
+}
+
 ul {
     max-width: 80vw;
 }
