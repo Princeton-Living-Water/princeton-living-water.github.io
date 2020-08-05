@@ -1,7 +1,7 @@
 var API_URL = "http://localhost:5000/";
 var SOCKET_URL = "http://localhost:8000/";
 
-const crypto = require('crypto')
+const crypto = require('crypto');
 
 // Sign up / log in functions
 
