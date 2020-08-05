@@ -1,12 +1,17 @@
 var API_URL = "http://localhost:5000/";
 var SOCKET_URL = "http://localhost:8000/";
 
+const crypto = require('crypto')
+
 // Sign up / log in functions
 
 function signup() {
+  user = document.getElementById("username").value;
+  hashUser = crypto.createHash('sha256').update(user).digest('hex');
+  console.log(hashUser)
   axios
     .post(API_URL + "createUser", {
-      username: document.getElementById("username").value,
+      username: hashUser,
       password: document.getElementById("password").value,
     })
     .then(
@@ -23,10 +28,11 @@ function signup() {
 
 function login() {
   let user_input = document.getElementById("username").value;
+  hashUser = crypto.createHash('sha256').update(user_input).digest('hex');
   let pass_input = document.getElementById("password").value;
   axios
     .post(API_URL + "login", {
-      username: user_input,
+      username: hashUser,
       password: pass_input,
     })
     .then(
