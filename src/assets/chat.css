@@ -1,8 +1,47 @@
 body {
-    font-family: helvetica;
-    display: flex ;
-    flex-direction: column;
-    align-items: center;
+  font-family: "Source Code Pro", monospace;
+  display: flex ;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  font-family: "Source Code Pro", monospace;
+  border: none;
+  font-size: 1.5rem;
+  outline: none;
+}
+
+.cred-box {
+  width: 40vw;
+}
+
+.button-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-input {
+  margin: 0.5rem 0;
+}
+
+.cred-button {
+  width:40vw;
+  padding: 0.4rem 1.2rem 0.6rem 1.2rem;
+  border: solid;
+  border-width: 0.25rem;
+  background-color: white;
+  color: black;
+}
+
+.cred-button:hover {
+  background-color: black;
+  color: white;
+}
+
+.here-before {
+  margin-top: 2rem;
 }
 
 .messagesWrapper {

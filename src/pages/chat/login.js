@@ -49,14 +49,16 @@ const ChatLoginPage = () => {
       <SEO title="Chat Login" />
       <Subpage>
         <h3> Welcome back! Sign into Living Water Chat </h3><br/>
-        <span> Never been here before? <a href="/chat/register">Register</a> </span><br/>
         <form onSubmit={login}>
-          <label>Username:</label><br/>
-          <input type="text" name="username"/><br/>
-          <label>Password:</label><br/>
-          <input type="password" name="password"/><br/><br/>
-          <input type="submit" value="Sign in"></input>
+          <input class="text-input" type="text" id="name"
+            name="name" placeholder="username"/><br/>
+          <input class="text-input" type="password"
+            name="password" placeholder="password"/><br/><br/>
+          <div class="button-box">
+            <input class="cred-button" type="submit" value="Sign in"></input>
+          </div>
         </form>
+        <span class="here-before"> Never been here before? <a href="/chat/register">Register</a> </span><br/>
       </Subpage>
     </Layout>
   );

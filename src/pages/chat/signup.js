@@ -7,6 +7,7 @@ import Subpage from "../../components/subpage";
 import { setCookie } from "../../js/cookies.js";
 
 import "../../assets/styles.css";
+import "../../assets/chat.css";
 
 const API_URL = "http://127.0.0.1:5000/";
 
@@ -44,14 +45,16 @@ const ChatSignupPage = () => {
       <SEO title="Chat Signup" />
       <Subpage>
         <h3> Register for Living Water Chat </h3><br/>
-        <span> Been here before? <a href="/chat/login">Log in</a> </span>
-        <form onSubmit={signup}>
-          <label>Username:</label><br/>
-          <input type="text" id="name" name="name"/><br/>
-          <label>Password:</label><br/>
-          <input type="password" name="password"/><br/><br/>
-          <input type="submit" value="Sign up"></input>
+        <form onSubmit={signup} class="cred-box">
+          <input class="text-input" type="text" id="name"
+            name="name" placeholder="username"/><br/>
+          <input class="text-input" type="password"
+            name="password" placeholder="password"/><br/><br/>
+          <div class="button-box">
+            <input class="cred-button" type="submit" value="register"></input>
+          </div>
         </form>
+        <span class="here-before"> Been here before? <a href="/chat/login">Log in</a> </span>
       </Subpage>
     </Layout>
   );
