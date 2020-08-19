@@ -1,17 +1,13 @@
 var API_URL = "http://localhost:5000/";
 var SOCKET_URL = "http://localhost:8000/";
 
-const crypto = require('crypto');
-
 // Sign up / log in functions
 
 function signup() {
   user = document.getElementById("username").value;
-  hashUser = crypto.createHash('sha256').update(user).digest('hex');
-  console.log(hashUser)
   axios
     .post(API_URL + "createUser", {
-      username: hashUser,
+      username: user,
       password: document.getElementById("password").value,
     })
     .then(
@@ -28,17 +24,16 @@ function signup() {
 
 function login() {
   let user_input = document.getElementById("username").value;
-  hashUser = crypto.createHash('sha256').update(user_input).digest('hex');
   let pass_input = document.getElementById("password").value;
   axios
     .post(API_URL + "login", {
-      username: hashUser,
+      username: user_input,
       password: pass_input,
     })
     .then(
       (response) => {
         if (response.data.status == "success") {
-          document.cookie = "username=" + response.data.username;
+          document.cookie = "username=" + user_input;
           document.cookie = "token=" + response.data.token; 
           if (response.data.admin !== "no")
             window.location.href = "./admin";
@@ -95,7 +90,7 @@ function connectSocket() {
 
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
-    const usernameText = document.createTextNode(data.username);
+    const usernameText = document.createTextNode(data.name);
     usernameDiv.appendChild(usernameText);
 
     const messageLength = data.message.length;
