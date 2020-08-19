@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
 
 import Layout from "../../components/layout";
@@ -10,25 +10,20 @@ import "../../assets/styles.css";
 
 const API_URL = "http://127.0.0.1:5000/";
 
-const ChatLoginPage = () => {
-  useEffect(() => {
-    setCookie("username", "");
-    setCookie("token", "");
-  }, [])
-  
-  const login = (event) => {
-    event.preventDefault()
+const ChatSignupPage = () => {
+  const signup = (event) => {
+    event.preventDevault();
 
     const user_input = event.target[0].value;
     const pass_input = event.target[1].value;
-    axios.post(API_URL + "login", {
+    axios.post(API_URL + "createUser", {
       username: user_input,
-      password: pass_input
+      password: pass_input,
     })
     .then((response) => {
       if (response.data.status == "success") {
         setCookie("username", user_input);
-        setCookie("token", response.data.token);
+        setCookie("token", response.data.token)
         if (response.data.admin !== "no")
           window.location.replace("/admin");
         else
@@ -36,7 +31,7 @@ const ChatLoginPage = () => {
       }
       else {
         // Place handling of error message here
-        console.log("Login failed");
+        console.log("Signup failed");
       }
     })
     .catch((error) => {
@@ -46,20 +41,20 @@ const ChatLoginPage = () => {
 
   return (
     <Layout>
-      <SEO title="Chat Login" />
+      <SEO title="Chat Signup" />
       <Subpage>
-        <h3> Welcome back! Sign into Living Water Chat </h3><br/>
-        <span> Never been here before? <a href="/chat/register">Register</a> </span><br/>
-        <form onSubmit={login}>
+        <h3> Register for Living Water Chat </h3><br/>
+        <span> Been here before? <a href="/chat/login">Log in</a> </span>
+        <form onSubmit={signup}>
           <label>Username:</label><br/>
-          <input type="text" name="username"/><br/>
+          <input type="text" id="name" name="name"/><br/>
           <label>Password:</label><br/>
           <input type="password" name="password"/><br/><br/>
-          <input type="submit" value="Sign in"></input>
+          <input type="submit" value="Sign up"></input>
         </form>
       </Subpage>
     </Layout>
   );
 };
 
-export default ChatLoginPage;
+export default ChatSignupPage;

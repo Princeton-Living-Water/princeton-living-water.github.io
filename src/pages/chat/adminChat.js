@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Subpage from "../components/subpage";
-import ChatMessage from "../components/chatMessage";
-import { getCookies } from "../js/cookies.js";
-import { connectSocket } from "../js/socket.js";
+import Layout from "../../components/layout";
+import SEO from "../../components/seo";
+import Subpage from "../../components/subpage";
+import ChatMessage from "../../components/chatMessage";
+import { getCookies } from "../../js/cookies.js";
+import { adminConnectSocket } from "../../js/socket.js";
 
-import "../assets/styles.css";
+import "../../assets/styles.css";
 
-const ChatPage = () => {
+const AdminChatPage = () => {
   const [header, setHeader] = useState("");
   const [messages, setMessages] = useState([]);
   const [numMessages, setNumMessages] = useState(0);
@@ -17,15 +17,20 @@ const ChatPage = () => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const chatUser = urlParams.get('user');
+
     const {username, token} = getCookies();
     if (!username || !token) {
       window.location.replace("/chat/login")
       return;
     }
 
-    const socketConn = connectSocket({
+    const socketConn = adminConnectSocket({
       username,
       token,
+      chatUser,
       setHeader, 
       setMessages, 
       setNumMessages
@@ -47,12 +52,12 @@ const ChatPage = () => {
   const sendMessage = (event) => {
     if (!socket) return;
 
-    socket.emit("message", msgInput);
+    socket.emit("adminMessage", msgInput);
   }
 
   return (
     <Layout>
-      <SEO title="Chat" />
+      <SEO title="Admin Chat" />
       <Subpage>
         <h2>{header}</h2>
         <div className="messagesWrapper">
@@ -69,4 +74,4 @@ const ChatPage = () => {
   );
 };
 
-export default ChatPage;
+export default AdminChatPage;
