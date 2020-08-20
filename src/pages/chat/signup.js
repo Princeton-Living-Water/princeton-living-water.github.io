@@ -23,7 +23,7 @@ const ChatSignupPage = () => {
     })
     .then((response) => {
       if (response.data.status == "success") {
-        setCookie("username", user_input);
+        setCookie("name", response.data.name);
         setCookie("token", response.data.token)
         if (response.data.admin !== "no")
           window.location.replace("/admin");

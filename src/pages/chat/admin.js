@@ -16,14 +16,14 @@ const AdminPage = () => {
 
   useEffect(() => {
     const getRooms = async () => {
-      const {username, token} = getCookies()
-      if (!username || !token) {
+      const {name, token} = getCookies()
+      if (!name || !token) {
         window.location.replace("/chat/login")
         return;
       }
 
       await axios.get(API_URL + "getRooms", {
-        params: { user: username },
+        params: { name: name },
         headers: {
           'Authorization': "Bearer " + token,
           'Content-Type': 'application/json;charset=UTF-8'

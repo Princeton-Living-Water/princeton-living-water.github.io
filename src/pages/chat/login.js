@@ -27,7 +27,7 @@ const ChatLoginPage = () => {
     })
     .then((response) => {
       if (response.data.status == "success") {
-        setCookie("username", user_input);
+        setCookie("username", response.data.name);
         setCookie("token", response.data.token);
         if (response.data.admin !== "no")
           window.location.replace("/admin");

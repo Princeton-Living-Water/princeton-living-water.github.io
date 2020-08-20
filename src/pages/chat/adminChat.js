@@ -21,14 +21,14 @@ const AdminChatPage = () => {
     const urlParams = new URLSearchParams(queryString);
     const chatUser = urlParams.get('user');
 
-    const {username, token} = getCookies();
-    if (!username || !token) {
+    const {name, token} = getCookies();
+    if (!name || !token) {
       window.location.replace("/chat/login")
       return;
     }
 
     const socketConn = adminConnectSocket({
-      username,
+      name,
       token,
       chatUser,
       setHeader, 
