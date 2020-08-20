@@ -33,7 +33,7 @@ function login() {
     .then(
       (response) => {
         if (response.data.status == "success") {
-          document.cookie = "username=" + user_input;
+          document.cookie = "name=" + response.data.name;
           document.cookie = "token=" + response.data.token; 
           if (response.data.admin !== "no")
             window.location.href = "./admin";
@@ -70,16 +70,16 @@ var cookies;
 
 function connectSocket() {
   cookies = getCookies()
-  if (!("username" in cookies) || !("token" in cookies)) {
+  if (!("name" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
   }
 
   socket = io(SOCKET_URL);
   socket.on("connect", function () {
-    socket.emit('room', cookies.username);
+    socket.emit('room', cookies.name);
     socket.emit("authenticate", {
-      user: cookies.username,
+      name: cookies.name,
       token: cookies.token,
       admin: "no"
     });
@@ -148,14 +148,14 @@ function sendMessage(message) {
 
 function updateRooms() {
   cookies = getCookies();
-  if (!("username" in cookies) || !("token" in cookies)) {
+  if (!("name" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
   }
   axios
     .get(API_URL + "getRooms", 
       {
-      params: { user: cookies.username},
+      params: { user: cookies.name},
       headers: {
         'Authorization': "Bearer " + cookies.token,
         'Content-Type': 'application/json;charset=UTF-8'
@@ -188,7 +188,7 @@ function updateRooms() {
 
 function adminConnectSocket(chatUser) {
   cookies = getCookies()
-  if (!("username" in cookies) || !("token" in cookies)) {
+  if (!("name" in cookies) || !("token" in cookies)) {
     window.location.replace("https://princetonlivingwater.org/chat/login");
     return;
   }
@@ -197,7 +197,7 @@ function adminConnectSocket(chatUser) {
   socket.on("connect", function () {
     socket.emit('room', chatUser);
     socket.emit("authenticate", {
-      user: cookies.username,
+      user: cookies.name,
       token: cookies.token,
       admin: "yes",
       chatUser: chatUser
