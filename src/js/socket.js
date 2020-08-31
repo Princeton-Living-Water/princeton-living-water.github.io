@@ -12,7 +12,7 @@ const connectSocket = ({ username, token, setMessages, setNumMessages }) => {
       token: token,
       admin: "no"
     });
-    socket.emit('room', username);
+    socket.emit('room', name);
   });
 
   socket.on("authenticated", (data) => {
@@ -28,17 +28,17 @@ const connectSocket = ({ username, token, setMessages, setNumMessages }) => {
   return socket;
 }
 
-const adminConnectSocket = (username, token, chatUser, setHeader, setMessages, setNumMessages) => {
+const adminConnectSocket = (name, token, chatUser, setHeader, setMessages, setNumMessages) => {
   const socket = io(SOCKET_URL);
   
   socket.on("connect", () => {
     socket.emit("authenticate", {
-      user: username,
+      name: name,
       token: token,
       admin: "yes",
       chatUser: chatUser
     });
-    socket.emit('room', username);
+    socket.emit('room', name);
   });
 
   socket.on("authenticated", (data) => {
