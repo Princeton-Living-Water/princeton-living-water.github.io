@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
 
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import ChatMessage from "../../components/chatMessage";
-import { getCookies } from "../../js/cookies.js";
 import { adminConnectSocket } from "../../js/socket.js";
 
 import "../../assets/styles.css";
 
 const AdminChatPage = () => {
+  const [cookies, setCookies] = useCookies(["name", "token"]);
   const [header, setHeader] = useState("");
   const [messages, setMessages] = useState([]);
   const [numMessages, setNumMessages] = useState(0);
@@ -21,7 +22,7 @@ const AdminChatPage = () => {
     const urlParams = new URLSearchParams(queryString);
     const chatUser = urlParams.get('user');
 
-    const {name, token} = getCookies();
+    const {name, token} = cookies;
     if (!name || !token) {
       window.location.replace("/chat/login")
       return;

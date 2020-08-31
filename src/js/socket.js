@@ -2,12 +2,13 @@ import io from 'socket.io-client';
 
 const SOCKET_URL = "http://127.0.0.1:8000/";
 
-const connectSocket = ({ username, token, setHeader, setMessages, setNumMessages }) => {
+const connectSocket = ({ username, token, setMessages, setNumMessages }) => {
   const socket = io(SOCKET_URL);
-
+  
   socket.on("connect", () => {
+    console.log("HI");
     socket.emit("authenticate", {
-      user: username,
+      name: username,
       token: token,
       admin: "no"
     });
@@ -15,7 +16,7 @@ const connectSocket = ({ username, token, setHeader, setMessages, setNumMessages
   });
 
   socket.on("authenticated", (data) => {
-    setHeader(data.pseudo);
+    console.log("HI")
     setNumMessages(data.messageCount);
     setMessages(data.message);
   });

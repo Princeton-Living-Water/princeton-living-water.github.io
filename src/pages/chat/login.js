@@ -1,20 +1,22 @@
 import React, { useEffect } from "react";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
-import { setCookie } from "../../js/cookies.js";
 
 import "../../assets/styles.css";
 
 const API_URL = "http://127.0.0.1:5000/";
 
 const ChatLoginPage = () => {
+  const [cookies, setCookies] = useCookies(["name", "token"]);
+
   useEffect(() => {
-    setCookie("username", "");
-    setCookie("token", "");
-  }, [])
+    setCookies("name", "");
+    setCookies("token", "");
+  }, []);
   
   const login = (event) => {
     event.preventDefault()
@@ -26,9 +28,10 @@ const ChatLoginPage = () => {
       password: pass_input
     })
     .then((response) => {
-      if (response.data.status == "success") {
-        setCookie("username", response.data.name);
-        setCookie("token", response.data.token);
+      if (response.data.status === "success") {
+        setCookies("name", response.data.name);
+        setCookies("token", response.data.token);
+        
         if (response.data.admin !== "no")
           window.location.replace("/admin");
         else
@@ -50,15 +53,15 @@ const ChatLoginPage = () => {
       <Subpage>
         <h3> Welcome back! Sign into Living Water Chat </h3><br/>
         <form onSubmit={login}>
-          <input class="text-input" type="text" id="name"
+          <input className="text-input" type="text" id="name"
             name="name" placeholder="username"/><br/>
-          <input class="text-input" type="password"
+          <input className="text-input" type="password"
             name="password" placeholder="password"/><br/><br/>
-          <div class="button-box">
-            <input class="cred-button" type="submit" value="Sign in"></input>
+          <div className="button-box">
+            <input className="cred-button" type="submit" value="Sign in"></input>
           </div>
         </form>
-        <span class="here-before"> Never been here before? <a href="/chat/register">Register</a> </span><br/>
+        <span className="here-before"> Never been here before? <a href="/chat/register">Register</a> </span><br/>
       </Subpage>
     </Layout>
   );
