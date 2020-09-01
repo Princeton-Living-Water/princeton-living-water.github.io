@@ -33,7 +33,7 @@ const ChatLoginPage = () => {
         setCookies("token", response.data.token);
         
         if (response.data.admin !== "no")
-          window.location.replace("/admin");
+          window.location.replace("/chat/admin");
         else
           window.location.replace("/chat");
       }
