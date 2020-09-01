@@ -2,13 +2,13 @@ import io from 'socket.io-client';
 
 const SOCKET_URL = "http://127.0.0.1:8000/";
 
-const connectSocket = ({ username, token, setMessages, setNumMessages }) => {
+const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
   const socket = io(SOCKET_URL);
   
   socket.on("connect", () => {
     console.log("HI");
     socket.emit("authenticate", {
-      name: username,
+      name: name,
       token: token,
       admin: "no"
     });
