@@ -46,7 +46,6 @@ input {
 }
 
 .messagesWrapper {
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
     padding: 10px;

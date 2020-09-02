@@ -2,30 +2,55 @@ import io from 'socket.io-client';
 
 const SOCKET_URL = "http://127.0.0.1:8000/";
 
+let socket;
+
 const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
-  const socket = io(SOCKET_URL);
-  
+  socket = io(SOCKET_URL);
+
   socket.on("connect", () => {
-    console.log("HI");
     socket.emit("authenticate", {
-      name: name,
-      token: token,
+      name,
+      token,
       admin: "no"
     });
-    socket.emit('room', name);
   });
 
   socket.on("authenticated", (data) => {
-    console.log("HI")
+    socket.emit('room', name);
     setNumMessages(data.messageCount);
-    setMessages(data.message);
+    setMessages(data.messages);
+  });
+
+  socket.on("error", (error) => {
+    console.log(error);
   });
 
   socket.on("unauthenticated", () => {
     window.location.replace("/chat/login");
   });
+}
 
-  return socket;
+const disconnectSocket = () => {
+  socket.disconnect();
+  console.log(socket);
+}
+
+const listenForMessages = (messages, setMessages) => {
+  if (!socket) return;
+
+  socket.on("chatUpdate", (data) => {
+    setMessages([...messages, data]);
+  });
+
+  socket.on("chatUpdateAdmin", (data) => {
+    setMessages([...messages, data]);
+  });
+}
+
+const sendMessage = (message) => {
+  if (!socket) return;
+
+  socket.emit("message", message);
 }
 
 const adminConnectSocket = (name, token, chatUser, setHeader, setMessages, setNumMessages) => {
@@ -52,4 +77,4 @@ const adminConnectSocket = (name, token, chatUser, setHeader, setMessages, setNu
   });
 }
 
-export { connectSocket }
+export { connectSocket, disconnectSocket, listenForMessages, sendMessage }
