@@ -25,8 +25,8 @@ const ChatSignupPage = () => {
     })
     .then((response) => {
       if (response.data.status === "success") {
-        setCookies("name", response.data.name);
-        setCookies("token", response.data.token);
+        setCookies("name", response.data.name, {path: '/'});
+        setCookies("token", response.data.token, {path: '/'});
         if (response.data.admin !== "no")
           window.location.replace("/chat/admin");
         else

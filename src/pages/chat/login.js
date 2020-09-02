@@ -14,8 +14,8 @@ const ChatLoginPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
 
   useEffect(() => {
-    setCookies("name", "");
-    setCookies("token", "");
+    setCookies("name", "", {path: '/'});
+    setCookies("token", "", {path: '/'});
   }, []);
   
   const login = (event) => {
@@ -29,8 +29,8 @@ const ChatLoginPage = () => {
     })
     .then((response) => {
       if (response.data.status === "success") {
-        setCookies("name", response.data.name);
-        setCookies("token", response.data.token);
+        setCookies("name", response.data.name, {path: '/'});
+        setCookies("token", response.data.token,{path: '/'});
         
         if (response.data.admin !== "no")
           window.location.replace("/chat/admin");

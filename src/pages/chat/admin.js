@@ -31,7 +31,7 @@ const AdminPage = () => {
         }
       }).then((response) => {
         if (response.data.status !== "success") {
-          window.location.replace("/login");
+          window.location.replace("/chat/login");
           return;
         }
         setRooms(response.data.chats);
