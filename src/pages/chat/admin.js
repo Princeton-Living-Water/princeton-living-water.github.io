@@ -9,7 +9,10 @@ import RoomCard from "../../components/roomCard";
 
 import "../../assets/styles.css";
 
-const API_URL = "http://localhost:5000/";
+import constants from '../../../constants.js';
+
+const SOCKET_URL = constants["SOCKET_URL"];
+const API_URL = constants["API_URL"];
 
 const AdminPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);

@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
+import constants from '../../constants.js';
 
-const SOCKET_URL = "http://127.0.0.1:8000/";
+const SOCKET_URL = constants["SOCKET_URL"];
 
 let socket;
 

@@ -7,8 +7,10 @@ import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 
 import "../../assets/styles.css";
+import constants from '../../../constants.js';
 
-const API_URL = "http://127.0.0.1:5000/";
+const SOCKET_URL = constants["SOCKET_URL"];
+const API_URL = constants["API_URL"];
 
 const ChatLoginPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);

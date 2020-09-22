@@ -8,6 +8,10 @@ import ChatMessage from "../../components/chatMessage";
 import { adminConnectSocket } from "../../js/socket.js";
 
 import "../../assets/styles.css";
+import constants from '../../../constants.js';
+
+const SOCKET_URL = constants["SOCKET_URL"];
+const API_URL = constants["API_URL"];
 
 const AdminChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import io from 'socket.io-client';
+import constants from "../../constants.js";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -10,7 +11,7 @@ import { connectSocket, disconnectSocket, listenForMessages, sendMessage } from 
 
 import "../assets/styles.css";
 
-const SOCKET_URL = "http://127.0.0.1:8000/";
+const SOCKET_URL = constants["SOCKET_URL"];
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
