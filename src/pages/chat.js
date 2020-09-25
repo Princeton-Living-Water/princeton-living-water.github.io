@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
-import io from 'socket.io-client';
 import constants from "../../constants.js";
 
 import Layout from "../components/layout";

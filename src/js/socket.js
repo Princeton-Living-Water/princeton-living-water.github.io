@@ -54,7 +54,13 @@ const sendMessage = (message) => {
   socket.emit("message", message);
 }
 
-const adminConnectSocket = (name, token, chatUser, setHeader, setMessages, setNumMessages) => {
+const sendAdminMessage = (message) => {
+  if (!socket) return;
+
+  socket.emit("adminMessage", message);
+}
+
+const adminConnectSocket = ({ name, token, chatUser, setMessages, setNumMessages }) => {
   const socket = io(SOCKET_URL);
   
   socket.on("connect", () => {
@@ -64,18 +70,23 @@ const adminConnectSocket = (name, token, chatUser, setHeader, setMessages, setNu
       admin: "yes",
       chatUser: chatUser
     });
-    socket.emit('room', name);
   });
 
   socket.on("authenticated", (data) => {
-    setHeader("Admin Chat with " + chatUser);
+    socket.emit('room', name);
     setNumMessages(data.messageCount);
-    setMessages(data.message);
+    setMessages(data.messages);
+  });
+
+  socket.on("error", (error) => {
+    console.log(error);
   });
 
   socket.on("unauthenticated", () => {
-    window.location.replace("/login");
+    window.location.replace("/chat/login");
   });
 }
 
-export { connectSocket, disconnectSocket, listenForMessages, sendMessage }
+export { connectSocket, adminConnectSocket, 
+         disconnectSocket, listenForMessages, 
+         sendMessage, sendAdminMessage }
