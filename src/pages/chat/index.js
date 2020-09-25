@@ -1,16 +1,14 @@
+
 import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
-import constants from "../../constants.js";
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import Subpage from "../components/subpage";
-import ChatMessage from "../components/chatMessage";
-import { connectSocket, disconnectSocket, listenForMessages, sendMessage } from "../js/socket.js";
+import Layout from "../../components/layout";
+import SEO from "../../components/seo";
+import Subpage from "../../components/subpage";
+import ChatMessage from "../../components/chatMessage";
+import { connectSocket, disconnectSocket, listenForMessages, sendMessage } from "../../js/socket.js";
 
-import "../assets/styles.css";
-
-const SOCKET_URL = constants["SOCKET_URL"];
+import "../../assets/styles.css";
 
 const ChatPage = () => {
   const [messages, setMessages] = useState([]);
@@ -21,7 +19,7 @@ const ChatPage = () => {
   useEffect(() => {
     const {name, token} = cookies;
     if (!name || !token) {
-      window.location.replace("/chat/login")
+      window.location.replace("/chat/login");
       return;
     }
 
