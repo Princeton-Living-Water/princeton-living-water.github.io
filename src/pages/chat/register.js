@@ -13,7 +13,7 @@ import constants from '../../../constants.js';
 const SOCKET_URL = constants["SOCKET_URL"];
 const API_URL = constants["API_URL"];
 
-const ChatSignupPage = () => {
+const ChatRegisterPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
 
   const signup = (event) => {
@@ -27,8 +27,8 @@ const ChatSignupPage = () => {
     })
     .then((response) => {
       if (response.data.status === "success") {
-        setCookies("name", response.data.name, {path: '/'});
-        setCookies("token", response.data.token, {path: '/'});
+        setCookies("name", response.data.name);
+        setCookies("token", response.data.token);
         if (response.data.admin !== "no")
           window.location.replace("/chat/admin");
         else
@@ -36,7 +36,7 @@ const ChatSignupPage = () => {
       }
       else {
         // Place handling of error message here
-        console.log("Signup failed");
+        console.log(response.data);
       }
     })
     .catch((error) => {
@@ -46,7 +46,7 @@ const ChatSignupPage = () => {
 
   return (
     <Layout>
-      <SEO title="Chat Signup" />
+      <SEO title="Chat Register" />
       <Subpage>
         <h3> Register for Living Water Chat </h3><br/>
         <form onSubmit={signup} className="cred-box">
@@ -62,4 +62,4 @@ const ChatSignupPage = () => {
   );
 };
 
-export default ChatSignupPage;
+export default ChatRegisterPage;

@@ -16,8 +16,8 @@ const ChatLoginPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
 
   useEffect(() => {
-    setCookies("name", "", {path: '/'});
-    setCookies("token", "", {path: '/'});
+    setCookies("name", "");
+    setCookies("token", "");
   }, []);
   
   const login = (event) => {
@@ -31,8 +31,8 @@ const ChatLoginPage = () => {
     })
     .then((response) => {
       if (response.data.status === "success") {
-        setCookies("name", response.data.name, {path: '/'});
-        setCookies("token", response.data.token,{path: '/'});
+        setCookies("name", response.data.name);
+        setCookies("token", response.data.token);
         
         if (response.data.admin !== "no")
           window.location.replace("/chat/admin");
@@ -60,7 +60,7 @@ const ChatLoginPage = () => {
           <input className="text-input" type="password"
             name="password" placeholder="password"/><br/><br/>
           <div className="button-box">
-            <input className="cred-button" type="submit" value="Sign in"></input>
+            <input className="cred-button" type="submit" value="login"></input>
           </div>
         </form>
         <span className="here-before"> Never been here before? <a href="/chat/register">Register</a> </span><br/>
