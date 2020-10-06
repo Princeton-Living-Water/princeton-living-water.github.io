@@ -6,6 +6,7 @@ const SOCKET_URL = constants["SOCKET_URL"];
 let socket;
 
 const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
+  console.log("in");
   socket = io(SOCKET_URL);
 
   socket.on("connect", () => {
@@ -31,37 +32,8 @@ const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
   });
 }
 
-const disconnectSocket = () => {
-  socket.disconnect();
-  console.log(socket);
-}
-
-const listenForMessages = (messages, setMessages) => {
-  if (!socket) return;
-
-  socket.on("chatUpdate", (data) => {
-    setMessages([...messages, data]);
-  });
-
-  socket.on("chatUpdateAdmin", (data) => {
-    setMessages([...messages, data]);
-  });
-}
-
-const sendMessage = (message) => {
-  if (!socket) return;
-
-  socket.emit("message", message);
-}
-
-const sendAdminMessage = (message) => {
-  if (!socket) return;
-
-  socket.emit("adminMessage", message);
-}
-
 const adminConnectSocket = ({ name, token, chatUser, setMessages, setNumMessages }) => {
-  const socket = io(SOCKET_URL);
+  socket = io(SOCKET_URL);
   
   socket.on("connect", () => {
     socket.emit("authenticate", {
@@ -86,6 +58,37 @@ const adminConnectSocket = ({ name, token, chatUser, setMessages, setNumMessages
     window.location.replace("/chat/login");
   });
 }
+
+
+const disconnectSocket = () => {
+  socket.disconnect();
+  console.log(socket);
+}
+
+const listenForMessages = (messages, setMessages) => {
+  if (!socket) return;
+  
+  socket.on("chatUpdate", (data) => {
+    setMessages([...messages, data]);
+  });
+
+  socket.on("chatUpdateAdmin", (data) => {
+    setMessages([...messages, data]);
+  });
+}
+
+const sendMessage = (message) => {
+  if (!socket) return;
+  socket.emit("message", message);
+}
+
+const sendAdminMessage = (message) => {
+  if (!socket) return;
+  console.log("adminMessage :" + message)
+  console.log(socket)
+  socket.emit("adminMessage", message);
+}
+
 
 export { connectSocket, adminConnectSocket, 
          disconnectSocket, listenForMessages, 

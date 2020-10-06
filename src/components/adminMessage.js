@@ -2,11 +2,11 @@ import React from "react";
 
 import "../assets/devos.css";
 
-const ChatMessage = ({ message }) => {
+const AdminMessage = ({ message }) => {
   const msg = message.message;
   const sender = message.sender;
 
-  const msgClass = sender === "admin" ? "otherMessage" : "userMessage";
+  const msgClass = sender === "admin" ? "userMessage" : "otherMessage";
   return (
     <div className={"messageWrapper " + msgClass}>
       {msg}
@@ -14,4 +14,4 @@ const ChatMessage = ({ message }) => {
   );
 }
 
-export default ChatMessage;
+export default AdminMessage;

@@ -4,10 +4,11 @@ import { useCookies } from "react-cookie";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
-import ChatMessage from "../../components/chatMessage";
+import AdminMessage from "../../components/adminMessage";
 import { adminConnectSocket, disconnectSocket, listenForMessages, sendAdminMessage } from "../../js/socket.js";
 
 import "../../assets/styles.css";
+import "../../assets/chat.css";
 import constants from '../../../constants.js';
 
 const SOCKET_URL = constants["SOCKET_URL"];
@@ -47,7 +48,6 @@ const AdminChatPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     sendAdminMessage(msgInput);
   }
 
@@ -55,15 +55,15 @@ const AdminChatPage = () => {
     <Layout>
       <SEO title="Admin Chat" />
       <Subpage>
-        <h2>{chatUser}</h2>
+        <h2>Chat with {chatUser}</h2>
         <div className="messagesWrapper">
           {messages.map((msg, index) => (
-            <ChatMessage message={msg} key={index}/>
+            <AdminMessage message={msg} key={index}/>
           ))}
         </div>
-        <form onSubmit={handleSubmit} onChange={handleInput}>
-          <input type="text" value={msgInput}></input>
-          <input type="submit" value="send"></input>
+        <form onSubmit={handleSubmit}>
+          <input type="text" placeholder="send message" value={msgInput} onChange={handleInput}/>
+          <input type="submit" value="send"/>
         </form>
       </Subpage>
     </Layout>
