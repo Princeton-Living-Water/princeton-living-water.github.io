@@ -45,7 +45,7 @@ const adminConnectSocket = ({ name, token, chatUser, setMessages, setNumMessages
   });
 
   socket.on("authenticated", (data) => {
-    socket.emit('room', name);
+    socket.emit('room', chatUser);
     setNumMessages(data.messageCount);
     setMessages(data.messages);
   });
@@ -84,8 +84,6 @@ const sendMessage = (message) => {
 
 const sendAdminMessage = (message) => {
   if (!socket) return;
-  console.log("adminMessage :" + message)
-  console.log(socket)
   socket.emit("adminMessage", message);
 }
 

@@ -38,7 +38,6 @@ const ChatPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
     sendMessage(msgInput);
   }
 
