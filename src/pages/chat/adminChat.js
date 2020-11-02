@@ -23,7 +23,6 @@ const AdminChatPage = ({ location }) => {
   const [msgInput, setMsgInput] = useState("");
 
   useEffect(() => {
-<<<<<<< HEAD
     if (typeof window !== `undefined`) {
       const queryString = window.location.search;
     }

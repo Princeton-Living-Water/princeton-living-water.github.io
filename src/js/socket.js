@@ -29,13 +29,9 @@ const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
   });
 
   socket.on("unauthenticated", () => {
-<<<<<<< HEAD
     if (typeof window !== `undefined`) {
     window.location.replace("/chat/login");
     }
-=======
-    navigate("/chat/login");
->>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
   });
 }
 
@@ -62,13 +58,9 @@ const adminConnectSocket = ({ name, token, chatUser, setMessages, setNumMessages
   });
 
   socket.on("unauthenticated", () => {
-<<<<<<< HEAD
     if (typeof window !== `undefined`) {
       window.location.replace("/chat/login");
     }
-=======
-    navigate("/chat/login");
->>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
   });
 }
 
