@@ -6,7 +6,6 @@ const SOCKET_URL = constants["SOCKET_URL"];
 let socket;
 
 const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
-  console.log("in");
   socket = io(SOCKET_URL);
 
   socket.on("connect", () => {
@@ -65,15 +64,15 @@ const disconnectSocket = () => {
   console.log(socket);
 }
 
-const listenForMessages = (messages, setMessages) => {
+const listenForMessages = (updateMessages) => {
   if (!socket) return;
   
   socket.on("chatUpdate", (data) => {
-    setMessages([...messages, data]);
+    updateMessages(data);
   });
 
   socket.on("chatUpdateAdmin", (data) => {
-    setMessages([...messages, data]);
+    updateMessages(data);
   });
 }
 

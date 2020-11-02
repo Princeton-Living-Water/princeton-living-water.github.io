@@ -39,8 +39,12 @@ const AdminChatPage = () => {
   }, []);
 
   useEffect(() => {
-    listenForMessages(messages, setMessages);
-  }, [messages]);
+    listenForMessages(updateMessages);
+  });
+
+  const updateMessages = (data) => {
+    setMessages(messages.concat(data))
+  }
 
   const handleInput = (event) => {
     setMsgInput(event.target.value);
