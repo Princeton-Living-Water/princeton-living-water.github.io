@@ -25,23 +25,20 @@ const AdminChatPage = ({ location }) => {
   useEffect(() => {
     if (typeof window !== `undefined`) {
       const queryString = window.location.search;
-    }
-    const urlParams = new URLSearchParams(queryString);
-    const chatUser = urlParams.get('user');
+      const urlParams = new URLSearchParams(queryString);
+      const chatUser = urlParams.get('user');
 
-    const {name, token} = cookies;
-    if (!name || !token) {
-      if (typeof window !== `undefined`) {
+      const {name, token} = cookies;
+      if (!name || !token) {
         window.location.replace("/chat/login")
+        return;
       }
-      return;
+      adminConnectSocket({ name, token, chatUser, setMessages, setNumMessages });
+      listenForMessages(updateMessages);
+      setChatUser(chatUser);
+      
+      return () => disconnectSocket();
     }
-    
-    adminConnectSocket({ name, token, chatUser, setMessages, setNumMessages });
-    listenForMessages(updateMessages);
-    setChatUser(chatUser);
-    
-    return () => disconnectSocket();
   }, []);
 
   const updateMessages = (data) => {
