@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { navigate } from "gatsby";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
@@ -22,8 +23,7 @@ const AdminPage = () => {
     const getRooms = async () => {
       const {name, token} = cookies;
       if (!name || !token) {
-        window.location.replace("/chat/login")
-        return;
+        navigate("/chat/login");
       }
 
       await axios.get(API_URL + "getRooms", {
@@ -34,8 +34,7 @@ const AdminPage = () => {
         }
       }).then((response) => {
         if (response.data.status !== "success") {
-          window.location.replace("/chat/login");
-          return;
+          navigate("/chat/login");
         }
         setRooms(response.data.chats);
       })

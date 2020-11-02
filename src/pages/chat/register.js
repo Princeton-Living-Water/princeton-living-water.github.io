@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
@@ -30,9 +31,9 @@ const ChatRegisterPage = () => {
         setCookies("name", response.data.name);
         setCookies("token", response.data.token);
         if (response.data.admin !== "no")
-          window.location.replace("/chat/admin");
+          navigate("/chat/admin");
         else
-          window.location.replace("/chat");
+          navigate("/chat");
       }
       else {
         // Place handling of error message here
