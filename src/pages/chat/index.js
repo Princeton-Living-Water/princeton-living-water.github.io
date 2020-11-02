@@ -24,16 +24,13 @@ const ChatPage = () => {
     }
 
     connectSocket({ name, token, setMessages, setNumMessages });
+    listenForMessages(updateMessages);
     
     return () => disconnectSocket();
   }, []);
 
-  useEffect(() => {
-    listenForMessages(updateMessages);
-  });
-
   const updateMessages = (data) => {
-    setMessages(messages.concat(data))
+    setMessages(messages => messages.concat(data));
   }
 
   const handleInput = (event) => {

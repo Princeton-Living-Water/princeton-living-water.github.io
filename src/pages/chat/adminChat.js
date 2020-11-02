@@ -33,17 +33,14 @@ const AdminChatPage = () => {
     }
     
     adminConnectSocket({ name, token, chatUser, setMessages, setNumMessages });
+    listenForMessages(updateMessages);
     setChatUser(chatUser);
     
     return () => disconnectSocket();
   }, []);
-
-  useEffect(() => {
-    listenForMessages(updateMessages);
-  });
-
+  
   const updateMessages = (data) => {
-    setMessages(messages.concat(data))
+    setMessages(messages => messages.concat(data))
   }
 
   const handleInput = (event) => {
