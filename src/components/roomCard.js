@@ -6,8 +6,10 @@ const URL = constants["URL"];
 
 const RoomCard = ({ room }) => {
   const clickRoom = () => {
-    var newWindow = window.open();
-    newWindow.document.location.href = URL + "/chat/adminChat?user=" + room;
+    if (typeof window !== `undefined`) {
+      var newWindow = window.open();
+      newWindow.document.location.href = URL + "/chat/adminChat?user=" + room;
+    }
   }
 
   return (

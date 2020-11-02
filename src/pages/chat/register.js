@@ -30,9 +30,13 @@ const ChatRegisterPage = () => {
         setCookies("name", response.data.name);
         setCookies("token", response.data.token);
         if (response.data.admin !== "no")
+        if (typeof window !== `undefined`) {
           window.location.replace("/chat/admin");
+        }
         else
-          window.location.replace("/chat");
+          if (typeof window !== `undefined`) {
+            window.location.replace("/chat");
+          }
       }
       else {
         // Place handling of error message here

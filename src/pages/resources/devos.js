@@ -31,7 +31,9 @@ const DevosPage = ({ pageContext }) => {
   let { day } = pageContext;
   const numDevos = data.allFile.edges.length;
   if (!day) {
-    window.location.replace(`/resources/devos/day${numDevos}`);
+    if (typeof window !== `undefined`) {
+      window.location.replace(`/resources/devos/day${numDevos}`);
+    }
   } else if (day < 1 || day > numDevos) {
     throw Error("Whoops");
   }

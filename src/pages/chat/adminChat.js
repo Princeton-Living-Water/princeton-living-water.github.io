@@ -22,13 +22,17 @@ const AdminChatPage = () => {
   const [msgInput, setMsgInput] = useState("");
 
   useEffect(() => {
-    const queryString = window.location.search;
+    if (typeof window !== `undefined`) {
+      const queryString = window.location.search;
+    }
     const urlParams = new URLSearchParams(queryString);
     const chatUser = urlParams.get('user');
 
     const {name, token} = cookies;
     if (!name || !token) {
-      window.location.replace("/chat/login")
+      if (typeof window !== `undefined`) {
+        window.location.replace("/chat/login")
+      }
       return;
     }
     

@@ -36,9 +36,13 @@ const ChatLoginPage = () => {
         setCookies("token", response.data.token,{ path: '/chat' });
         
         if (response.data.admin !== "no")
-          window.location.replace("/chat/admin");
+          if (typeof window !== `undefined`) {
+            window.location.replace("/chat/admin");
+          }
         else
-          window.location.replace("/chat");
+          if (typeof window !== `undefined`) {
+            window.location.replace("/chat");
+          }
       }
       else {
         // Place handling of error message here

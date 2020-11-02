@@ -27,7 +27,9 @@ const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
   });
 
   socket.on("unauthenticated", () => {
+    if (typeof window !== `undefined`) {
     window.location.replace("/chat/login");
+    }
   });
 }
 
@@ -54,7 +56,9 @@ const adminConnectSocket = ({ name, token, chatUser, setMessages, setNumMessages
   });
 
   socket.on("unauthenticated", () => {
-    window.location.replace("/chat/login");
+    if (typeof window !== `undefined`) {
+      window.location.replace("/chat/login");
+    }
   });
 }
 

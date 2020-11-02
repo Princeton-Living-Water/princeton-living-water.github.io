@@ -19,7 +19,9 @@ const ChatPage = () => {
   useEffect(() => {
     const {name, token} = cookies;
     if (!name || !token) {
-      window.location.replace("/chat/login");
+      if (typeof window !== `undefined`) {
+        window.location.replace("/chat/login");
+      }
       return;
     }
 

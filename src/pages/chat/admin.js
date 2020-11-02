@@ -22,7 +22,9 @@ const AdminPage = () => {
     const getRooms = async () => {
       const {name, token} = cookies;
       if (!name || !token) {
-        window.location.replace("/chat/login")
+        if (typeof window !== `undefined`) {
+          window.location.replace("/chat/login")
+        }
         return;
       }
 
@@ -34,7 +36,9 @@ const AdminPage = () => {
         }
       }).then((response) => {
         if (response.data.status !== "success") {
-          window.location.replace("/chat/login");
+          if (typeof window !== `undefined`) {
+            window.location.replace("/chat/login");
+          }
           return;
         }
         setRooms(response.data.chats);
