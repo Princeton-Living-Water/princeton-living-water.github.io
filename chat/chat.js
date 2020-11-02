@@ -93,7 +93,7 @@ function connectSocket() {
     const usernameText = document.createTextNode(data.name);
     usernameDiv.appendChild(usernameText);
 
-    const messageLength = data.message.length;
+    const messageLength = data.messages.length;
     const messagesDiv = document.getElementById("messages");
     messagesDiv.innerHTML = "";
     
@@ -103,8 +103,8 @@ function connectSocket() {
     
     for (i = 0; i < messageLength; i++) {
       const message = document.createElement('div');
-      message.innerHTML = data.message[i]['message'];
-      if (data.message[i]['sender'] == 'admin') {
+      message.innerHTML = data.messages[i]['message'];
+      if (data.messages[i]['sender'] == 'admin') {
         message.setAttribute("class","messageWrapper adminMessage");
       }
       else {
