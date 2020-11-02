@@ -35,7 +35,6 @@ const ChatLoginPage = () => {
       if (response.data.status === "success") {
         setCookies("name", response.data.name,{ path: '/chat' });
         setCookies("token", response.data.token,{ path: '/chat' });
-        console.log("HI");
         if (response.data.admin !== "no")
           navigate("/chat/admin");
         else
