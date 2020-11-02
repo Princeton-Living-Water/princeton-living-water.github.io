@@ -23,14 +23,10 @@ const AdminPage = () => {
     const getRooms = async () => {
       const {name, token} = cookies;
       if (!name || !token) {
-<<<<<<< HEAD
         if (typeof window !== `undefined`) {
           window.location.replace("/chat/login")
         }
         return;
-=======
-        navigate("/chat/login");
->>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
       }
 
       await axios.get(API_URL + "getRooms", {
@@ -41,14 +37,10 @@ const AdminPage = () => {
         }
       }).then((response) => {
         if (response.data.status !== "success") {
-<<<<<<< HEAD
           if (typeof window !== `undefined`) {
             window.location.replace("/chat/login");
           }
           return;
-=======
-          navigate("/chat/login");
->>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
         }
         setRooms(response.data.chats);
       })

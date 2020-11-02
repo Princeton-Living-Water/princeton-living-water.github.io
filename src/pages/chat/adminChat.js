@@ -27,22 +27,15 @@ const AdminChatPage = ({ location }) => {
     if (typeof window !== `undefined`) {
       const queryString = window.location.search;
     }
-=======
-    const queryString = location.search;
->>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
     const urlParams = new URLSearchParams(queryString);
     const chatUser = urlParams.get('user');
 
     const {name, token} = cookies;
     if (!name || !token) {
-<<<<<<< HEAD
       if (typeof window !== `undefined`) {
         window.location.replace("/chat/login")
       }
       return;
-=======
-      navigate("/chat/login");
->>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
     }
     
     adminConnectSocket({ name, token, chatUser, setMessages, setNumMessages });
