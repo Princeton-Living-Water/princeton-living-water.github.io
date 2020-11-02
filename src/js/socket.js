@@ -1,3 +1,5 @@
+import React from 'react';
+import { navigate } from "gatsby";
 import io from 'socket.io-client';
 import constants from '../../constants.js';
 
@@ -27,9 +29,13 @@ const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
   });
 
   socket.on("unauthenticated", () => {
+<<<<<<< HEAD
     if (typeof window !== `undefined`) {
     window.location.replace("/chat/login");
     }
+=======
+    navigate("/chat/login");
+>>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
   });
 }
 
@@ -56,9 +62,13 @@ const adminConnectSocket = ({ name, token, chatUser, setMessages, setNumMessages
   });
 
   socket.on("unauthenticated", () => {
+<<<<<<< HEAD
     if (typeof window !== `undefined`) {
       window.location.replace("/chat/login");
     }
+=======
+    navigate("/chat/login");
+>>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
   });
 }
 
@@ -89,7 +99,6 @@ const sendAdminMessage = (message) => {
   if (!socket) return;
   socket.emit("adminMessage", message);
 }
-
 
 export { connectSocket, adminConnectSocket, 
          disconnectSocket, listenForMessages, 

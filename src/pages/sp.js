@@ -118,9 +118,13 @@ const SecretPage = () => {
     }).then((response) => {
       return response.json();
     }).then((data) => {
+<<<<<<< HEAD
       if (typeof window !== `undefined`) {
         window.alert("New todo set!");
       }
+=======
+      // window.alert("New todo set!");
+>>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
       todo.value = "";
     });
   }
@@ -192,9 +196,13 @@ const SecretPage = () => {
     }).then((response) => {
       return response.json();
     }).then((data) => {
+<<<<<<< HEAD
       if (typeof window !== `undefined`) {
         window.alert("New prayer set!");
       }
+=======
+      // window.alert("New prayer set!");
+>>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
       prayer.value = "";
     });
   }

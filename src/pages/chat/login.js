@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { navigate } from "gatsby";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
@@ -34,8 +35,8 @@ const ChatLoginPage = () => {
       if (response.data.status === "success") {
         setCookies("name", response.data.name,{ path: '/chat' });
         setCookies("token", response.data.token,{ path: '/chat' });
-        
         if (response.data.admin !== "no")
+<<<<<<< HEAD
           if (typeof window !== `undefined`) {
             window.location.replace("/chat/admin");
           }
@@ -43,6 +44,11 @@ const ChatLoginPage = () => {
           if (typeof window !== `undefined`) {
             window.location.replace("/chat");
           }
+=======
+          navigate("/chat/admin");
+        else
+          navigate("/chat");
+>>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
       }
       else {
         // Place handling of error message here

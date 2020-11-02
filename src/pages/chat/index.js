@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import { navigate } from "gatsby";
 import { useCookies } from "react-cookie";
 
 import Layout from "../../components/layout";
@@ -19,9 +20,13 @@ const ChatPage = () => {
   useEffect(() => {
     const {name, token} = cookies;
     if (!name || !token) {
+<<<<<<< HEAD
       if (typeof window !== `undefined`) {
         window.location.replace("/chat/login");
       }
+=======
+      navigate("/chat/login");
+>>>>>>> 8d098c4242e6c290d86c400bd75f37b5f17aed39
       return;
     }
 

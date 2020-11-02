@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
-import { useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql, navigate } from "gatsby";
 
 import addCollapsible from "../../js/collapsible.js";
 
@@ -121,11 +121,11 @@ const DevosPage = ({ pageContext }) => {
   }, [pageContext]);
 
   const prevDevo = () => {
-    if (day > 1) window.location.href = `/resources/devos/day${day - 1}`;
+    if (day > 1) navigate(`/resources/devos/day${day - 1}`);
   };
 
   const nextDevo = () => {
-    if (day < numDevos) window.location.href = `/resources/devos/day${day + 1}`;
+    if (day < numDevos) navigate(`/resources/devos/day${day + 1}`);
   };
 
   const prevButtonClass = day === 1 ? "disabled" : "";
