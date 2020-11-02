@@ -206,13 +206,13 @@ function adminConnectSocket(chatUser) {
 
   socket.on("authenticated", function (data) {
     earliest_message = data.messageCount;
-    console.log(data.message);
+    console.log(data.messages);
     const usernameDiv = document.getElementById("username");
     usernameDiv.innerHTML = "";
     const usernameText = document.createTextNode("Admin Chat with " + chatUser);
     usernameDiv.appendChild(usernameText);
 
-    const messageLength = data.message.length;
+    const messageLength = data.messages.length;
     const messagesDiv = document.getElementById("messages");
     messagesDiv.innerHTML = "";
     
