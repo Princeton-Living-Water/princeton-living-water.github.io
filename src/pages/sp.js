@@ -118,7 +118,7 @@ const SecretPage = () => {
     }).then((response) => {
       return response.json();
     }).then((data) => {
-      window.alert("New todo set!");
+      // window.alert("New todo set!");
       todo.value = "";
     });
   }
@@ -190,7 +190,7 @@ const SecretPage = () => {
     }).then((response) => {
       return response.json();
     }).then((data) => {
-      window.alert("New prayer set!");
+      // window.alert("New prayer set!");
       prayer.value = "";
     });
   }
