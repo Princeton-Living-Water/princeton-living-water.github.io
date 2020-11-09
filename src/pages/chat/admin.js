@@ -20,10 +20,11 @@ const AdminPage = () => {
   const [rooms, setRooms] = useState([]);
 
   useEffect(() => {
+    const {name, token} = cookies;
     const getRooms = async () => {
-      const {name, token} = cookies;
       if (!name || !token) {
         if (typeof window !== `undefined`) {
+          console.log(cookies)
           window.location.replace("/chat/login")
         }
         return;
@@ -38,6 +39,7 @@ const AdminPage = () => {
       }).then((response) => {
         if (response.data.status !== "success") {
           if (typeof window !== `undefined`) {
+            console.log(response)
             window.location.replace("/chat/login");
           }
           return;
