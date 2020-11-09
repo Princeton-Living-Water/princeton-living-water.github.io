@@ -6,10 +6,13 @@ const AdminMessage = ({ message }) => {
   const msg = message.message;
   const sender = message.sender;
 
+  const msgWrapper = sender === "admin" ? "userWrapper" : "otherWrapper";
   const msgClass = sender === "admin" ? "userMessage" : "otherMessage";
   return (
-    <div className={"messageWrapper " + msgClass}>
-      {msg}
+    <div className={msgWrapper}>
+      <div className={msgClass}>
+        {msg}
+      </div>
     </div>
   );
 }

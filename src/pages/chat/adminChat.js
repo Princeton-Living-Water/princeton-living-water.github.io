@@ -7,6 +7,8 @@ import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import AdminMessage from "../../components/adminMessage";
 import { adminConnectSocket, disconnectSocket, listenForMessages, sendAdminMessage } from "../../js/socket.js";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 import "../../assets/styles.css";
 import "../../assets/chat.css";
@@ -52,6 +54,7 @@ const AdminChatPage = ({ location }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     sendAdminMessage(msgInput);
+    setMsgInput("")
   }
 
   return (
@@ -64,9 +67,9 @@ const AdminChatPage = ({ location }) => {
             <AdminMessage message={msg} key={index}/>
           ))}
         </div>
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder="send message" value={msgInput} onChange={handleInput}/>
-          <input type="submit" value="send"/>
+        <form className="chatInput" onSubmit={handleSubmit}>
+          <input className="chatBar" type="text" placeholder="send message" value={msgInput} onChange={handleInput} required/>
+          <button className="chatSubmit" type="submit"><FontAwesomeIcon icon={faArrowRight} /></button>
         </form>
       </Subpage>
     </Layout>
