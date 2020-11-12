@@ -1,5 +1,4 @@
 import React from "react";
-import { navigate } from "gatsby";
 import constants from '../../constants.js';
 import "../assets/devos.css";
 

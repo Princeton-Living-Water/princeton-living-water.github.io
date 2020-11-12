@@ -1,6 +1,5 @@
 
-import React, { useState, useEffect, useRef } from "react";
-import { navigate } from "gatsby";
+import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
 import Layout from "../../components/layout";

@@ -1,5 +1,3 @@
-import React from 'react';
-import { navigate } from "gatsby";
 import io from 'socket.io-client';
 import constants from '../../constants.js';
 
@@ -13,8 +11,7 @@ const connectSocket = ({ name, token, setMessages, setNumMessages }) => {
   socket.on("connect", () => {
     socket.emit("authenticate", {
       name,
-      token,
-      admin: "no"
+      token
     });
   });
 
@@ -42,8 +39,7 @@ const adminConnectSocket = ({ name, token, chatUser, setMessages, setNumMessages
     socket.emit("authenticate", {
       name: name,
       token: token,
-      admin: "yes",
-      chatUser: chatUser
+      room: chatUser
     });
   });
 

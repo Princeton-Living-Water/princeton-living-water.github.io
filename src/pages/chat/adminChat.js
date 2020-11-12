@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
-import { navigate } from "gatsby";
+import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 
 import Layout from "../../components/layout";
@@ -13,10 +12,6 @@ import TextareaAutosize from 'react-textarea-autosize'
 
 import "../../assets/styles.css";
 import "../../assets/chat.css";
-import constants from '../../../constants.js';
-
-const SOCKET_URL = constants["SOCKET_URL"];
-const API_URL = constants["API_URL"];
 
 const AdminChatPage = ({ location }) => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
