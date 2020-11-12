@@ -49,10 +49,27 @@ input {
   width: 500px;
   display: flex;
   flex-direction: row;
+  align-items: flex-end;
 }
 
 .chatBar {
   flex-grow: 1;
+  font-family: "Source Code Pro", monospace;
+  border: none;
+  font-size: 1rem;
+  resize: none;
+  outline: none;
+  overflow-wrap: break-word;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  overflow-x: hidden;
+}
+
+[contenteditable][placeholder]:empty:before {
+  content: attr(placeholder);
+  position: absolute;
+  color: gray;
+  background-color: transparent;
 }
 
 .chatSubmit {
@@ -60,6 +77,7 @@ input {
   color: gray;
   border: none;
   outline:none;
+  height: 22px;
 }
 
 .chatSubmit:hover {
