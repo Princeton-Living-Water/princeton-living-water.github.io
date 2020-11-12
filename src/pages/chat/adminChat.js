@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { navigate } from "gatsby";
 import { useCookies } from "react-cookie";
 
@@ -9,6 +9,7 @@ import AdminMessage from "../../components/adminMessage";
 import { adminConnectSocket, disconnectSocket, listenForMessages, sendAdminMessage } from "../../js/socket.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import TextareaAutosize from 'react-textarea-autosize'
 
 import "../../assets/styles.css";
 import "../../assets/chat.css";
@@ -23,6 +24,8 @@ const AdminChatPage = ({ location }) => {
   const [messages, setMessages] = useState([]);
   const [numMessages, setNumMessages] = useState(0);
   const [msgInput, setMsgInput] = useState("");
+  const chatBarRef = useRef(null);
+  const formRef = useRef(null);
 
   useEffect(() => {
     if (typeof window !== `undefined`) {
@@ -53,8 +56,25 @@ const AdminChatPage = ({ location }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    sendAdminMessage(msgInput);
-    setMsgInput("")
+    if(msgInput != '') {
+      sendAdminMessage(msgInput);
+      setMsgInput("")
+    }
+  }
+
+  const handleScroll = (event) => {
+    if(event > 100) {
+      chatBarRef.current.style["overflowY"] = "scroll"
+    } else {
+      chatBarRef.current.style["overflowY"] = "hidden"
+    }
+  }
+
+  const onEnterPress = (e) => {
+    if(e.keyCode == 13 && e.shiftKey == false) {
+        e.preventDefault();
+        handleSubmit(e)
+    }
   }
 
   return (
@@ -67,8 +87,8 @@ const AdminChatPage = ({ location }) => {
             <AdminMessage message={msg} key={index}/>
           ))}
         </div>
-        <form className="chatInput" onSubmit={handleSubmit}>
-          <input className="chatBar" type="text" placeholder="send message" value={msgInput} onChange={handleInput} required/>
+        <form ref={formRef} className="chatInput" onSubmit={handleSubmit}>
+          <TextareaAutosize onKeyDown={onEnterPress} ref={chatBarRef} onHeightChange={handleScroll} className="chatBar" maxRows="6" type="text" placeholder="send message" value={msgInput} onChange={handleInput} required/>
           <button className="chatSubmit" type="submit"><FontAwesomeIcon icon={faArrowRight} /></button>
         </form>
       </Subpage>
