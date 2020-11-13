@@ -21,6 +21,7 @@ const ChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
   const chatBarRef = useRef(null);
   const formRef = useRef(null);
+  const messagesRef = useRef(null);
 
   useEffect(() => {
     const {name, token} = cookies;
@@ -39,6 +40,8 @@ const ChatPage = () => {
 
   const updateMessages = (data) => {
     setMessages(messages => messages.concat(data));
+    // messagesRef.current.style["messageBody"].scrollTop = messagesRef.current.style["messageBody"].scrollHeight;
+    // console.log(messagesRef.current.style["messageBody"].scrollTop);
   }
 
   const handleInput = (event) => {
@@ -73,7 +76,7 @@ const ChatPage = () => {
       <SEO title="Chat" />
       <Subpage>
         <h2>{cookies.name}</h2>
-        <div className="messagesWrapper">
+        <div ref={messagesRef} className="messagesWrapper">
           {messages.map((msg, index) => (
             <ChatMessage message={msg} key={index}/>
           ))}
