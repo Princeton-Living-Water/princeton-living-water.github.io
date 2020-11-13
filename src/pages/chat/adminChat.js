@@ -4,7 +4,7 @@ import { useCookies } from "react-cookie";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
-import ChatMessage from "../../components/adminMessage";
+import ChatMessage from "../../components/chatMessage";
 import { connectSocket, disconnectSocket, listenForMessages, sendMessage } from "../../js/socket.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
