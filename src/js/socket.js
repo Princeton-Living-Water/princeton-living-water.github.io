@@ -23,9 +23,15 @@ const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
 
   socket.on("unauthenticated", () => {
     if (typeof window !== `undefined`) {
-    window.location.replace("/chat/login");
+      window.location.replace("/chat/login");
     }
   });
+
+  socket.on("unauthenticated admin", () => {
+    if (typeof window !== `undefined`) {
+      window.location.replace("/chat");
+    }
+  })
 }
 
 const sendMessage = (message) => {

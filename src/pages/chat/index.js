@@ -14,27 +14,35 @@ import "../../assets/styles.css";
 import "../../assets/chat.css";
 
 const ChatPage = () => {
+  const [cookies, setCookies] = useCookies(["name", "token"]);
+  const [title, setTitle] = useState("");
   const [messages, setMessages] = useState([]);
   const [numMessages, setNumMessages] = useState(0);
   const [msgInput, setMsgInput] = useState("");
-  const [cookies, setCookies] = useCookies(["name", "token"]);
   const chatBarRef = useRef(null);
   const formRef = useRef(null);
   const messagesRef = useRef(null);
 
   useEffect(() => {
-    const {name, token} = cookies;
-    if (!name || !token) {
-      if (typeof window !== `undefined`) {
-        window.location.replace("/chat/login");
+    if (typeof window !== `undefined`) {
+      const {name, token} = cookies;
+      if (!name || !token) {
+        window.location.replace("/chat/login")
+        return;
       }
-      return;
-    }
 
-    connectSocket({ name, token, room: name, setMessages, setNumMessages });
-    listenForMessages(updateMessages);
-    
-    return () => disconnectSocket();
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const room = urlParams.get("user") || name;
+
+      connectSocket({ name, token, room, setMessages, setNumMessages });
+      listenForMessages(updateMessages);
+      
+      const title = room === name ? name : `Chat with ${room}`;
+      setTitle(title);
+      
+      return () => disconnectSocket();
+    }
   }, []);
 
   const updateMessages = (data) => {
@@ -56,7 +64,7 @@ const ChatPage = () => {
   }
 
   const handleScroll = (event) => {
-    if(event > 100) {
+    if (event > 100) {
       chatBarRef.current.style["overflowY"] = "scroll"
     } else {
       chatBarRef.current.style["overflowY"] = "hidden"
@@ -74,7 +82,7 @@ const ChatPage = () => {
     <Layout>
       <SEO title="Chat" />
       <Subpage>
-        <h2>{cookies.name}</h2>
+        <h2>{title}</h2>
         <div ref={messagesRef} className="messagesWrapper">
           {messages.map((msg, index) => (
             <ChatMessage message={msg} user={cookies.name} key={index}/>
