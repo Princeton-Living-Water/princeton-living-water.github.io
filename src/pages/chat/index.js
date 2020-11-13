@@ -27,7 +27,7 @@ const ChatPage = () => {
     if (typeof window !== `undefined`) {
       const {name, token} = cookies;
       if (!name || !token) {
-        window.location.replace("/chat/login")
+        window.location.replace("/chat/login");
         return;
       }
 
