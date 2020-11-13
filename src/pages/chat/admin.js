@@ -23,7 +23,6 @@ const AdminPage = () => {
     const getRooms = async () => {
       if (!name || !token) {
         if (typeof window !== `undefined`) {
-          console.log(cookies)
           window.location.replace("/chat/login")
         }
         return;

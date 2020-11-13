@@ -4,8 +4,8 @@ import { useCookies } from "react-cookie";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
-import AdminMessage from "../../components/adminMessage";
-import { adminConnectSocket, disconnectSocket, listenForMessages, sendAdminMessage } from "../../js/socket.js";
+import ChatMessage from "../../components/adminMessage";
+import { connectSocket, disconnectSocket, listenForMessages, sendMessage } from "../../js/socket.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize'
@@ -13,7 +13,7 @@ import TextareaAutosize from 'react-textarea-autosize'
 import "../../assets/styles.css";
 import "../../assets/chat.css";
 
-const AdminChatPage = ({ location }) => {
+const AdminChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
   const [chatUser, setChatUser] = useState("");
   const [messages, setMessages] = useState([]);
@@ -26,16 +26,17 @@ const AdminChatPage = ({ location }) => {
     if (typeof window !== `undefined`) {
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const chatUser = urlParams.get('user');
+      const room = urlParams.get("user");
 
       const {name, token} = cookies;
       if (!name || !token) {
         window.location.replace("/chat/login")
         return;
       }
-      adminConnectSocket({ name, token, chatUser, setMessages, setNumMessages });
+
+      connectSocket({ name, token, room, setMessages, setNumMessages });
       listenForMessages(updateMessages);
-      setChatUser(chatUser);
+      setChatUser(room);
       
       return () => disconnectSocket();
     }
@@ -51,8 +52,8 @@ const AdminChatPage = ({ location }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(msgInput != '') {
-      sendAdminMessage(msgInput);
+    if (msgInput != "") {
+      sendMessage(msgInput);
       setMsgInput("")
     }
   }
@@ -66,9 +67,9 @@ const AdminChatPage = ({ location }) => {
   }
 
   const onEnterPress = (e) => {
-    if(e.keyCode == 13 && e.shiftKey == false) {
-        e.preventDefault();
-        handleSubmit(e)
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      handleSubmit(e)
     }
   }
 
@@ -79,7 +80,7 @@ const AdminChatPage = ({ location }) => {
         <h2>Chat with {chatUser}</h2>
         <div className="messagesWrapper">
           {messages.map((msg, index) => (
-            <AdminMessage message={msg} key={index}/>
+            <ChatMessage message={msg} user={cookies.name} key={index}/>
           ))}
         </div>
         <form ref={formRef} className="chatInput" onSubmit={handleSubmit}>

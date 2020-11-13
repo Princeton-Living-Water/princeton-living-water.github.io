@@ -104,12 +104,12 @@ const DevosPage = ({ pageContext }) => {
 
     // Append all elements to the devo box
     devoBox.appendChild(header);
-    if (devo["passage"] != "") {
+    if (devo["passage"] !== "") {
       devoBox.appendChild(passage);
       devoBox.appendChild(instruction1);
     }
     devoBox.appendChild(content);
-    if (devo["questions"] != "") {
+    if (devo["questions"] !== "") {
       devoBox.appendChild(instruction2);
       devoBox.appendChild(questions);
     }

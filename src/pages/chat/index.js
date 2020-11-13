@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { useCookies } from "react-cookie";
 
@@ -31,7 +30,7 @@ const ChatPage = () => {
       return;
     }
 
-    connectSocket({ name, token, setMessages, setNumMessages });
+    connectSocket({ name, token, room: name, setMessages, setNumMessages });
     listenForMessages(updateMessages);
     
     return () => disconnectSocket();
@@ -47,7 +46,7 @@ const ChatPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(msgInput != '') {
+    if (msgInput != "") {
       sendMessage(msgInput);
       setMsgInput("")
     }
@@ -62,9 +61,9 @@ const ChatPage = () => {
   }
 
   const onEnterPress = (e) => {
-    if(e.keyCode == 13 && e.shiftKey == false) {
-        e.preventDefault();
-        handleSubmit(e)
+    if (e.keyCode == 13 && e.shiftKey == false) {
+      e.preventDefault();
+      handleSubmit(e)
     }
   }
 
@@ -75,7 +74,7 @@ const ChatPage = () => {
         <h2>{cookies.name}</h2>
         <div className="messagesWrapper">
           {messages.map((msg, index) => (
-            <ChatMessage message={msg} key={index}/>
+            <ChatMessage message={msg} user={cookies.name} key={index}/>
           ))}
         </div>
         <form ref={formRef} className="chatInput" onSubmit={handleSubmit}>

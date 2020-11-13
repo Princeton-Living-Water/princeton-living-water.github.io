@@ -9,16 +9,14 @@ import Subpage from "../../components/subpage";
 import "../../assets/styles.css";
 import constants from '../../../constants.js';
 
-const SOCKET_URL = constants["SOCKET_URL"];
 const API_URL = constants["API_URL"];
 
 const ChatLoginPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
 
   useEffect(() => {
-    console.log(cookies);
-    setCookies("name", "",{ path: '/chat' });
-    setCookies("token", "",{ path: '/chat' });
+    setCookies("name", "", { path: '/chat' });
+    setCookies("token", "", { path: '/chat' });
   }, []);
   
   const login = (event) => {
