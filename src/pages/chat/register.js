@@ -10,7 +10,6 @@ import "../../assets/styles.css";
 import "../../assets/chat.css";
 import constants from '../../../constants.js';
 
-const SOCKET_URL = constants["SOCKET_URL"];
 const API_URL = constants["API_URL"];
 
 const ChatRegisterPage = () => {
@@ -29,7 +28,7 @@ const ChatRegisterPage = () => {
       if (response.data.status === "success") {
         setCookies("name", response.data.name);
         setCookies("token", response.data.token);
-        if (response.data.admin !== "no") {
+        if (response.data.admin === "yes") {
           if (typeof window !== `undefined`) {
             window.location.replace("/chat/admin");
           }
