@@ -28,11 +28,13 @@ const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
   });
 
   socket.on("unauthenticated", () => {
-    navigate("/chat/login");
+    console.log("unauthenticated");
+    // navigate("/chat/login");
   });
 
   socket.on("unauthenticated admin", () => {
-    navigate("/chat");
+    console.log("unauthenticated admin");
+    // navigate("/chat");
   })
 }
 

@@ -26,7 +26,10 @@ const ChatPage = () => {
 
   useEffect(() => {
     const {name, token} = cookies;
-    if (!name || !token) navigate("/chat/login");
+    if (!name || !token) {
+      console.log("cookies missing");
+      // navigate("/chat/login")
+    };
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);

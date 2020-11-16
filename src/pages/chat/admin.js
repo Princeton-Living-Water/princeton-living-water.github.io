@@ -20,9 +20,9 @@ const AdminPage = () => {
 
   useEffect(() => {
     const {name, token} = cookies;
+    if (!name || !token) navigate("/chat/login");
+    
     const getRooms = async () => {
-      if (!name || !token) navigate("/chat/login");
-
       await axios.get(API_URL + "getRooms", {
         params: { name: name },
         headers: {
@@ -38,7 +38,7 @@ const AdminPage = () => {
       })
     }
 
-    getRooms()
+    getRooms();
   }, [])
 
   return (
