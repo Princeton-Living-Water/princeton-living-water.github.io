@@ -24,12 +24,12 @@ const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
 
   socket.on("error", (error) => {
     console.log(error);
-    // navigate("/chat/login");
+    navigate("/chat/login");
   });
 
   socket.on("unauthenticated", () => {
     console.log("unauthenticated");
-    // navigate("/chat/login");
+    navigate("/chat/login");
   });
 
   socket.on("unauthenticated admin", () => {
