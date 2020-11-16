@@ -1,5 +1,6 @@
 import io from 'socket.io-client';
 import constants from '../../constants.js';
+import { navigate } from "../js/utils.js";
 
 const SOCKET_URL = constants["SOCKET_URL"];
 
@@ -7,6 +8,7 @@ var socket;
 
 const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
   socket = io(SOCKET_URL);
+  if (!socket.connected) navigate("/chat/login");
 
   socket.on("connect", () => {
     socket.emit("authenticate", {name, token, room});
@@ -19,18 +21,15 @@ const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
 
   socket.on("error", (error) => {
     console.log(error);
+    navigate("/chat/login");
   });
 
   socket.on("unauthenticated", () => {
-    if (typeof window !== `undefined`) {
-      window.location.replace("/chat/login");
-    }
+    navigate("/chat/login");
   });
 
   socket.on("unauthenticated admin", () => {
-    if (typeof window !== `undefined`) {
-      window.location.replace("/chat");
-    }
+    navigate("/chat");
   })
 }
 

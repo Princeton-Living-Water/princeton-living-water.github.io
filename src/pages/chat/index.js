@@ -5,6 +5,7 @@ import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import ChatMessage from "../../components/chatMessage";
+import { navigate } from "../../js/utils.js";
 import { connectSocket, disconnectSocket, listenForMessages, sendMessage } from "../../js/socket.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
@@ -24,25 +25,20 @@ const ChatPage = () => {
   const messagesRef = useRef(null);
 
   useEffect(() => {
-    if (typeof window !== `undefined`) {
-      const {name, token} = cookies;
-      if (!name || !token) {
-        window.location.replace("/chat/login");
-        return;
-      }
+    const {name, token} = cookies;
+    if (!name || !token) navigate("/chat/login");
 
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      const room = urlParams.get("user") || name;
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const room = urlParams.get("user") || name;
 
-      connectSocket({ name, token, room, setMessages, setNumMessages });
-      listenForMessages(updateMessages);
-      
-      const title = room === name ? name : `Chat with ${room}`;
-      setTitle(title);
-      
-      return () => disconnectSocket();
-    }
+    connectSocket({ name, token, room, setMessages, setNumMessages });
+    listenForMessages(updateMessages);
+    
+    const title = room === name ? name : `Chat with ${room}`;
+    setTitle(title);
+    
+    return () => disconnectSocket();
   }, []);
 
   const updateMessages = (data) => {

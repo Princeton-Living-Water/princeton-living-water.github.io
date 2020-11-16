@@ -6,10 +6,10 @@ import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import RoomCard from "../../components/roomCard";
+import constants from "../../../constants.js";
+import { navigate } from "../../js/utils.js";
 
 import "../../assets/styles.css";
-
-import constants from '../../../constants.js';
 
 const SOCKET_URL = constants["SOCKET_URL"];
 const API_URL = constants["API_URL"];
@@ -21,12 +21,7 @@ const AdminPage = () => {
   useEffect(() => {
     const {name, token} = cookies;
     const getRooms = async () => {
-      if (!name || !token) {
-        if (typeof window !== `undefined`) {
-          window.location.replace("/chat/login")
-        }
-        return;
-      }
+      if (!name || !token) navigate("/chat/login");
 
       await axios.get(API_URL + "getRooms", {
         params: { name: name },
@@ -36,11 +31,8 @@ const AdminPage = () => {
         }
       }).then((response) => {
         if (response.data.status !== "success") {
-          if (typeof window !== `undefined`) {
-            console.log(response)
-            window.location.replace("/chat/login");
-          }
-          return;
+          console.log(response);
+          navigate("/chat/login");
         }
         setRooms(response.data.chats);
       })

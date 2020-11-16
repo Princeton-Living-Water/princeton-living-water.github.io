@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
-import { useStaticQuery, graphql, navigate } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 import addCollapsible from "../../js/collapsible.js";
+import { navigate } from "../../js/utils.js";
 
 import "../../assets/styles.css";
 import "../../assets/devos.css";
@@ -31,9 +32,7 @@ const DevosPage = ({ pageContext }) => {
   let { day } = pageContext;
   const numDevos = data.allFile.edges.length;
   if (!day) {
-    if (typeof window !== `undefined`) {
-      window.location.replace(`/resources/devos/day${numDevos}`);
-    }
+    navigate(`/resources/devos/day${numDevos}`);
   } else if (day < 1 || day > numDevos) {
     throw Error("Whoops");
   }

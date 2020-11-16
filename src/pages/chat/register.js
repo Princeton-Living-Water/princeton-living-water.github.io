@@ -5,10 +5,11 @@ import { useCookies } from "react-cookie";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
+import constants from "../../../constants.js";
+import { navigate } from "../../js/utils.js";
 
 import "../../assets/styles.css";
 import "../../assets/chat.css";
-import constants from '../../../constants.js';
 
 const API_URL = constants["API_URL"];
 
@@ -28,16 +29,10 @@ const ChatRegisterPage = () => {
       if (response.data.status === "success") {
         setCookies("name", response.data.name);
         setCookies("token", response.data.token);
-        if (response.data.admin === "yes") {
-          if (typeof window !== `undefined`) {
-            window.location.replace("/chat/admin");
-          }
-        }
-        else {
-          if (typeof window !== `undefined`) {
-            window.location.replace("/chat");
-          }
-        }
+        if (response.data.admin === "yes")
+          navigate("/chat/admin");
+        else
+          navigate("/chat");
       }
       else {
         // Place handling of error message here

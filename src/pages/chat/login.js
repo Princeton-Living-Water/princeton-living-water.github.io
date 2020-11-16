@@ -5,9 +5,10 @@ import { useCookies } from "react-cookie";
 import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
+import constants from "../../../constants.js";
+import { navigate } from "../../js/utils.js";
 
 import "../../assets/styles.css";
-import constants from '../../../constants.js';
 
 const API_URL = constants["API_URL"];
 
@@ -32,16 +33,10 @@ const ChatLoginPage = () => {
       if (response.data.status === "success") {
         setCookies("name", response.data.name,{ path: '/chat' });
         setCookies("token", response.data.token,{ path: '/chat' });
-        if (typeof window !== `undefined`) {
-          if (response.data.admin !== "no") {
-              window.location.replace("/chat/admin");
-          }
-          else {
-            if (typeof window !== `undefined`) {
-              window.location.replace("/chat");
-            }
-          }
-        }
+        if (response.data.admin === "yes")
+          navigate("/chat/admin");
+        else
+          navigate("/chat");
       }
       else {
         // Place handling of error message here

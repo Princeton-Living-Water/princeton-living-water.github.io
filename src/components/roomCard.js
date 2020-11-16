@@ -1,5 +1,6 @@
 import React from "react";
-import constants from '../../constants.js';
+import constants from "../../constants.js";
+
 import "../assets/devos.css";
 
 const URL = constants["URL"];
