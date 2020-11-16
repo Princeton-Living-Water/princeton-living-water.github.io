@@ -15,6 +15,9 @@ const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
   });
 
   socket.on("authenticated", (data) => {
+    if (data.admin && name === room) {
+      navigate("/chat/admin");
+    }
     setNumMessages(data.messageCount);
     setMessages(data.messages);
   });
