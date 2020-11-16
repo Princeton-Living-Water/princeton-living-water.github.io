@@ -10,7 +10,9 @@ const ENV_PROD = {
   "SOCKET_URL" : "https://hungry-beaver.herokuapp.com/"
 };
 
-const env = process.env.ENV || "development";
+const env = process.env.GATSBY_ACTIVE_ENV || 
+            process.env.NODE_ENV || 
+            "development";
 const constants = env === "development" ? ENV_DEV : ENV_PROD;
 
 export default constants;
