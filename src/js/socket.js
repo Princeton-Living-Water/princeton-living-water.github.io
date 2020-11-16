@@ -34,7 +34,7 @@ const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
 
   socket.on("unauthenticated admin", () => {
     console.log("unauthenticated admin");
-    // navigate("/chat");
+    navigate("/chat");
   })
 }
 

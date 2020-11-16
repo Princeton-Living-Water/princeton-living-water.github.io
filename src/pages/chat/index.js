@@ -27,7 +27,7 @@ const ChatPage = () => {
   useEffect(() => {
     const {name, token} = cookies;
     if (!name || !token) {
-      console.log("cookies missing");
+      console.log(cookies);
       // navigate("/chat/login")
     };
 
