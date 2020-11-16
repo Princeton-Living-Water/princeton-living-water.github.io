@@ -16,7 +16,8 @@ const ChatLoginPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
 
   useEffect(() => {
-    console.log(cookies);
+    console.log(cookies.name);
+    console.log(cookies.token);
     setCookies("name", "", { path: '/chat' });
     setCookies("token", "", { path: '/chat' });
   }, []);
