@@ -11,7 +11,6 @@ import { navigate } from "../../js/utils.js";
 
 import "../../assets/styles.css";
 
-const SOCKET_URL = constants["SOCKET_URL"];
 const API_URL = constants["API_URL"];
 
 const AdminPage = () => {

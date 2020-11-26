@@ -3,8 +3,6 @@ import constants from "../../constants.js";
 
 import "../assets/devos.css";
 
-const URL = constants["URL"];
-
 const RoomCard = ({ room }) => {
   const clickRoom = () => {
     if (typeof window !== `undefined`) {

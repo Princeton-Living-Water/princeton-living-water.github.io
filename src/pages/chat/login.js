@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 
@@ -14,20 +14,19 @@ const API_URL = constants["API_URL"];
 
 const ChatLoginPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
+    const { name, token } = cookies;
+
     setCookies("name", "", { path: '/chat' });
     setCookies("token", "", { path: '/chat' });
   }, []);
-  
-  const login = (event) => {
-    event.preventDefault()
 
-    const user_input = event.target[0].value;
-    const pass_input = event.target[1].value;
+  const login = (username, password) => {
     axios.post(API_URL + "login", {
-      username: user_input,
-      password: pass_input
+      username, 
+      password
     })
     .then((response) => {
       if (response.data.status === "success") {
@@ -47,13 +46,21 @@ const ChatLoginPage = () => {
       console.log(error);
     });
   }
+  
+  const handleLogin = (event) => {
+    event.preventDefault()
+
+    const user_input = event.target[0].value;
+    const pass_input = event.target[1].value;
+    login(user_input, pass_input);
+  }
 
   return (
     <Layout>
       <SEO title="Chat Login" />
       <Subpage>
         <h3> Welcome back! Sign into Living Water Chat </h3><br/>
-        <form onSubmit={login}>
+        <form onSubmit={handleLogin}>
           <input className="text-input" type="text" id="name"
             name="name" placeholder="username"/><br/>
           <input className="text-input" type="password"

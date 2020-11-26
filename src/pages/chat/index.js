@@ -6,6 +6,7 @@ import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import ChatMessage from "../../components/chatMessage";
 import { navigate } from "../../js/utils.js";
+import { logout } from "../../js/chat.js";
 import { connectSocket, disconnectSocket, listenForMessages, sendMessage } from "../../js/socket.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
@@ -25,7 +26,7 @@ const ChatPage = () => {
   const messagesRef = useRef(null);
 
   useEffect(() => {
-    const {name, token} = cookies;
+    const { name, token } = cookies;
     if (!name || !token)
       navigate("/chat/login");
 
@@ -54,7 +55,7 @@ const ChatPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (msgInput != "") {
+    if (msgInput !== "") {
       sendMessage(msgInput);
       setMsgInput("")
     }
@@ -69,10 +70,14 @@ const ChatPage = () => {
   }
 
   const onEnterPress = (e) => {
-    if (e.keyCode == 13 && e.shiftKey == false) {
+    if (e.keyCode === 13 && e.shiftKey === false) {
       e.preventDefault();
       handleSubmit(e)
     }
+  }
+
+  const handleLogout = () => {
+    logout(setCookies);
   }
 
   return (
@@ -80,6 +85,8 @@ const ChatPage = () => {
       <SEO title="Chat" />
       <Subpage>
         <h2>{title}</h2>
+        <span>Logged in as {cookies.name}</span>
+        <span>Not you? <a onClick={handleLogout}>Logout</a></span>
         <div ref={messagesRef} className="messagesWrapper">
           {messages.map((msg, index) => (
             <ChatMessage message={msg} user={cookies.name} key={index}/>

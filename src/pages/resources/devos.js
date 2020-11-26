@@ -117,7 +117,7 @@ const DevosPage = ({ pageContext }) => {
   useEffect(() => {
     addCollapsible();
     renderDevo(day);
-  }, [pageContext]);
+  });
 
   const prevDevo = () => {
     if (day > 1) navigate(`/resources/devos/day${day - 1}`);

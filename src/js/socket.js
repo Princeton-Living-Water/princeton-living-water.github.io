@@ -8,7 +8,6 @@ var socket;
 
 const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
   socket = io(SOCKET_URL);
-  // if (!socket.connected) navigate("/chat/login");
 
   socket.on("connect", () => {
     socket.emit("authenticate", {name, token, room});
