@@ -45,6 +45,7 @@ const sendMessage = (message) => {
 const listenForMessages = (updateMessages) => {
   if (!socket) return;
   socket.on("chatUpdate", (data) => {
+    console.log(data)
     updateMessages(data);
   });
 }

@@ -24,6 +24,7 @@ const ChatPage = () => {
   const chatBarRef = useRef(null);
   const formRef = useRef(null);
   const messagesRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
     const { name, token } = cookies;
@@ -45,6 +46,7 @@ const ChatPage = () => {
 
   const updateMessages = (data) => {
     setMessages(messages => messages.concat(data));
+    messagesEndRef.current.scrollIntoView({ behavior: "auto" })
     // messagesRef.current.style["messageBody"].scrollTop = messagesRef.current.style["messageBody"].scrollHeight;
     // console.log(messagesRef.current.style["messageBody"].scrollTop);
   }
@@ -55,7 +57,7 @@ const ChatPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (msgInput !== "") {
+    if (msgInput.trim() !== "") {
       sendMessage(msgInput);
       setMsgInput("")
     }
@@ -80,19 +82,26 @@ const ChatPage = () => {
     logout(setCookies);
   }
 
+  const handleGetOldMessages = (e) => {
+    if (e.target.scrollTop === 0) {
+      console.log("top")
+    }
+  }
+
   return (
     <Layout>
       <SEO title="Chat" />
       <Subpage>
         <h2>{title}</h2>
-        <div class="logoutWrapper">
+        <div className="logoutWrapper">
           <span>Logged in as {cookies.name}</span>
           <span>Not you? <a onClick={handleLogout}>Logout</a></span>
         </div>
-        <div ref={messagesRef} className="messagesWrapper">
+        <div ref={messagesRef} onScroll={handleGetOldMessages} className="messagesWrapper">
           {messages.map((msg, index) => (
             <ChatMessage message={msg} user={cookies.name} key={index}/>
           ))}
+          <div ref={messagesEndRef} />
         </div>
         <form ref={formRef} className="chatInput" onSubmit={handleSubmit}>
           <TextareaAutosize onKeyDown={onEnterPress} ref={chatBarRef} onHeightChange={handleScroll} className="chatBar" maxRows="6" type="text" placeholder="send message" value={msgInput} onChange={handleInput} required/>

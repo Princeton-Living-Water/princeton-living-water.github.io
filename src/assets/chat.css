@@ -96,7 +96,7 @@ input {
     flex-direction: column;
     padding: 10px;
     overflow-y: auto;
-    max-height: 450px;
+    max-height: 375px;
 }
 
 .userWrapper {
