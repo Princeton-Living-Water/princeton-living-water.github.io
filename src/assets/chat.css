@@ -12,6 +12,12 @@ input {
   outline: none;
 }
 
+.logoutWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
 .cred-box {
   width: 40vw;
 }
@@ -122,4 +128,3 @@ input {
     align-items: flex-start;
     background-color: #EEE;
 }
-

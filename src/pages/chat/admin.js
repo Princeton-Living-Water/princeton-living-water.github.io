@@ -8,6 +8,7 @@ import Subpage from "../../components/subpage";
 import RoomCard from "../../components/roomCard";
 import constants from "../../../constants.js";
 import { navigate } from "../../js/utils.js";
+import { logout } from "../../js/chat.js";
 
 import "../../assets/styles.css";
 
@@ -38,13 +39,21 @@ const AdminPage = () => {
     }
 
     getRooms();
-  }, [])
+  }, []);
+
+  const handleLogout = () => {
+    logout(setCookies);
+  }
 
   return (
     <Layout>
       <SEO title="Admin" />
       <Subpage>
         <h2>Admin Page</h2>
+        <div class="logoutWrapper">
+          <span>Logged in as {cookies.name}</span>
+          <span>Not you? <a onClick={handleLogout}>Logout</a></span>
+        </div>
         <div>
           {rooms.map((room, index) => (
             <RoomCard room={room} key={index} />

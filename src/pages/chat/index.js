@@ -85,8 +85,10 @@ const ChatPage = () => {
       <SEO title="Chat" />
       <Subpage>
         <h2>{title}</h2>
-        <span>Logged in as {cookies.name}</span>
-        <span>Not you? <a onClick={handleLogout}>Logout</a></span>
+        <div class="logoutWrapper">
+          <span>Logged in as {cookies.name}</span>
+          <span>Not you? <a onClick={handleLogout}>Logout</a></span>
+        </div>
         <div ref={messagesRef} className="messagesWrapper">
           {messages.map((msg, index) => (
             <ChatMessage message={msg} user={cookies.name} key={index}/>
