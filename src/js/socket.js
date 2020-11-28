@@ -21,6 +21,11 @@ const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
     setMessages(data.messages);
   });
 
+  socket.on("past_messages_received", (data) => {
+    setNumMessages(numMessages => numMessages + data.messageCount);
+    setMessages(messages => data.messages.concat(messages));
+  });
+
   socket.on("error", (error) => {
     console.log(error);
     navigate("/chat/login");
@@ -42,6 +47,11 @@ const sendMessage = (message) => {
   socket.emit("message", message);
 }
 
+const oldMessages = (num) => {
+  if (!socket) return;
+  socket.emit("past_messages", num);
+}
+
 const listenForMessages = (updateMessages) => {
   if (!socket) return;
   socket.on("chatUpdate", (data) => {
@@ -55,4 +65,4 @@ const disconnectSocket = () => {
   socket.disconnect();
 }
 
-export { connectSocket, disconnectSocket, listenForMessages, sendMessage }
+export { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMessages }

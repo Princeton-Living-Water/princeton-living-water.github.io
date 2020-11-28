@@ -7,7 +7,7 @@ import Subpage from "../../components/subpage";
 import ChatMessage from "../../components/chatMessage";
 import { navigate } from "../../js/utils.js";
 import { logout } from "../../js/chat.js";
-import { connectSocket, disconnectSocket, listenForMessages, sendMessage } from "../../js/socket.js";
+import { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMessages } from "../../js/socket.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize'
@@ -41,14 +41,21 @@ const ChatPage = () => {
     const title = room === name ? name : `Chat with ${room}`;
     setTitle(title);
     
+    scrollBottom();
+    
     return () => disconnectSocket();
   }, []);
 
   const updateMessages = (data) => {
     setMessages(messages => messages.concat(data));
-    messagesEndRef.current.scrollIntoView({ behavior: "auto" })
+    scrollBottom();
     // messagesRef.current.style["messageBody"].scrollTop = messagesRef.current.style["messageBody"].scrollHeight;
     // console.log(messagesRef.current.style["messageBody"].scrollTop);
+  }
+
+  const scrollBottom = () => {
+    console.log("scroll bot");
+    messagesEndRef.current.scrollIntoView({ behavior: "auto" });
   }
 
   const handleInput = (event) => {
@@ -84,7 +91,7 @@ const ChatPage = () => {
 
   const handleGetOldMessages = (e) => {
     if (e.target.scrollTop === 0) {
-      console.log("top")
+      oldMessages(5) // get 5 past messages
     }
   }
 
