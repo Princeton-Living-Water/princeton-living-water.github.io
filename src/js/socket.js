@@ -6,7 +6,7 @@ const SOCKET_URL = constants["SOCKET_URL"];
 
 var socket;
 
-const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
+const connectSocket = ({ name, token, room, setMessagesScrollBot, setMessagesScrollTop }) => {
   socket = io(SOCKET_URL);
 
   socket.on("connect", () => {
@@ -17,13 +17,11 @@ const connectSocket = ({ name, token, room, setMessages, setNumMessages }) => {
     if (data.admin && name === room) {
       navigate("/chat/admin");
     }
-    setNumMessages(data.messageCount);
-    setMessages(data.messages);
+    setMessagesScrollBot(data.messages);
   });
 
   socket.on("past_messages_received", (data) => {
-    setNumMessages(numMessages => numMessages + data.messageCount);
-    setMessages(messages => data.messages.concat(messages));
+    setMessagesScrollTop(data.messages);
   });
 
   socket.on("error", (error) => {

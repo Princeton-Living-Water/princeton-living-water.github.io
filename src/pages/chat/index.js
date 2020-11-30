@@ -19,7 +19,6 @@ const ChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
   const [title, setTitle] = useState("");
   const [messages, setMessages] = useState([]);
-  const [numMessages, setNumMessages] = useState(0);
   const [msgInput, setMsgInput] = useState("");
   const chatBarRef = useRef(null);
   const formRef = useRef(null);
@@ -35,27 +34,46 @@ const ChatPage = () => {
     const urlParams = new URLSearchParams(queryString);
     const room = urlParams.get("user") || name;
 
-    connectSocket({ name, token, room, setMessages, setNumMessages });
+    connectSocket({
+      name, 
+      token, 
+      room, 
+      setMessages,
+      setMessagesScrollBot, 
+      setMessagesScrollTop,
+    });
     listenForMessages(updateMessages);
     
     const title = room === name ? name : `Chat with ${room}`;
     setTitle(title);
     
-    scrollBottom();
-    
     return () => disconnectSocket();
   }, []);
 
-  const updateMessages = (data) => {
+  const setMessagesScrollBot = (data) => {
     setMessages(messages => messages.concat(data));
-    scrollBottom();
-    // messagesRef.current.style["messageBody"].scrollTop = messagesRef.current.style["messageBody"].scrollHeight;
-    // console.log(messagesRef.current.style["messageBody"].scrollTop);
+    messagesEndRef.current.scrollIntoView({ behavior: "auto" });
   }
 
-  const scrollBottom = () => {
-    console.log("scroll bot");
-    messagesEndRef.current.scrollIntoView({ behavior: "auto" });
+  const setMessagesScrollTop = (data) => {
+    const box = document.getElementById("messagesBox");
+    const oldHeight = box.scrollHeight;
+
+    setMessages(messages => data.concat(messages));
+    box.scrollTop = box.scrollHeight - oldHeight;
+  }
+
+  const updateMessages = (data) => {
+    const box = document.getElementById("messagesBox");
+    if (box.scrollTop >= (box.scrollHeight - box.offsetHeight)) {
+      setMessagesScrollBot(data);
+    }
+    else {
+      setMessages(messages => messages.concat(data));
+    }
+
+    // messagesRef.current.style["messageBody"].scrollTop = messagesRef.current.style["messageBody"].scrollHeight;
+    // console.log(messagesRef.current.style["messageBody"].scrollTop);
   }
 
   const handleInput = (event) => {
@@ -91,7 +109,7 @@ const ChatPage = () => {
 
   const handleGetOldMessages = (e) => {
     if (e.target.scrollTop === 0) {
-      oldMessages(5) // get 5 past messages
+      oldMessages(5); // get 5 past messages
     }
   }
 
@@ -104,7 +122,7 @@ const ChatPage = () => {
           <span>Logged in as {cookies.name}</span>
           <span>Not you? <a onClick={handleLogout}>Logout</a></span>
         </div>
-        <div ref={messagesRef} onScroll={handleGetOldMessages} className="messagesWrapper">
+        <div ref={messagesRef} onScroll={handleGetOldMessages} className="messagesWrapper" id="messagesBox">
           {messages.map((msg, index) => (
             <ChatMessage message={msg} user={cookies.name} key={index}/>
           ))}
