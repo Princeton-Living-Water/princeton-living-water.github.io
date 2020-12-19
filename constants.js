@@ -1,6 +1,6 @@
 const ENV_DEV = {
   "URL": "http://localhost:8080",
-  "API_URL": "http://localhost:5000/",
+  "API_URL": "http://localhost:8000/",
   "SOCKET_URL": "http://localhost:8000/"
 }
 

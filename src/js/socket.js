@@ -20,7 +20,7 @@ const connectSocket = ({ name, token, room, setMessagesScrollBot, setMessagesScr
     setMessagesScrollBot(data.messages);
   });
 
-  socket.on("past_messages_received", (data) => {
+  socket.on("past messages received", (data) => {
     setMessagesScrollTop(data.messages);
   });
 
@@ -42,18 +42,17 @@ const connectSocket = ({ name, token, room, setMessagesScrollBot, setMessagesScr
 
 const sendMessage = (message) => {
   if (!socket) return;
-  socket.emit("message", message);
+  socket.emit("chat message", message);
 }
 
 const oldMessages = (num) => {
   if (!socket) return;
-  socket.emit("past_messages", num);
+  socket.emit("past messages", num);
 }
 
 const listenForMessages = (updateMessages) => {
   if (!socket) return;
-  socket.on("chatUpdate", (data) => {
-    console.log(data)
+  socket.on("chat update", (data) => {
     updateMessages(data);
   });
 }

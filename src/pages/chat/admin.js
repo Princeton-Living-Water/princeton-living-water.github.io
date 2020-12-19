@@ -50,7 +50,7 @@ const AdminPage = () => {
       <SEO title="Admin" />
       <Subpage>
         <h2>Admin Page</h2>
-        <div class="logoutWrapper">
+        <div className="logoutWrapper">
           <span>Logged in as {cookies.name}</span>
           <span>Not you? <a onClick={handleLogout}>Logout</a></span>
         </div>
