@@ -29,7 +29,6 @@ const ChatLoginPage = () => {
       password
     })
     .then((response) => {
-      console.log(response);
       if (response.data.status === "success") {
         setCookies("name", response.data.name, { path: '/chat' });
         setCookies("token", response.data.token, { path: '/chat' });
