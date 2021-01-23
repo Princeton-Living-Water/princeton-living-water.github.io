@@ -6,7 +6,7 @@ const ENV_DEV = {
 
 const ENV_PROD = {
   "URL": "https://princetonlivingwater.org/",
-  "API_URL" : "https://hungry-beaver-api.herokuapp.com/",
+  "API_URL" : "https://hungry-beaver.herokuapp.com/",
   "SOCKET_URL" : "https://hungry-beaver.herokuapp.com/"
 };
 
