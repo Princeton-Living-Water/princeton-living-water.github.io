@@ -17,8 +17,6 @@ const ChatLoginPage = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    const { name, token } = cookies;
-
     setCookies("name", "", { path: '/chat' });
     setCookies("token", "", { path: '/chat' });
   }, []);
@@ -39,7 +37,7 @@ const ChatLoginPage = () => {
       }
       else {
         // Place handling of error message here
-        console.log("Login failed");
+        setErrorMessage(response.data.status);
       }
     })
     .catch((error) => {
@@ -60,16 +58,21 @@ const ChatLoginPage = () => {
       <SEO title="Chat Login" />
       <Subpage>
         <h3> Welcome back! Sign into Living Water Chat </h3><br/>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleLogin} className="cred-box">
           <input className="text-input" type="text" id="name"
-            name="name" placeholder="username"/><br/>
+            name="name" placeholder="username"/>
           <input className="text-input" type="password"
-            name="password" placeholder="password"/><br/><br/>
+            name="password" placeholder="password"/>
+
+          {errorMessage &&
+            <div className="error-message">{errorMessage}</div>
+          }
           <div className="button-box">
             <input className="cred-button" type="submit" value="login"></input>
           </div>
         </form>
-        <span className="here-before"> Never been here before? <a href="/chat/register">Register</a> </span><br/>
+
+        <span className="here-before"> Never been here before? <a href="/chat/register">Register</a> </span>
       </Subpage>
     </Layout>
   );
