@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "../js/utils.js";
 import constants from "../../constants.js";
 
 import "../assets/devos.css";
@@ -6,9 +7,7 @@ import "../assets/devos.css";
 const RoomCard = ({ room }) => {
   const clickRoom = () => {
     if (typeof window !== `undefined`) {
-      // var newWindow = window.open();
-      // newWindow.document.location.href = URL + "/chat/?user=" + room;
-      window.location.replace("/chat/?user=" + room);
+      navigate("/chat/?user=" + room, true);
     }
   }
 

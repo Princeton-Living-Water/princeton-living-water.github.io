@@ -144,12 +144,14 @@ h3 {
 }
 
 .messagesWrapper {
+    overflow-wrap: break-word;
     width: 500px;
     display: flex;
     flex-direction: column;
     padding: 10px;
     overflow-y: auto;
     max-height: 375px;
+    white-space: pre-wrap;
 }
 
 .userWrapper {
@@ -163,6 +165,7 @@ h3 {
 }
 
 .userMessage {
+    max-width: 350px;
     border-radius: 20px;
     padding: 8px 15px;
     margin-top: 1px;
@@ -173,6 +176,7 @@ h3 {
 }
 
 .otherMessage {
+    max-width: 350px;
     border-radius: 20px;
     padding: 8px 15px;
     margin-top: 1px;

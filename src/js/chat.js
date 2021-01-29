@@ -7,4 +7,12 @@ const logout = (setCookies) => {
   navigate("/chat/login");
 }
 
-export { logout } 
+const roomPage = (setCookies) => {
+  // setCookies("name", "", { path: '/chat' });
+  // setCookies("token", "", { path: '/chat' });
+
+  navigate("/chat/admin");
+}
+
+
+export { logout, roomPage } 

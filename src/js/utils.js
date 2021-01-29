@@ -1,6 +1,10 @@
-const navigate = (url) => {
+const navigate = (url, openNewTab) => {
   if (typeof window !== `undefined`) {
-    window.location.replace(url);
+    if (openNewTab === true) {
+      window.open(url)
+    } else {
+      window.location.replace(url);
+    }
   }
 }
 
