@@ -5,16 +5,22 @@ import constants from "../../constants.js";
 import "../assets/devos.css";
 
 const RoomCard = ({ room }) => {
+  const name = room.name;
+  const unread = room.numUnread;
+
   const clickRoom = () => {
     if (typeof window !== `undefined`) {
-      navigate("/chat/?user=" + room, true);
+      navigate("/chat/?user=" + name, true);
     }
   }
 
   return (
     <div className={"roomWrapper"}>
       <a onClick={clickRoom}>
-        {room}
+        {unread > 0 ?
+          name + ` (${unread})` :
+          name
+        }
       </a>
     </div>
   );
