@@ -57,8 +57,16 @@ const AdminPage = () => {
     setRooms(rooms => {
       const updatedRooms = Array.from(rooms);
       const updatedRoom = updatedRooms.find(room => room.name == data.room);
-      updatedRoom.numUnread = data.numUnread;
-      console.log(updatedRoom);
+      if (updatedRoom) {
+        updatedRoom.numUnread = data.numUnread;
+      }
+      else {
+        const newRoom = {
+          "name": data.room,
+          "numUnread": data.numUnread,
+        }
+        updatedRooms.unshift(newRoom);
+      }
 
       return updatedRooms;
     });
