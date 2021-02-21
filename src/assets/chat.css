@@ -144,44 +144,48 @@ h3 {
 }
 
 .messagesWrapper {
-    overflow-wrap: break-word;
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    overflow-y: auto;
-    max-height: 375px;
-    white-space: pre-wrap;
+  overflow-wrap: break-word;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 375px;
+  white-space: pre-wrap;
 }
 
 .userWrapper {
-    display: block;
-    margin-left: 25%;
+  display: block;
+  margin-left: 25%;
 }
 
 .otherWrapper {
-    display: block;
-    margin-right: 25%;
+  display: block;
+  margin-right: 25%;
 }
 
 .userMessage {
-    max-width: 350px;
-    border-radius: 20px;
-    padding: 8px 15px;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    float: right;
-    background-color: #ca4e4e;
-    color: white;
+  max-width: 350px;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  float: right;
+  background-color: #ca4e4e;
+  color: white;
 }
 
 .otherMessage {
-    max-width: 350px;
-    border-radius: 20px;
-    padding: 8px 15px;
-    margin-top: 1px;
-    margin-bottom: 1px;
-    float: left;
-    align-items: flex-start;
-    background-color: #EEE;
+  max-width: 350px;
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  float: left;
+  align-items: flex-start;
+  background-color: #EEE;
+}
+
+.unreadChatRoom {
+  font-weight: bold;
 }

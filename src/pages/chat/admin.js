@@ -10,6 +10,7 @@ import AdminInfo from "../../components/AdminInfo";
 import constants from "../../../constants.js";
 import { navigate } from "../../js/utils.js";
 import { logout } from "../../js/chat.js";
+import { connectSocket, listenForRooms } from "../../js/socket.js";
 
 import "../../assets/styles.css";
 
@@ -40,10 +41,27 @@ const AdminPage = () => {
     }
 
     getRooms();
+    connectSocket({
+      name, 
+      token, 
+      room: "admin",
+    });
+    listenForRooms(updateRooms);
   }, []);
 
   const handleLogout = () => {
     logout(setCookies);
+  }
+
+  const updateRooms = (data) => {
+    setRooms(rooms => {
+      const updatedRooms = Array.from(rooms);
+      const updatedRoom = updatedRooms.find(room => room.name == data.room);
+      updatedRoom.numUnread = data.numUnread;
+      console.log(updatedRoom);
+
+      return updatedRooms;
+    });
   }
 
   return (

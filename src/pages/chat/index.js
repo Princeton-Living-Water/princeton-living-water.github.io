@@ -39,7 +39,6 @@ const ChatPage = () => {
       name, 
       token, 
       room, 
-      setMessages,
       setMessagesScrollBot, 
       setMessagesScrollTop,
     });
@@ -75,9 +74,6 @@ const ChatPage = () => {
     else {
       setMessages(messages => messages.concat(data));
     }
-
-    // messagesRef.current.style["messageBody"].scrollTop = messagesRef.current.style["messageBody"].scrollHeight;
-    // console.log(messagesRef.current.style["messageBody"].scrollTop);
   }
 
   const handleInput = (event) => {

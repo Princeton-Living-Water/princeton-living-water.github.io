@@ -16,9 +16,9 @@ const RoomCard = ({ room }) => {
 
   return (
     <div className={"roomWrapper"}>
-      <a onClick={clickRoom}>
+      <a onClick={clickRoom} className={unread > 0 ? "unreadChatRoom" : null}>
         {unread > 0 ?
-          name + ` (${unread})` :
+          `${name} (${unread})` :
           name
         }
       </a>

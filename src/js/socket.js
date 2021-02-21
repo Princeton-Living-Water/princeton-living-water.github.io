@@ -13,16 +13,20 @@ const connectSocket = ({ name, token, room, setMessagesScrollBot, setMessagesScr
     socket.emit("authenticate", {name, token, room});
   });
 
-  socket.on("authenticated", (data) => {
-    if (data.admin && name === room) {
-      navigate("/chat/admin");
-    }
-    setMessagesScrollBot(data.messages);
-  });
-
-  socket.on("past messages received", (data) => {
-    setMessagesScrollTop(data.messages);
-  });
+  if (setMessagesScrollBot) {
+    socket.on("authenticated", (data) => {
+      if (data.admin && name === room) {
+        navigate("/chat/admin");
+      }
+      setMessagesScrollBot(data.messages);
+    });
+  }
+  
+  if (setMessagesScrollTop) {
+    socket.on("past messages received", (data) => {
+      setMessagesScrollTop(data.messages);
+    });
+  }
 
   socket.on("error", (error) => {
     console.log(error);
@@ -57,9 +61,19 @@ const listenForMessages = (updateMessages) => {
   });
 }
 
+const listenForRooms = (updateRooms) => {
+  if (!socket) return;
+  socket.on("rooms update", (data) => {
+    updateRooms(data);
+  });
+}
+
 const disconnectSocket = () => {
   if (!socket) return;
   socket.disconnect();
 }
 
-export { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMessages }
+export { 
+  connectSocket, disconnectSocket, listenForMessages, listenForRooms, 
+  sendMessage, oldMessages 
+}
