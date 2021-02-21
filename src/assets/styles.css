@@ -53,9 +53,6 @@ a:hover {
     color: #eb162a;
 }
 
-a:visited {
-}
-
 .page {
     display: flex;
     justify-content: center;

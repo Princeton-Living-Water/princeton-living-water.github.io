@@ -6,6 +6,7 @@ import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import RoomCard from "../../components/roomCard";
+import AdminInfo from "../../components/AdminInfo";
 import constants from "../../../constants.js";
 import { navigate } from "../../js/utils.js";
 import { logout } from "../../js/chat.js";
@@ -59,6 +60,7 @@ const AdminPage = () => {
             <RoomCard room={room} key={index} />
           ))}
         </div>
+        <AdminInfo name="Joe" email="jc84" phone="908-323-8864" color="#b9c97b"/>
       </Subpage>
     </Layout>
   );

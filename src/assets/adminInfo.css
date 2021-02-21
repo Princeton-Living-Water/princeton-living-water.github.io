@@ -1,0 +1,37 @@
+:root {
+    --chatColor: '#000000';
+}
+
+.adminInfo {
+    justify-content: center;
+    width: 200px;
+}
+
+.myLabelClass {
+    font-weight: normal;
+}
+
+input.myInputClass {
+    font-size: 1rem;
+    width: 200px;
+    padding: 0px 0px 0px 0px;
+}
+
+.infoRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.colorPicker {
+    background-color: white;
+    padding: 0px;
+}
+
+p.infoCategory {
+    margin: 0px
+}
+
+/* p.color {
+    color: var(--chatColor)
+} */
