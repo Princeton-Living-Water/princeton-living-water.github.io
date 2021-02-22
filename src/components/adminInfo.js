@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import EditableLabel from 'react-inline-editing';
 
 import "../assets/adminInfo.css";
@@ -19,7 +19,9 @@ const AdminInfo = ({ name, email, phone, color }) => {
         console.log('ASDF: ' + text);
     }
 
-    document.documentElement.style.setProperty('--chatColor', chatColor);
+    useEffect(() => {
+        document.documentElement.style.setProperty('--chatColor', chatColor);
+    });
 
     return (
         <div>
