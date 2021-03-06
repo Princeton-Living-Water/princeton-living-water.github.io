@@ -19,6 +19,7 @@ const API_URL = constants["API_URL"];
 const AdminPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
   const [rooms, setRooms] = useState([]);
+  const [chatEmail, setChatEmail] = useState("");
 
   useEffect(() => {
     const {name, token} = cookies;
@@ -29,7 +30,7 @@ const AdminPage = () => {
         params: { name: name },
         headers: {
           'Authorization': "Bearer " + token,
-          'Content-Type': 'application/json;charset=UTF-8'
+          'Content-Type': 'application/json;charset=UTF-8',
         }
       }).then((response) => {
         if (response.data.status !== "success") {
@@ -41,6 +42,26 @@ const AdminPage = () => {
     }
 
     getRooms();
+
+    const getInfo = async () => {
+      await axios.get(API_URL + "getAdminInfo", {
+          params: { name: name },
+          headers: {
+          'Authorization': "Bearer " + token,
+          'Content-Type': 'application/json;charset=UTF-8',
+          }
+      }).then((response) => {
+              // setChatName(response.data.name);
+              setChatEmail(response.data.email);
+              // setChatPhone(response.data.phone);
+              // setChatColor(response.data.color);
+              // console.log(chatColor)
+              // console.log(response.data.color)
+              // console.log(response.data.name)
+          })
+      }
+      getInfo();
+
     connectSocket({
       name, 
       token, 
@@ -86,7 +107,8 @@ const AdminPage = () => {
             <RoomCard room={room} key={index} />
           ))}
         </div>
-        <AdminInfo name="Joe" email="jc84" phone="908-323-8864" color="#b9c97b"/>
+        <p>{chatEmail}</p>
+        <AdminInfo token={cookies.token} name={cookies.name} email="jc84" phone="908-323-8864" color="#b9c97b"/>
       </Subpage>
     </Layout>
   );

@@ -11,6 +11,10 @@
     font-weight: normal;
 }
 
+.myLabelClass:hover {
+    font-weight: bold;
+}
+
 input.myInputClass {
     font-size: 1rem;
     width: 200px;
@@ -32,6 +36,29 @@ p.infoCategory {
     margin: 0px
 }
 
-/* p.color {
-    color: var(--chatColor)
-} */
+.color {
+    width: 36px;
+    height: 14px;
+    border-radius: 2px;
+    background: var(--chatColor);
+    display: inline-block;
+    margin: 5px 0px;
+}
+
+.color:hover {
+    opacity: 0.9;
+}
+
+.popover {
+    position: absolute;
+    margin-top: 25px;
+    z-index: 2;
+}
+
+.cover {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+}
