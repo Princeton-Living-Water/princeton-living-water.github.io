@@ -43,25 +43,6 @@ const AdminPage = () => {
 
     getRooms();
 
-    const getInfo = async () => {
-      await axios.get(API_URL + "getAdminInfo", {
-          params: { name: name },
-          headers: {
-          'Authorization': "Bearer " + token,
-          'Content-Type': 'application/json;charset=UTF-8',
-          }
-      }).then((response) => {
-              // setChatName(response.data.name);
-              setChatEmail(response.data.email);
-              // setChatPhone(response.data.phone);
-              // setChatColor(response.data.color);
-              // console.log(chatColor)
-              // console.log(response.data.color)
-              // console.log(response.data.name)
-          })
-      }
-      getInfo();
-
     connectSocket({
       name, 
       token, 

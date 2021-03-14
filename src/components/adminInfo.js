@@ -30,9 +30,6 @@ const AdminInfo = ({ token, name }) => {
                     setChatEmail(response.data.email);
                     setChatPhone(response.data.phone);
                     setChatColor(response.data.color);
-                    console.log(chatColor)
-                    console.log(response.data.color)
-                    console.log(response.data.name)
                 })
         }
         getInfo();
@@ -41,19 +38,25 @@ const AdminInfo = ({ token, name }) => {
 
     }, [name, token]);
 
-    const handleNameChange = (name) => {
-        setChatName(name);
-        updateAdmin()
+    const handleNameChange = (e) => {
+        setChatName(e.target.value);
+        if (e.type == 'blur') {
+            updateAdmin()
+        }
     }
 
-    const handleEmailChange = (email) => {
-        setChatEmail(email);
-        updateAdmin()
+    const handleEmailChange = (e) => {
+        setChatEmail(e.target.value);
+        if (e.type == 'blur') {
+            updateAdmin()
+        }
     }
 
-    const handlePhoneChange = (phone) => {
-        setChatPhone(phone);
-        updateAdmin()
+    const handlePhoneChange = (e) => {
+        setChatPhone(e.target.value);
+        if (e.type == 'blur') {
+            updateAdmin()
+        }
     }
 
     const handleClick = () => {
@@ -91,27 +94,18 @@ const AdminInfo = ({ token, name }) => {
             <div className={"adminInfo"}>
                 <div className={"infoRow"}>
                     <p className={"infoCategory"}>&nbsp;Name:&nbsp;</p>
-                    <EditableLabel text={chatName}
-                        labelClassName='myLabelClass'
-                        inputClassName='myInputClass'
-                        onFocusOut={handleNameChange}
-                    />
+                    <input type="text" className="myInputClass" 
+                        value={chatName} onChange={handleNameChange} onBlur={handleNameChange}></input>
                 </div>
                 <div className={"infoRow"}>
                     <p className={"infoCategory"}>Email:&nbsp;</p>
-                    <EditableLabel text={chatEmail}
-                        labelClassName='myLabelClass'
-                        inputClassName='myInputClass'
-                        onFocusOut={handleEmailChange}
-                    />
+                    <input type="text" className="myInputClass" 
+                        value={chatEmail} onChange={handleEmailChange} onBlur={handleEmailChange}></input>
                 </div>
                 <div className={"infoRow"}>
                     <p className={"infoCategory"}>Phone:&nbsp;</p>
-                    <EditableLabel text={chatPhone}
-                        labelClassName='myLabelClass'
-                        inputClassName='myInputClass'
-                        onFocusOut={handlePhoneChange}
-                    />
+                    <input type="text" className="myInputClass" 
+                        value={chatPhone} onChange={handlePhoneChange} onBlur={handlePhoneChange}></input>
                 </div>
                 <div className={"infoRow"}>
                     <p className={"infoCategory"}>Color:&nbsp;</p>
