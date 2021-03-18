@@ -11,16 +11,26 @@ import { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMes
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize'
+import axios from "axios";
+import constants from "../../../constants.js";
 
 import "../../assets/styles.css";
 import "../../assets/chat.css";
+
+const API_URL = constants["API_URL"];
 
 const ChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
   const [title, setTitle] = useState("");
   const [messages, setMessages] = useState([]);
   const [msgInput, setMsgInput] = useState("");
-  const [isAdmin, setIsAdmin] = useState()
+  const [isAdmin, setIsAdmin] = useState();
+  const [contactName, setContactName] = useState("");
+  const [contactPhone, setContactPhone] = useState("");
+  const [contactEmail, setContactEmail] = useState("");
+  const [contactColor, setContactColor] = useState("#EEE");
+  const [room, setRoom] = useState("");
+
   const chatBarRef = useRef(null);
   const formRef = useRef(null);
   const messagesRef = useRef(null);
@@ -41,12 +51,17 @@ const ChatPage = () => {
       room, 
       setMessagesScrollBot, 
       setMessagesScrollTop,
+      setContactName,
+      setContactPhone,
+      setContactEmail,
+      setContactColor
     });
     listenForMessages(updateMessages);
 
+    setRoom(room);
+
     const isAdmin = room === name ? false : true;
     setIsAdmin(isAdmin);
-    console.log(isAdmin)
     const title = isAdmin ? `Chat with ${room}` : name;
     setTitle(title);
     
@@ -122,13 +137,19 @@ const ChatPage = () => {
       <Subpage>
         <h2>{title}</h2>
         {isAdmin ? <p><a onClick={handleRoomPage}>Back to all rooms</a></p> :
-        <div className="logoutWrapper">
-          <span>Logged in as {cookies.name}</span>
-          <span>Not you? <a onClick={handleLogout}>Logout</a></span>
-        </div> }
+        <div>
+          <div className="logoutWrapper">
+            <span>Logged in as {cookies.name}</span>
+            <span>Not you? <a onClick={handleLogout}>Logout</a></span>
+          </div>
+          <div className="infoWrapper">
+            <span>Chatting with: {contactName} ({contactEmail})</span> 
+          </div>
+        </div>
+        }
         <div ref={messagesRef} onScroll={handleGetOldMessages} className="messagesWrapper" id="messagesBox">
           {messages.map((msg, index) => (
-            <ChatMessage message={msg} user={cookies.name} key={index}/>
+            <ChatMessage message={msg} user={cookies.name} color={contactColor} room={room} key={index}/>
           ))}
           <div ref={messagesEndRef} />
         </div>

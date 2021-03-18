@@ -1,3 +1,7 @@
+:root {
+  --chatColor: '#ca4e4e';
+}
+
 body {
   font-family: "Source Code Pro", monospace;
   display: flex ;
@@ -17,6 +21,16 @@ h3 {
 }
 
 .logoutWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.logoutWrapper span {
+  text-align: center;
+}
+
+.infoWrapper {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -171,8 +185,9 @@ h3 {
   margin-top: 1px;
   margin-bottom: 1px;
   float: right;
-  background-color: #ca4e4e;
-  color: white;
+  /* background-color: #ca4e4e; */
+  /* background-color: var(--chatColor); */
+  /* color: white; */
 }
 
 .otherMessage {
@@ -183,7 +198,7 @@ h3 {
   margin-bottom: 1px;
   float: left;
   align-items: flex-start;
-  background-color: #EEE;
+  /* background-color: #EEE; */
 }
 
 .unreadChatRoom {

@@ -29,12 +29,16 @@ const AdminInfo = ({ token, name }) => {
                     setChatName(response.data.name);
                     setChatEmail(response.data.email);
                     setChatPhone(response.data.phone);
-                    setChatColor(response.data.color);
+                    const color = response.data.color;
+                    if(color && color.match('^#(?:[0-9a-fA-F]{3}){1,2}$')) {
+                        setChatColor(response.data.color);
+                        document.documentElement.style.setProperty('--chatColor', response.data.color);
+                    } else {
+                        document.documentElement.style.setProperty('--chatColor', '#ca4e4e');
+                    }
                 })
         }
         getInfo();
-
-        document.documentElement.style.setProperty('--chatColor', chatColor);
 
     }, [name, token]);
 
@@ -61,7 +65,6 @@ const AdminInfo = ({ token, name }) => {
 
     const handleClick = () => {
         setDisplayPicker(!displayPicker)
-        console.log(chatColor)
     };
 
     const handleClose = () => {
@@ -85,7 +88,7 @@ const AdminInfo = ({ token, name }) => {
     const handleColorChange = (color) => {
         console.log(color.hex)
         setChatColor(color.hex)
-        document.documentElement.style.setProperty('--chatColor', chatColor);
+        document.documentElement.style.setProperty('--chatColor', color.hex);
     }
 
     return (
