@@ -1,13 +1,11 @@
 const ENV_DEV = {
   "URL": "http://localhost:8080",
-  "API_URL": "http://localhost:8000/",
-  "SOCKET_URL": "http://localhost:8000/"
+  "SERVER_URL": "http://localhost:8000/",
 }
 
 const ENV_PROD = {
   "URL": "https://princetonlivingwater.org/",
-  "API_URL" : "https://hungry-beaver.herokuapp.com/",
-  "SOCKET_URL" : "https://hungry-beaver.herokuapp.com/"
+  "SERVER_URL" : "https://hungry-beaver.herokuapp.com/",
 };
 
 const env = process.env.GATSBY_ACTIVE_ENV || 

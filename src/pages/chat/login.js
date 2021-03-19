@@ -10,7 +10,7 @@ import { navigate } from "../../js/utils.js";
 
 import "../../assets/styles.css";
 
-const API_URL = constants["API_URL"];
+const SERVER_URL = constants["SERVER_URL"];
 
 const ChatLoginPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
@@ -22,7 +22,7 @@ const ChatLoginPage = () => {
   }, []);
 
   const login = (username, password) => {
-    axios.post(API_URL + "login", {
+    axios.post(SERVER_URL + "login", {
       username, 
       password
     })

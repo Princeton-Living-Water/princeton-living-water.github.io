@@ -11,7 +11,7 @@ import { navigate } from "../../js/utils.js";
 import "../../assets/styles.css";
 import "../../assets/chat.css";
 
-const API_URL = constants["API_URL"];
+const SERVER_URL = constants["SERVER_URL"];
 
 const ChatRegisterPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
@@ -60,7 +60,7 @@ const ChatRegisterPage = () => {
       }
     }
 
-    axios.post(API_URL + "createUser", userData)
+    axios.post(SERVER_URL + "createUser", userData)
     .then((response) => {
       if (response.data.status === "success") {
         setCookies("name", response.data.name, { path: '/chat' });

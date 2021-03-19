@@ -11,13 +11,10 @@ import { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMes
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize'
-import axios from "axios";
 import constants from "../../../constants.js";
 
 import "../../assets/styles.css";
 import "../../assets/chat.css";
-
-const API_URL = constants["API_URL"];
 
 const ChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);

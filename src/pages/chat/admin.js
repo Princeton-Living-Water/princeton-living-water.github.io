@@ -14,7 +14,7 @@ import { connectSocket, listenForRooms } from "../../js/socket.js";
 
 import "../../assets/styles.css";
 
-const API_URL = constants["API_URL"];
+const SERVER_URL = constants["SERVER_URL"];
 
 const AdminPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
@@ -26,7 +26,7 @@ const AdminPage = () => {
     if (!name || !token) navigate("/chat/login");
     
     const getRooms = async () => {
-      await axios.get(API_URL + "getRooms", {
+      await axios.get(SERVER_URL + "getRooms", {
         params: { name: name },
         headers: {
           'Authorization': "Bearer " + token,

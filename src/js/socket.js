@@ -3,13 +3,12 @@ import constants from '../../constants.js';
 import axios from "axios";
 import { navigate } from "../js/utils.js";
 
-const SOCKET_URL = constants["SOCKET_URL"];
-const API_URL = constants["API_URL"];
+const SERVER_URL = constants["SERVER_URL"];
 
 var socket;
 
 const connectSocket = ({ name, token, room, setMessagesScrollBot, setMessagesScrollTop, setContactName, setContactPhone, setContactEmail,setContactColor }) => {
-  socket = io(SOCKET_URL);
+  socket = io(SERVER_URL);
 
   socket.on("connect", () => {
     socket.emit("authenticate", {name, token, room});
@@ -22,7 +21,7 @@ const connectSocket = ({ name, token, room, setMessagesScrollBot, setMessagesScr
       }
       setMessagesScrollBot(data.messages);
 
-      axios.get(API_URL + "getAdmins").then((response) => {
+      axios.get(SERVER_URL + "getAdmins").then((response) => {
         var dict = {}
         for(var key in response.data) {
           dict[response.data[key]['name']] = response.data[key]
