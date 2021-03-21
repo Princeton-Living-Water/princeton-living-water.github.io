@@ -11,10 +11,14 @@ import { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMes
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize'
+import axios from "axios";
 import constants from "../../../constants.js";
 
 import "../../assets/styles.css";
 import "../../assets/chat.css";
+
+
+const SERVER_URL = constants["SERVER_URL"];
 
 const ChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
@@ -26,6 +30,7 @@ const ChatPage = () => {
   const [contactPhone, setContactPhone] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactColor, setContactColor] = useState("#EEE");
+  const [adminColors, setAdminColors] = useState({})
   const [room, setRoom] = useState("");
 
   const chatBarRef = useRef(null);
@@ -61,6 +66,20 @@ const ChatPage = () => {
     setIsAdmin(isAdmin);
     const title = isAdmin ? `Chat with ${room}` : name;
     setTitle(title);
+
+    axios.get(SERVER_URL + "getAdmins").then((response) => {
+      var dict = {}
+      for(var key in response.data) {
+        dict[response.data[key]['name']] = response.data[key]
+      }
+      // var info = [];
+      // for(var key in response.data) {
+        
+      //   var adminObj = {name: response.data[key]['name'], color: response.data[key]['color']};
+      //   info.push(adminObj);
+      // }
+      setAdminColors(dict);
+    })
     
     return () => disconnectSocket();
   }, []);
@@ -146,7 +165,7 @@ const ChatPage = () => {
         }
         <div ref={messagesRef} onScroll={handleGetOldMessages} className="messagesWrapper" id="messagesBox">
           {messages.map((msg, index) => (
-            <ChatMessage message={msg} user={cookies.name} color={contactColor} room={room} key={index}/>
+            <ChatMessage message={msg} user={cookies.name} color={contactColor} room={room} key={index} adminColors={adminColors}/>
           ))}
           <div ref={messagesEndRef} />
         </div>
