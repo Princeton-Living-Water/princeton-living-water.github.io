@@ -8,4 +8,9 @@ const navigate = (url, openNewTab) => {
   }
 }
 
-export { navigate }
+const getTime = (timestamp) => {
+  const datetime = new Date(timestamp);
+  return datetime.toLocaleTimeString();
+}
+
+export { navigate, getTime }

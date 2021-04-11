@@ -185,9 +185,7 @@ h3 {
   margin-top: 1px;
   margin-bottom: 1px;
   float: right;
-  /* background-color: #ca4e4e; */
-  /* background-color: var(--chatColor); */
-  /* color: white; */
+  position: relative;
 }
 
 .otherMessage {
@@ -198,9 +196,45 @@ h3 {
   margin-bottom: 1px;
   float: left;
   align-items: flex-start;
-  /* background-color: #EEE; */
+  position: relative;
 }
 
 .unreadChatRoom {
   font-weight: bold;
+}
+
+/* Tooltip */
+.tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 10px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  top: -10%;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0s;
+
+  font-size: 13px;
+}
+
+/* Show the tooltip when you mouse over messages */
+.userMessage:hover .tooltip {
+  visibility: visible;
+  transition: opacity 0.3s;
+  transition-delay: 1s;
+  opacity: 1;
+}
+.otherMessage:hover .tooltip {
+  visibility: visible;
+  transition: opacity 0.3s;
+  transition-delay: 1s;
+  opacity: 1;
 }
