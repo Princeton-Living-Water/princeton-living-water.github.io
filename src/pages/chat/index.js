@@ -6,31 +6,24 @@ import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import ChatMessage from "../../components/chatMessage";
 import { navigate } from "../../js/utils.js";
-import { logout, roomPage } from "../../js/chat.js";
+import { logout, roomPage, getAdmins } from "../../js/chat.js";
 import { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMessages } from "../../js/socket.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize'
-import axios from "axios";
-import constants from "../../../constants.js";
 
 import "../../assets/styles.css";
 import "../../assets/chat.css";
-
-
-const SERVER_URL = constants["SERVER_URL"];
 
 const ChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
   const [title, setTitle] = useState("");
   const [messages, setMessages] = useState([]);
   const [msgInput, setMsgInput] = useState("");
-  const [isAdmin, setIsAdmin] = useState();
-  const [contactName, setContactName] = useState("");
-  const [contactPhone, setContactPhone] = useState("");
-  const [contactEmail, setContactEmail] = useState("");
-  const [contactColor, setContactColor] = useState("#EEE");
-  const [adminColors, setAdminColors] = useState({})
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [currentAdmin, setCurrentAdmin] = useState("");
+  const [contactInfo, setContactInfo] = useState("");
+  const [admins, setAdmins] = useState({})
   const [room, setRoom] = useState("");
 
   const chatBarRef = useRef(null);
@@ -53,10 +46,7 @@ const ChatPage = () => {
       room, 
       setMessagesScrollBot, 
       setMessagesScrollTop,
-      setContactName,
-      setContactPhone,
-      setContactEmail,
-      setContactColor
+      setContact,
     });
     listenForMessages(updateMessages);
 
@@ -67,19 +57,11 @@ const ChatPage = () => {
     const title = isAdmin ? `Chat with ${room}` : name;
     setTitle(title);
 
-    axios.get(SERVER_URL + "getAdmins").then((response) => {
-      var dict = {}
-      for(var key in response.data) {
-        dict[response.data[key]['name']] = response.data[key]
-      }
-      // var info = [];
-      // for(var key in response.data) {
-        
-      //   var adminObj = {name: response.data[key]['name'], color: response.data[key]['color']};
-      //   info.push(adminObj);
-      // }
-      setAdminColors(dict);
-    })
+    const getAdminInfo = async () => {
+      const adminInfo = await getAdmins();
+      setAdmins(adminInfo);
+    }
+    getAdminInfo();
     
     return () => disconnectSocket();
   }, []);
@@ -97,6 +79,12 @@ const ChatPage = () => {
     box.scrollTop = box.scrollHeight - oldHeight;
   }
 
+  const setContact = (admin) => {
+    setCurrentAdmin(admin.name);
+    const info = `${admin.name} (${admin.email})`;
+    setContactInfo(info);
+  }
+
   const updateMessages = (data) => {
     const box = document.getElementById("messagesBox");
     if (box.scrollTop >= (box.scrollHeight - box.offsetHeight)) {
@@ -104,6 +92,12 @@ const ChatPage = () => {
     }
     else {
       setMessages(messages => messages.concat(data));
+    }
+
+    // Update admin contact info if appropriate
+    const sender = data.sender;
+    if (sender in admins && sender !== currentAdmin) {
+      setContact(admins[sender]);
     }
   }
 
@@ -153,19 +147,19 @@ const ChatPage = () => {
       <Subpage>
         <h2>{title}</h2>
         {isAdmin ? <p><a onClick={handleRoomPage}>Back to all rooms</a></p> :
-        <div>
-          <div className="logoutWrapper">
-            <span>Logged in as {cookies.name}</span>
-            <span>Not you? <a onClick={handleLogout}>Logout</a></span>
+          <div>
+            <div className="logoutWrapper">
+              <span>Logged in as {cookies.name}</span>
+              <span>Not you? <a onClick={handleLogout}>Logout</a></span>
+            </div>
+            <div className="infoWrapper">
+              <span>Chatting with: {contactInfo}</span> 
+            </div>
           </div>
-          <div className="infoWrapper">
-            <span>Chatting with: {contactName} ({contactEmail})</span> 
-          </div>
-        </div>
         }
         <div ref={messagesRef} onScroll={handleGetOldMessages} className="messagesWrapper" id="messagesBox">
           {messages.map((msg, index) => (
-            <ChatMessage message={msg} user={cookies.name} color={contactColor} room={room} key={index} adminColors={adminColors}/>
+            <ChatMessage message={msg} room={room} key={index} admins={admins}/>
           ))}
           <div ref={messagesEndRef} />
         </div>

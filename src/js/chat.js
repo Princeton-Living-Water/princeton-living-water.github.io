@@ -1,4 +1,8 @@
+import axios from "axios";
+import constants from '../../constants.js';
 import { navigate } from "../js/utils.js";
+
+const SERVER_URL = constants["SERVER_URL"];
 
 const logout = (setCookies) => {
   // setCookies("name", "", { path: '/chat' });
@@ -14,5 +18,14 @@ const roomPage = (setCookies) => {
   navigate("/chat/admin");
 }
 
+const getAdmins = async () => {
+  const response = await axios.get(SERVER_URL + "getAdmins");
+  let adminInfo = {};
+  for (let key in response.data) {
+    adminInfo[response.data[key]['name']] = response.data[key];
+  }
 
-export { logout, roomPage } 
+  return adminInfo;
+}
+
+export { logout, roomPage, getAdmins } 

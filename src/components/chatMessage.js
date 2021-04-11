@@ -1,26 +1,30 @@
 import React from "react";
 
-import "../assets/devos.css";
+import "../assets/chat.css";
 
-const ChatMessage = ({ message, user, color, room, adminColors}) => {
+const ChatMessage = ({ message, room, admins}) => {
   const msg = message.message;
   const sender = message.sender;
-  var textColor = 'black';
-  const msgWrapper = sender === user ? "userWrapper" : "otherWrapper";
-  const msgClass = sender === user ? "userMessage" : "otherMessage";
-  var color = '#ca4e4e';
+  
+  let msgWrapper;
+  let msgClass;
+  let color;
+  let textColor;
 
-  for(var key in adminColors) {
-    if(key == sender){
-      if(adminColors[key]['color']){
-        color = adminColors[key]['color'];
-      }
-    }
-  }
-  if(room == sender) {
+  if (room == sender) {
+    msgWrapper =  "userWrapper";
+    msgClass = "userMessage";
     color = "#EEE";
-  } else {
-    textColor = 'white';
+    textColor = "black";
+  }
+  else {
+    msgWrapper = "otherWrapper";
+    msgClass = "otherMessage";
+    color = "#ca4e4e";
+    if (sender in admins && admins[sender].color) {
+      color = admins[sender].color;
+    }
+    textColor = "white";
   }
 
   return (

@@ -1,49 +1,44 @@
 import io from 'socket.io-client';
 import constants from '../../constants.js';
 import axios from "axios";
+import { getAdmins } from "./chat.js";
 import { navigate } from "../js/utils.js";
 
 const SERVER_URL = constants["SERVER_URL"];
 
 var socket;
 
-const connectSocket = ({ name, token, room, setMessagesScrollBot, setMessagesScrollTop, setContactName, setContactPhone, setContactEmail,setContactColor }) => {
+const connectSocket = (
+  { name, token, room, setMessagesScrollBot, setMessagesScrollTop, 
+    setContact }) => {
   socket = io(SERVER_URL);
 
   socket.on("connect", () => {
     socket.emit("authenticate", {name, token, room});
   });
 
-  if (setMessagesScrollBot && setContactName) {
-    socket.on("authenticated", (data) => {
-      if (data.admin && name === room) {
-        navigate("/chat/admin");
-      }
+  socket.on("authenticated", async (data) => {
+    if (data.admin && name === room) {
+      navigate("/chat/admin");
+    }
+
+    if (setMessagesScrollBot) {
       setMessagesScrollBot(data.messages);
+    }
+      
+    if (setContact && data.messages.length > 0) {
+      let admins = await getAdmins();
 
-      axios.get(SERVER_URL + "getAdmins").then((response) => {
-        var dict = {}
-        for(var key in response.data) {
-          dict[response.data[key]['name']] = response.data[key]
+      const messages = data.messages;
+      for (let i = data.messages.length-1; i >= 0; i--) {
+        if (messages[i].sender in admins) {
+          const admin = admins[messages[i].sender];
+          setContact(admin);
+          break;
         }
-
-        var messages = data.messages
-        if(messages.length > 0) {
-          var i = messages.length - 1;
-          while(i >= 0 && !(messages[i]["sender"] in dict)) {
-            i--;
-          }
-          if(i>=0) {
-            var info = dict[messages[i]["sender"]];
-            setContactName(info["name"]);
-            setContactPhone(info["phone"]);
-            setContactEmail(info["email"]);
-            setContactColor(info["color"]);
-          }
-        }
-      })
-    });
-  }
+      }
+    }
+  });
   
   if (setMessagesScrollTop) {
     socket.on("past messages received", (data) => {
