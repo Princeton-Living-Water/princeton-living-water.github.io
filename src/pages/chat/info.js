@@ -55,6 +55,7 @@ const FAQPage = () => {
           <p>
           We aren’t claiming to be experts, but we can share helpful thoughts on a variety of topics: the Gospel, the Bible, theological doctrine, church history, philosophy, or just Christian faith in daily life!
           </p>
+          <p> You can contact and learn more about us <a href="/contact">here</a>!</p>
         </div>
       </Subpage>
     </Layout>
