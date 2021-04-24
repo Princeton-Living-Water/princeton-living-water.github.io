@@ -73,6 +73,7 @@ const ChatLoginPage = () => {
         </form>
 
         <span className="here-before"> Never been here before? <a href="/chat/register">Register</a> </span>
+        <span className="learn-more"> <a href="/chat/info">Click here</a> for more information </span>
       </Subpage>
     </Layout>
   );
