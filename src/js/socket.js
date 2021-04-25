@@ -1,6 +1,5 @@
 import io from 'socket.io-client';
 import constants from '../../constants.js';
-import axios from "axios";
 import { getAdmins } from "./chat.js";
 import { navigate } from "../js/utils.js";
 
@@ -72,10 +71,10 @@ const oldMessages = (num) => {
   socket.emit("past messages", num);
 }
 
-const listenForMessages = (updateMessages) => {
+const listenForMessages = (updateMessages, admins) => {
   if (!socket) return;
   socket.on("chat update", (data) => {
-    updateMessages(data);
+    updateMessages(data, admins);
   });
 }
 

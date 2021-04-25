@@ -23,7 +23,7 @@ const ChatPage = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [currentAdmin, setCurrentAdmin] = useState("");
   const [contactInfo, setContactInfo] = useState("");
-  const [admins, setAdmins] = useState({})
+  const [admins, setAdmins] = useState({});
   const [room, setRoom] = useState("");
 
   const chatBarRef = useRef(null);
@@ -48,7 +48,6 @@ const ChatPage = () => {
       setMessagesScrollTop,
       setContact,
     });
-    listenForMessages(updateMessages);
 
     setRoom(room);
 
@@ -59,6 +58,7 @@ const ChatPage = () => {
 
     const getAdminInfo = async () => {
       const adminInfo = await getAdmins();
+      listenForMessages(updateMessages, adminInfo);
       setAdmins(adminInfo);
     }
     getAdminInfo();
@@ -85,7 +85,7 @@ const ChatPage = () => {
     setContactInfo(info);
   }
 
-  const updateMessages = (data) => {
+  const updateMessages = (data, admins) => {
     const box = document.getElementById("messagesBox");
     if (box.scrollTop >= (box.scrollHeight - box.offsetHeight)) {
       setMessagesScrollBot(data);
@@ -109,7 +109,7 @@ const ChatPage = () => {
     event.preventDefault();
     if (msgInput.trim() !== "") {
       sendMessage(msgInput.trim());
-      setMsgInput("")
+      setMsgInput("");
     }
   }
 
