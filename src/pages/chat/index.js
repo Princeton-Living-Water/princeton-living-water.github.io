@@ -5,6 +5,7 @@ import Layout from "../../components/layout";
 import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import ChatMessage from "../../components/chatMessage";
+import Collapsible from "../../components/collapsible";
 import { navigate } from "../../js/utils.js";
 import { logout, roomPage, getAdmins } from "../../js/chat.js";
 import { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMessages } from "../../js/socket.js";
@@ -152,8 +153,19 @@ const ChatPage = () => {
               <span>Logged in as {cookies.name}</span>
               <span>Not you? <a onClick={handleLogout}>Logout</a></span>
             </div>
-            <div className="infoWrapper">
-              <span>Chatting with: {contactInfo}</span> 
+            <div className="info-wrapper">
+              {currentAdmin ? 
+                <span>Chatting with: {contactInfo}</span> :
+                <Collapsible>
+                  <div className="collapsible">what do i do now? &#9660;</div>
+                  <div className="default-info">
+                    please feel free to message any and all questions you may
+                    have! we are not an automated platform (real people
+                    respond), so please give us some time and check back for any
+                    responses.
+                  </div>
+                </Collapsible>
+              }
             </div>
           </div>
         }

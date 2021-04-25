@@ -8,7 +8,8 @@ const SERVER_URL = constants["SERVER_URL"];
 var socket;
 
 const connectSocket = (
-  { name, token, room, setMessagesScrollBot, setMessagesScrollTop, 
+  { name, token, room, 
+    setMessagesScrollBot, setMessagesScrollTop, 
     setContact }) => {
   socket = io(SERVER_URL);
 

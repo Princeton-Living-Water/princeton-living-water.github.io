@@ -25,17 +25,17 @@ const FAQPage = () => {
         </div>
         <h3> Who is this chat for?</h3>
         <div className="about-chat">
-            <p>Anyone can use this chat! This includes...</p>
-            <ul>
-                <li>the person curious about faith but hesitant to jump into Christian communities,</li>
-                <li>the person who is confused why Christians would ever believe in xyz, </li>
-                <li>the student who secretly just wants a perspective for their class, </li>
-                <li>the ex-Christian who left the faith because of cognitive dissonance and hypocrisy in the church,</li>
-                <li>the person struggling through life and constantly hearing about some life-transforming “hope” of Christ,</li>
-                <li>the person who likes to mess around anonymously and say hi,</li>
-                <li>the Christian who always had some lingering confusions over the years, </li>
-                <li>or even the person who honestly doesn’t care about religion but just wants to stop by and see whether this chat thing could possibly have anything convincing or new to say. </li>
-            </ul>
+          <p>Anyone can use this chat! This includes...</p>
+          <ul>
+            <li>the person curious about faith but hesitant to jump into Christian communities,</li>
+            <li>the person who is confused why Christians would ever believe in xyz, </li>
+            <li>the student who secretly just wants a perspective for their class, </li>
+            <li>the ex-Christian who left the faith because of cognitive dissonance and hypocrisy in the church,</li>
+            <li>the person struggling through life and constantly hearing about some life-transforming “hope” of Christ,</li>
+            <li>the person who likes to mess around anonymously and say hi,</li>
+            <li>the Christian who always had some lingering confusions over the years, </li>
+            <li>or even the person who honestly doesn’t care about religion but just wants to stop by and see whether this chat thing could possibly have anything convincing or new to say. </li>
+          </ul>
         </div>
         <h3> About Us</h3>
         <div className="about-chat">
