@@ -3,7 +3,7 @@ const navigate = (url, openNewTab) => {
     if (openNewTab === true) {
       window.open(url)
     } else {
-      window.location.replace(url);
+      window.location.href = url;
     }
   }
 }
