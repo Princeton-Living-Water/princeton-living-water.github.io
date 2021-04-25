@@ -15,10 +15,11 @@ const IndexPage = () => (
         <h1>Living Water</h1>
         <div className="menu">
           <p>
-            <a href="/COVID-19" style={{ color: "red" }}>
+            {/* <a href="/COVID-19" style={{ color: "red" }}>
               <strong>COVID-19</strong>
             </a>{" "}
-            &#47; <a href="/about">about</a> &#47; <a href="/faq">faq</a> &#47; <a href="/comment">leave a note</a>{" "}
+            &#47;  */}
+            <a href="/about">about</a> &#47; <a href="/faq">faq</a> &#47; <a href="/chat">chat</a>{" "}
             &#47; <a href="/contact">contact</a>
           </p>
         </div>

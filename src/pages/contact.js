@@ -16,24 +16,9 @@ const ContactPage = () => {
       <SEO title="Contact" />
       <Subpage>
         <h2> contact us if you want to talk! </h2>
+        <p> Or you can chat with us <a href="/chat">here</a>!</p>
         <a className="collapsible">
-          <h4>Handa Chun -- chief old man &#9660;</h4>
-        </a>
-        <div className="content">
-          <p>
-            Handa is just a dude trying to share the Gospel.
-            <br />
-            Handa first started Living Water in his junior year when he decided to buy some water bottle to hand out to
-            people on the Street so that he can share the Gospel. He wasn't being original or anything -- he copied the
-            idea from his friend from Cambridge, England. Since then, Living Water has grown and does a bit more than
-            that. He's excited to see how much more God will use it for His Kingdom work.
-            <br />
-            <br />
-            You can contact him at: <a href="mailto:hchun@princeton.edu">hchun@princeton.edu</a>
-          </p>
-        </div>
-        <a className="collapsible">
-          <h4>Joe Chen -- caregiver to old man &#9660;</h4>
+          <h4>Joe Chen &#9660;</h4>
         </a>
         <div className="content">
           <p>
@@ -104,7 +89,7 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Justin Chang -- tech boy &#9660;</h4>
+          <h4>Justin Chang &#9660;</h4>
         </a>
         <div className="content">
           <p>
@@ -114,6 +99,33 @@ const ContactPage = () => {
             <br />
             <br />
             You can contact him at: <a href="mailto:jc79@princeton.edu">jc79@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Richard Zhu &#9660;</h4>
+        </a>
+        <div className="content">
+          <p>
+            Throughout his life, Richard has grown in his relationship with God from first meeting him through an illustrated Bible in daycare. One thing that’s resonated time and again is to let things happen in God’s own time and to not stress out too much about things
+            <br />
+            <br />
+            You can contact him at: <a href="mailto:ryzhu@princeton.edu">ryzhu@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Handa Chun -- alumni &#9660;</h4>
+        </a>
+        <div className="content">
+          <p>
+            Handa is just a dude trying to share the Gospel.
+            <br />
+            Handa first started Living Water in his junior year when he decided to buy some water bottle to hand out to
+            people on the Street so that he can share the Gospel. He wasn't being original or anything -- he copied the
+            idea from his friend from Cambridge, England. Since then, Living Water has grown and does a bit more than
+            that. He's excited to see how much more God will use it for His Kingdom work.
+            <br />
+            <br />
+            You can contact him at: <a href="mailto:hchun@princeton.edu">hchun@princeton.edu</a>
           </p>
         </div>
       </Subpage>

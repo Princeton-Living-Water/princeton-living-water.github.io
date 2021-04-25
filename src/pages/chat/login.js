@@ -7,6 +7,9 @@ import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import constants from "../../../constants.js";
 import { navigate } from "../../js/utils.js";
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import { store } from 'react-notifications-component';
 
 import "../../assets/styles.css";
 
@@ -53,16 +56,33 @@ const ChatLoginPage = () => {
     login(user_input, pass_input);
   }
 
+  const notify = (event) => {
+    store.addNotification({
+      title: "Try to choose a strong password!",
+      message: "If your password is weak, some browsers might alert you saying that there has been a \'data breach\' with your password. This is not an issue with our site - we are secure!",
+      type: "danger",
+      container: "bottom-center",
+      animationIn: ["animate__animated", "animate__fadeIn"],
+      animationOut: ["animate__animated", "animate__fadeOut"],
+      dismiss: {
+        duration: 10000,
+        onScreen: true,
+        pauseOnHover: true
+      }
+    });
+  }
+
   return (
     <Layout>
       <SEO title="Chat Login" />
       <Subpage>
+        <ReactNotification />
         <h3> Welcome back! Sign into Living Water Chat </h3><br/>
         <form onSubmit={handleLogin} className="cred-box">
           <input className="text-input" type="text" id="name"
             name="name" placeholder="username"/>
-          <input className="text-input" type="password"
-            name="password" placeholder="password"/>
+          <input onClick={notify} className="text-input" type="password"
+            name="password" placeholder="password" />
 
           {errorMessage &&
             <div className="error-message">{errorMessage}</div>
@@ -73,6 +93,7 @@ const ChatLoginPage = () => {
         </form>
 
         <span className="here-before"> Never been here before? <a href="/chat/register">Register</a> </span>
+        <span className="learn-more"> <a href="/chat/info">Click here</a> for more information </span>
       </Subpage>
     </Layout>
   );

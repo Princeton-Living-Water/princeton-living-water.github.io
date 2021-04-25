@@ -118,6 +118,11 @@ h3 {
   margin-top: 2rem;
 }
 
+.learn-more {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .chatInput {
   width: 500px;
   display: flex;
