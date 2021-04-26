@@ -26,17 +26,9 @@ const connectSocket = (
       setMessagesScrollBot(data.messages);
     }
       
-    if (setContact && data.messages.length > 0) {
+    if (setContact && data.currentAdmin) {
       let admins = await getAdmins();
-
-      const messages = data.messages;
-      for (let i = data.messages.length-1; i >= 0; i--) {
-        if (messages[i].sender in admins) {
-          const admin = admins[messages[i].sender];
-          setContact(admin);
-          break;
-        }
-      }
+      setContact(admins[data.currentAdmin])
     }
   });
   
