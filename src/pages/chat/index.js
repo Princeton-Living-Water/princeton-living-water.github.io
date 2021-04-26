@@ -6,6 +6,9 @@ import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import ChatMessage from "../../components/chatMessage";
 import Collapsible from "../../components/collapsible";
+import ActiveCircle from "../../components/activeCircle";
+import Tooltip from "../../components/tooltip";
+
 import { navigate } from "../../js/utils.js";
 import { logout, roomPage, getAdmins } from "../../js/chat.js";
 import { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMessages } from "../../js/socket.js";
@@ -22,8 +25,7 @@ const ChatPage = () => {
   const [messages, setMessages] = useState([]);
   const [msgInput, setMsgInput] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [currentAdmin, setCurrentAdmin] = useState("");
-  const [contactInfo, setContactInfo] = useState("");
+  const [contact, setContact] = useState(null);
   const [admins, setAdmins] = useState({});
   const [room, setRoom] = useState("");
 
@@ -80,12 +82,6 @@ const ChatPage = () => {
     box.scrollTop = box.scrollHeight - oldHeight;
   }
 
-  const setContact = (admin) => {
-    setCurrentAdmin(admin.name);
-    const info = `${admin.name} (${admin.email})`;
-    setContactInfo(info);
-  }
-
   const updateMessages = (data, admins) => {
     const box = document.getElementById("messagesBox");
     if (box.scrollTop >= (box.scrollHeight - box.offsetHeight)) {
@@ -97,7 +93,7 @@ const ChatPage = () => {
 
     // Update admin contact info if appropriate
     const sender = data.sender;
-    if (sender in admins && sender !== currentAdmin) {
+    if (sender in admins && (!contact || sender !== contact.name)) {
       setContact(admins[sender]);
     }
   }
@@ -154,8 +150,17 @@ const ChatPage = () => {
               <span>Not you? <a onClick={handleLogout}>Logout</a></span>
             </div>
             <div className="info-wrapper">
-              {currentAdmin ? 
-                <span>Chatting with: {contactInfo}</span> :
+              {contact ? 
+                <div>
+                  Chatting with: {contact.name}
+                  <span className="tooltip-wrapper">
+                    <ActiveCircle active={true} />
+                    <Tooltip direction={"bottom"}>
+                      Active
+                    </Tooltip>
+                  </span>
+                </div>
+                :
                 <Collapsible>
                   <div className="collapsible">what do i do now? &#9660;</div>
                   <div className="default-info">

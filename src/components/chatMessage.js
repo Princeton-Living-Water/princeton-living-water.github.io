@@ -1,4 +1,5 @@
 import React from "react";
+import Tooltip from "./tooltip";
 
 import { getTime } from "../js/utils.js";
 
@@ -13,37 +14,33 @@ const ChatMessage = ({ message, room, admins}) => {
   let msgClass;
   let color;
   let textColor;
-  let tooltipStyle;
+  let tooltipDirection;
 
   if (room == sender) {
-    msgWrapper =  "userWrapper";
-    msgClass = "userMessage";
+    msgWrapper =  "user-wrapper";
+    msgClass = "user-message tooltip-wrapper";
     color = "#EEE";
     textColor = "black";
-    tooltipStyle = {
-      right: "105%",
-    }
+    tooltipDirection = "left";
   }
   else {
-    msgWrapper = "otherWrapper";
-    msgClass = "otherMessage";
+    msgWrapper = "other-wrapper";
+    msgClass = "other-message tooltip-wrapper";
     color = "#ca4e4e";
     if (sender in admins && admins[sender].color) {
       color = admins[sender].color;
     }
     textColor = "white";
-    tooltipStyle = {
-      left: "105%",
-    }
+    tooltipDirection = "right";
   }
 
   return (
     <div className={msgWrapper}>
       <div className={msgClass} style={{backgroundColor: color, color: textColor}}>
         {msg}
-        <div className="tooltip" style={tooltipStyle}>
+        <Tooltip direction={tooltipDirection} type={"message"}>
           {`${sender}\n${time}`}
-        </div>
+        </Tooltip>
       </div>
     </div>
   );
