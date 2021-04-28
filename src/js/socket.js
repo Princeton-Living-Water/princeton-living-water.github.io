@@ -10,7 +10,7 @@ var socket;
 const connectSocket = (
   { name, token, room, 
     setMessagesScrollBot, setMessagesScrollTop, 
-    setContact }) => {
+    setContact, setActivity }) => {
   socket = io(SERVER_URL);
 
   socket.on("connect", () => {
@@ -29,6 +29,10 @@ const connectSocket = (
     if (setContact && data.currentAdmin) {
       let admins = await getAdmins();
       setContact(admins[data.currentAdmin])
+    }
+
+    if (setActivity && data.chatActivity) {
+      setActivity(data.chatActivity);
     }
   });
   
@@ -78,12 +82,26 @@ const listenForRooms = (updateRooms) => {
   });
 }
 
+const sendUpdateActive = () => {
+  if (!socket) return;
+  socket.emit("update active");
+}
+
+const listenForActivity = (updateActivity, isAdmin) => {
+  if (!socket) return;
+  socket.on("activity change", (data) => {
+    updateActivity(data, isAdmin);
+  });
+}
+
 const disconnectSocket = () => {
   if (!socket) return;
   socket.disconnect();
 }
 
 export { 
-  connectSocket, disconnectSocket, listenForMessages, listenForRooms, 
-  sendMessage, oldMessages 
+  connectSocket, disconnectSocket, 
+  listenForMessages, listenForRooms, 
+  sendMessage, oldMessages,
+  sendUpdateActive, listenForActivity
 }

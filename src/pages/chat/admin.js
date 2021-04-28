@@ -19,7 +19,6 @@ const SERVER_URL = constants["SERVER_URL"];
 const AdminPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
   const [rooms, setRooms] = useState([]);
-  const [chatEmail, setChatEmail] = useState("");
 
   useEffect(() => {
     const {name, token} = cookies;
@@ -88,8 +87,7 @@ const AdminPage = () => {
             <RoomCard room={room} key={index} />
           ))}
         </div>
-        <p>{chatEmail}</p>
-        <AdminInfo token={cookies.token} name={cookies.name} email="jc84" phone="908-323-8864" color="#b9c97b"/>
+        <AdminInfo />
       </Subpage>
     </Layout>
   );

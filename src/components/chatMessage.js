@@ -5,7 +5,7 @@ import { getTime } from "../js/utils.js";
 
 import "../assets/chat.css";
 
-const ChatMessage = ({ message, room, admins}) => {
+const ChatMessage = ({ message, name, room, admins }) => {
   const msg = message.message;
   const sender = message.sender;
   const time = getTime(message.timestamp);
@@ -16,7 +16,7 @@ const ChatMessage = ({ message, room, admins}) => {
   let textColor;
   let tooltipDirection;
 
-  if (room == sender) {
+  if (sender === name) {
     msgWrapper =  "user-wrapper";
     msgClass = "user-message tooltip-wrapper";
     color = "#EEE";

@@ -6,12 +6,13 @@ import SEO from "../../components/seo";
 import Subpage from "../../components/subpage";
 import ChatMessage from "../../components/chatMessage";
 import Collapsible from "../../components/collapsible";
-import ActiveCircle from "../../components/activeCircle";
-import Tooltip from "../../components/tooltip";
+import ActivityCircle from "../../components/activityCircle";
 
 import { navigate } from "../../js/utils.js";
 import { logout, roomPage, getAdmins } from "../../js/chat.js";
-import { connectSocket, disconnectSocket, listenForMessages, sendMessage, oldMessages } from "../../js/socket.js";
+import { connectSocket, disconnectSocket, 
+         listenForMessages, sendMessage, oldMessages, 
+         sendUpdateActive, listenForActivity } from "../../js/socket.js";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import TextareaAutosize from 'react-textarea-autosize'
@@ -21,13 +22,13 @@ import "../../assets/chat.css";
 
 const ChatPage = () => {
   const [cookies, setCookies] = useCookies(["name", "token"]);
-  const [title, setTitle] = useState("");
   const [messages, setMessages] = useState([]);
   const [msgInput, setMsgInput] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
   const [contact, setContact] = useState(null);
   const [admins, setAdmins] = useState({});
   const [room, setRoom] = useState("");
+  const [activity, setActivity] = useState(null);
 
   const chatBarRef = useRef(null);
   const formRef = useRef(null);
@@ -42,7 +43,7 @@ const ChatPage = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const room = urlParams.get("user") || name;
-
+    
     connectSocket({
       name, 
       token, 
@@ -50,14 +51,12 @@ const ChatPage = () => {
       setMessagesScrollBot, 
       setMessagesScrollTop,
       setContact,
+      setActivity,
     });
-
     setRoom(room);
 
     const isAdmin = room === name ? false : true;
     setIsAdmin(isAdmin);
-    const title = isAdmin ? `Chat with ${room}` : name;
-    setTitle(title);
 
     const getAdminInfo = async () => {
       const adminInfo = await getAdmins();
@@ -65,9 +64,12 @@ const ChatPage = () => {
       setAdmins(adminInfo);
     }
     getAdminInfo();
+
+    sendUpdateActive();
+    listenForActivity(updateActivity, isAdmin);
     
     return () => disconnectSocket();
-  }, []);
+  }, [cookies]);
 
   const setMessagesScrollBot = (data) => {
     setMessages(messages => messages.concat(data));
@@ -138,27 +140,39 @@ const ChatPage = () => {
     }
   }
 
+  const updateActivity = (data, isAdmin) => {
+    if (isAdmin && !data.admin) {
+      setActivity(activity => ({...activity, active: true}));
+    }
+    else if (!isAdmin && data.admin) {
+      setActivity(activity => ({...activity, active: true}));
+    }
+  }
+
   return (
     <Layout>
       <SEO title="Chat" />
       <Subpage>
-        <h2>{title}</h2>
-        {isAdmin ? <p><a onClick={handleRoomPage}>Back to all rooms</a></p> :
+        {isAdmin ? 
+          <div className="chat-header">
+            <h2>
+              {`Chat with ${room}`}
+              {activity ? <ActivityCircle activity={activity} /> : null}
+            </h2>
+            <p><a onClick={handleRoomPage}>Back to all rooms</a></p> 
+          </div>
+          :
           <div>
+            <h2>{room}</h2>
             <div className="logoutWrapper">
               <span>Logged in as {cookies.name}</span>
               <span>Not you? <a onClick={handleLogout}>Logout</a></span>
             </div>
             <div className="info-wrapper">
-              {contact ? 
+              {contact && activity ? 
                 <div>
                   Chatting with: {contact.name}
-                  <span className="tooltip-wrapper">
-                    <ActiveCircle active={true} />
-                    <Tooltip direction={"bottom"}>
-                      Active
-                    </Tooltip>
-                  </span>
+                  <ActivityCircle activity={activity} />
                 </div>
                 :
                 <Collapsible>
@@ -176,11 +190,22 @@ const ChatPage = () => {
         }
         <div ref={messagesRef} onScroll={handleGetOldMessages} className="messagesWrapper" id="messagesBox">
           {messages.map((msg, index) => (
-            <ChatMessage message={msg} room={room} key={index} admins={admins}/>
+            <ChatMessage 
+              message={msg} 
+              name={cookies.name} 
+              room={room} 
+              key={index} 
+              admins={admins}
+            />
           ))}
           <div ref={messagesEndRef} />
         </div>
-        <form ref={formRef} className="chatInput" onSubmit={handleSubmit}>
+        <form ref={formRef} 
+          className="chatInput" 
+          onSubmit={handleSubmit} 
+          // onFocus={handleOnFocus}
+          // onBlur={handleOnBlur}
+        >
           <TextareaAutosize onKeyDown={onEnterPress} ref={chatBarRef} onHeightChange={handleScroll} className="chatBar" maxRows="6" type="text" placeholder="send message" value={msgInput} onChange={handleInput} required/>
           <button className="chatSubmit" type="submit"><FontAwesomeIcon icon={faArrowRight} /></button>
         </form>

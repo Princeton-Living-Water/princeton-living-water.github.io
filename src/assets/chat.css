@@ -20,6 +20,10 @@ h3 {
   margin-bottom: 0.2rem;
 }
 
+.chat-header {
+  text-align: center;
+}
+
 .logoutWrapper {
   display: flex;
   flex-direction: column;
@@ -35,7 +39,7 @@ h3 {
   flex-direction: column;
   margin-bottom: 1rem;
   text-align: center;
-  max-width: 60vw;
+  max-width: 50vw;
 }
 
 .contact-info {
