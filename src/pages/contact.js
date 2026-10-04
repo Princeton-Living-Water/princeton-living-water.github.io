@@ -113,7 +113,7 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Handa Chun -- alumni &#9660;</h4>
+          <h4>Handa -- alumni &#9660;</h4>
         </a>
         <div className="content">
           <p>
