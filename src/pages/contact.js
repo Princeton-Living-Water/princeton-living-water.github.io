@@ -135,6 +135,7 @@ const ContactPage = () => {
           <p>
             Throughout many years of his life searching for meaning, Brian realized the simple truth that his greatest purpose of life was to know Jesus more deeply each day. After truly meeting Christ and finding his greatest joy in living for him, he couldn’t help but restart living water out of overflowing joy and desire for even more believers and non-believers to come to know this joy
             <br />
+            <br />
             You can contact him at: <a href="mailto:brian.seo@princeton.edu">bs1207@princeton.edu</a>
           </p>
         </div>
@@ -144,6 +145,7 @@ const ContactPage = () => {
         <div className="content">
           <p>
             Daniel Tu test2
+            <br />
             <br />
             You can contact him at: <a href="mailto:dt2225@princeton.edu">dt2225@princeton.edu</a>
           </p>
