@@ -39,7 +39,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "deploy": "gatsby build --prefix-paths && echo 'princetonlivingwater.org' > ./public/CNAME && gh-pages -d public "
+    "deploy": "export XDG_CONFIG_HOME=\"$HOME/Library/Application Support\" NODE_OPTIONS=--openssl-legacy-provider GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=http.postBuffer GIT_CONFIG_VALUE_0=524288000 && gatsby build --prefix-paths && echo 'princetonlivingwater.org' > ./public/CNAME && gh-pages -d public"
   },
   "repository": {
     "type": "git",
