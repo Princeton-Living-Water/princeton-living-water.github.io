@@ -128,6 +128,26 @@ const ContactPage = () => {
             You can contact him at: <a href="mailto:hchun@princeton.edu">hchun@princeton.edu</a>
           </p>
         </div>
+        <a className="collapsible">
+          <h4>Brian Seo &#9660;</h4>
+        </a>
+        <div className="content">
+          <p>
+            Throughout many years of his life searching for meaning, Brian realized the simple truth that his greatest purpose of life was to know Jesus more deeply each day. After truly meeting Christ and finding his greatest joy in living for him, he couldn’t help but restart living water out of overflowing joy and desire for even more believers and non-believers to come to know this joy
+            <br />
+            You can contact him at: <a href="mailto:brian.seo@princeton.edu">bs1207@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Daniel Tu &#9660;</h4>
+        </a>
+        <div className="content">
+          <p>
+            Daniel Tu
+            <br />
+            You can contact him at: <a href="mailto:dt2225@princeton.edu">dt2225@princeton.edu</a>
+          </p>
+        </div>
       </Subpage>
     </Layout>
   );
