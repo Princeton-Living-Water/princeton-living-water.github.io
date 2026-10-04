@@ -143,7 +143,7 @@ const ContactPage = () => {
         </a>
         <div className="content">
           <p>
-            Daniel Tu
+            Daniel Tu test
             <br />
             You can contact him at: <a href="mailto:dt2225@princeton.edu">dt2225@princeton.edu</a>
           </p>
