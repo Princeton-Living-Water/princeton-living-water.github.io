@@ -8,7 +8,49 @@ import addCollapsible from "../js/collapsible";
 
 const FAQPage = () => {
   useEffect(() => {
+    // 1. Initialize the collapsible functionality
     addCollapsible();
+
+    // 2. Configure Logos RefTagger settings globally
+    window.refTagger = {
+      settings: {
+        bibleVersion: "ESV", // Change to NIV, NASB, NKJV, KJV, etc.
+        tooltipStyle: "light", // "light" or "dark"
+      },
+    };
+
+    // 3. Inject the RefTagger script into the document header
+    const script = document.createElement("script");
+    script.src = "https://api.reftagger.com/v2/RefTagger.js";
+    script.id = "reftagger-script";
+    script.async = true;
+    script.onload = () => {
+      if (window.refTagger && typeof window.refTagger.tag === "function") {
+        window.refTagger.tag();
+      }
+    };
+    document.head.appendChild(script);
+
+    // 4. Set up an observer to re-scan for verses when collapsibles are clicked
+    const handleCollapsibleClick = () => {
+      // Small timeout allows the content block to become visible before tagging
+      setTimeout(() => {
+        if (window.refTagger && typeof window.refTagger.tag === "function") {
+          window.refTagger.tag();
+        }
+      }, 100);
+    };
+
+    // Attach click listeners to all your collapsible headers
+    const elements = document.querySelectorAll(".collapsible");
+    elements.forEach((el) => el.addEventListener("click", handleCollapsibleClick));
+
+    // Cleanup script and event listeners when the component unmounts
+    return () => {
+      const scriptToRemove = document.getElementById("reftagger-script");
+      if (scriptToRemove) scriptToRemove.remove();
+      elements.forEach((el) => el.removeEventListener("click", handleCollapsibleClick));
+    };
   }, []);
 
   return (
@@ -19,27 +61,29 @@ const FAQPage = () => {
           <h3> what is Christianity/the Gospel? &#9660;</h3>
         </a>
         <p className="content">
-          Christianity is the belief and worship of the God of the Bible.
+          Christianity is the belief (Romans 10:9) and worship (Romans 12:1-2) of the God of the Bible.
           <br />
           <br />
-          We believe in a God who is perfect in every way who created the world to glorify Himself and for His creation
-          to enjoy Him. Through His Word, God created mankind through Adam and Eve, giving mankind all they needed, and
-          He was together with them. However, through the disobedient choice of Adam and Eve, sin entered the world, and
-          we were separated from God. Because we were created to be with God, by being separated from Him, we were all
-          dead in our sins.
+          We believe in a God who is perfect in every way who created the world to demonstrate His glory and for His 
+          creation to enjoy Him (Revelation 4:11). In the beginning, God created mankind through Adam and Eve, giving 
+          mankind all they needed, and He was together with them. However, through the disobedience of Adam and Eve, 
+          sin entered the world and into mankind, and we were separated from God. Because we were created to be with God, 
+          by being separated from Him through our sin, the world became full with brokenness. God, being good and just, 
+          must respond to our sin, thus justly condemning us to eternal punishment. We were all dead in our sins. (Ephesians 2:1-3)
           <br />
           <br />
-          However, God, in His infinite love and grace, chose to send His Son, Jesus, who was God, to the world to live
-          a perfect life as a man and to die on the cross for sinners’ sakes. In this way, He who had never sinned took
-          on the consequences of sin, so that we may be considered righteous before God to be once again united with
-          Him. Jesus resurrected on the third day and in Him we have the hope of our own resurrection and a life eternal
-          with God when Jesus comes back one day.
+          However, God, in His infinite love, mercy, and grace, chose to send His Son, Jesus, who was God, to the world 
+          to live a perfect life as a man and to die on the cross to provide for sinners the way to eternal life. In this way, 
+          He who had never sinned took on the consequences of sin, so that we who put our faith in Jesus alone may be considered 
+          righteous before God to be once again united with Him (2 Corinthians 5:21). Jesus resurrected on the third day, 
+          defeating death, and in Him we have the hope of our own resurrection and a life eternal with God when Jesus comes 
+          back one day (Hebrews 9:28).
           <br />
           <br />
-          We believe that Christianity is more than following a set of actions or rules, but having a relationship with
-          the LORD God. This relationship is available for those who accept and receive His grace through the belief in
-          Jesus Christ as our lord and savior, and they will be called the sons and daughters of the living God of the
-          universe.
+          We believe that Christianity is more than following a set of actions or rules, but having a restored relationship 
+          with the LORD God that is lived out in a life of repentance (turning to God) (Joel 2:13). This relationship is 
+          available for any who accept and receive His grace through the belief in Jesus Christ as our Lord and Savior, and 
+          they will be called the sons and daughters of the living God of the universe (John 1:12).
         </p>
         <hr />
         <a className="collapsible">
@@ -58,16 +102,23 @@ const FAQPage = () => {
           <p> We have to believe because we were originally created to believe in God and to live in union with God.</p>
 
           <p>
-            We have all seen suffering and trouble that seem to point to how the world is broken. When we view this
-            broken world, we come to wonder why it is so, and think if there may be something better. Christians believe
-            that people have this kind of mindset, and a desire to seek something better, because truly, we were created
-            to be somewhere better, and to be with someone better. We believe that the world was created to be in
-            paradise, and to be with God.
+            We have all seen suffering and trouble that seem to point to how the world is broken. 
+            When we view this broken world, we come to wonder why it is so, and think if there may 
+            be something better. Christians believe that people have this kind of mindset, and a 
+            desire to seek something better, because truly, we were created to be somewhere better, 
+            and to be with someone better. We believe that the world was created to be in paradise, and to be with God.
           </p>
           <p>
-            We, all of humanity, must believe, because that was what we were originally created for — we will not be
-            accomplishing our primary objective if we do not worship Him who created us because that was what we were
-            created for. God is glorified when we are satisfied in Him.
+            We, all of humanity, must believe, because that was what we were originally created for — 
+            the way a whale could never flourish on dry land because it was made for the ocean we will 
+            not be living as we were made to if we do not worship Him who created us because that was 
+            what we were created for. God is glorified when we are satisfied in Him.
+          </p>
+          <p><i>
+            “[...] invent some sort of happiness for themselves outside God, apart from God. And out 
+            of that hopeless attempt has come nearly all that we call human history—money, 
+            poverty, ambition, war, prostitution, classes, empires, slavery—the long terrible story 
+            of man trying to find something other than God which will make him happy.”</i> - CS Lewis Mere Christianity
           </p>
         </div>
         <hr />
@@ -76,17 +127,16 @@ const FAQPage = () => {
         </a>
         <div className="content">
           <p>
-            We believe in a God who is good and just. As such, God cannot just turn a blind eye to our sin and
-            disobedience. Our sinful nature separates us from God: because He is perfect in all ways and we are not, our
-            sin prevents us from being accepted by God. The just punishment for our rebellion against God is an eternity
-            of separation from God after death.
+            We believe in a God who is good and just. As such, God cannot just turn a blind eye to our sin and disobedience. 
+            Our sinful nature separates us from God: because He is perfect in all ways and we are not, our sin prevents us 
+            from being accepted by God. The just punishment for our rebellion against God is an eternity of separation from God after death.
           </p>
           <p>
-            This is where the need to be saved comes in: the good news is that God made a way for us to be saved through
-            his Son Jesus. However, an important step in being saved is to recognize the need for a savior, but
-            unfortunately in today’s world, many people do not acknowledge this. God loves all of us, even if we reject
-            Him, and because of this, He gives us a choice and does not force us into his presence. Salvation is a free
-            gift for those who recognize their helplessness due to sin and trust in Jesus as the only one who can save.
+          This is where the need to be saved comes in: the good news is that God made a way for us to be saved through his Son Jesus. 
+          However, an important step in being saved is to recognize the need for a savior, but unfortunately in today’s world, many people 
+          do not acknowledge this. God loves all of us, even if we reject Him, and because of this, He gives us a choice and does not force 
+          us into his presence. Salvation is a free gift for those who recognize their helplessness due to sin and trust in Jesus as the 
+          only one who can save.
           </p>
         </div>
         <hr />
@@ -117,12 +167,12 @@ const FAQPage = () => {
             Christianity <strong>best and perfectly explains</strong> our reality.
           </p>
           <p>
-            Ultimately, it is epistemologically impossible to show that any model is provably true. In fact, all people
-            live by and rely on some unproven model, and this reliance is what Christians call
-            <strong>faith</strong>. But, Christians place their faith in the model of Christainity because, as C.S.
-            Lewis puts it, “I believe in Christianity as I believe that the sun has risen: not only because I see it,
-            but because by it I see everything else.” Why Chrisitanity is the closest description of reality compared to
-            all other models is something we would love to discuss with you.
+            Ultimately, it is epistemologically impossible to show that any model is provably true. In fact, all 
+            people live by and rely on some unproven model, and this reliance is what Christians call 
+            <strong>faith</strong>. But, Christians place their faith in the model of Christianity because, 
+            as C.S. Lewis puts it, “I believe in Christianity as I believe that the sun has risen: not only 
+            because I see it, but because by it I see everything else.” Why Chrisitanity is the closest 
+            description of reality compared to all other models is something we would love to discuss with you.
           </p>
         </div>
         <hr />
@@ -131,16 +181,16 @@ const FAQPage = () => {
         </a>
         <div className="content">
           <p>
-            Christianity says that earning your way to God is an impossible task. God is infinitely Holy and Perfect
-            that we in our sinfulness cannot do anything to get closer to Him. Although our sin separates us from God,
-            He extends His grace (undeserved free gift) to us through his Son, Jesus Christ. If you accept Jesus as your
+            Christianity says that earning your way to God is an impossible task. God is infinitely Holy and Perfect 
+            that we in our sinfulness cannot do anything to get closer to Him. Although our sin separates us from God, 
+            He extends His grace (undeserved free gift) to us through his Son, Jesus Christ. If you accept Jesus as your 
             Lord and Savior, He gives you new life in Him.
           </p>
 
           <p>
-            In Christianity, our relationship with God isn’t through the rules we follow. It is through the shed blood
-            of Jesus Christ that God offers a personal relationship with Him. God knows you fully and loves the world
-            and wants you to know Him and to love Him as well.
+            In Christianity, our restored relationship with God isn’t through the rules we follow. It is through 
+            the shed blood of Jesus Christ that God offers a personal relationship with Him. God knows you fully 
+            and loves the world and wants you to know Him and to love Him as well.
           </p>
 
           <p>
@@ -154,15 +204,13 @@ const FAQPage = () => {
         </a>
         <div className="content">
           <p>
-            If you could have the greatest treasure in the world, why would you wait to have it? The Gospel isn’t just
-            an accessory that we can acquire through something we do and then not face eternal suffering.
-          </p>
-          <p>
-            If the Gospel is truly as valuable as we claim it to be, the Gospel should be the center of our lives: “The
-            kingdom of heaven is like treasure hidden in a field, which a man found and covered up. Then in his joy he
-            goes and sells all that he has and buys that field. Again, the kingdom of heaven is like a merchant in
-            search of fine pearls, who, on finding one pearl of great value, went and sold all that he had and bought
-            it.” - Matthew 13:44-46
+          If you could have the greatest treasure in the world, why would you wait to have it? Furthermore, 
+          the Gospel isn’t just a get-out-of-hell-free-card that we can acquire through something we do and 
+          then not face eternal suffering. If the Gospel is truly as valuable as we claim it to be, the Gospel 
+          should be the center of our lives: “The kingdom of heaven is like treasure hidden in a field, which 
+          a man found and covered up. Then in his joy he goes and sells all that he has and buys that field. 
+          Again, the kingdom of heaven is like a merchant in search of fine pearls, who, on finding one pearl 
+          of great value, went and sold all that he had and bought it.” - Matthew 13:44-46
           </p>
         </div>
         <hr />
@@ -171,25 +219,27 @@ const FAQPage = () => {
         </a>
         <div className="content">
           <p>
-            It is not a matter of the actions you do yourself that makes you a Christian. Everything that we do stems
-            from a realization that an omniscient, omnipotent, omnipresent God loved us so much that he would come down
-            as a human to take the suffering we deserve so that everyone, even those persecuting and humiliating him,
-            could have the opportunity to be with him.
+            It is not a matter of the good deeds you do yourself that makes you a Christian. Everything that 
+            we do stems from a realization that an omniscient, omnipotent, omnipresent God loved us so much 
+            that he would come down as a human to take the suffering we deserve so that everyone, even us who 
+            have rebelled against him, could have the opportunity to be with him.
           </p>
           <p>
-            Thus, the way one should approach becoming a Christian is by first realizing what kind of a God the
-            Christian God is and in the light of such a magnificent truth, coming to recognize how sinful we are.
+            Thus, the way one should approach becoming a Christian is by first realizing what kind of a God 
+            the Christian God is and in the light of such a magnificent truth, coming to recognize how sinful we are (Luke 5:32).
           </p>
           <p>
-            As Isaiah 64:6 says: “All of us have become like one who is unclean, and all our righteous acts are like
-            filthy rags; we all shrivel up like a leaf, and like the wind our sins sweep us away.” It is at this point
-            we come to recognize and realize that we have been saved from our own sins and inability to meet the
-            standards — at this moment we come to see that God has sent us the Messiah, Jesus who is God who has paid
+            As Isaiah 64:6 says: “All of us have become like one who is unclean, and all our righteous acts are 
+            like filthy rags; we all shrivel up like a leaf, and like the wind our sins sweep us away.” It is at this 
+            point we come to recognize and realize that we have been saved from our own sins and inability to meet the 
+            standards — at this moment we come to see that God has sent us the Messiah, Jesus who is God who has paid 
             the price for us.
           </p>
           <p>
-            All we need to do is to believe in this Messiah and to cry out to Him for our salvation. Those who put their
-            trust in the one God and recognize Jesus as our savior are whom we call Christians.
+            All we need to do is to believe in this Messiah and to cry out to Him for our salvation. Those who put 
+            their trust in the one God and recognize Jesus as our savior are whom we call Christians. They will know 
+            they are truly saved by the growing evidence of God transforming their hearts and affections to love Him and 
+            pursue Christ-likeness.
           </p>
         </div>
         <hr />
@@ -203,20 +253,23 @@ const FAQPage = () => {
             religion. You have to feel bad about yourself, a sinner and enemy of God, in order to accept your need for
             salvation in Jesus Christ. Also, all of the death, rape, abuse of power, and hatred that occur in the Bible
             are not of God, they are of sinful humans. God hates sin, and the sinful actions of man are not pleasing to
-            Him. Just because something is written in the Bible as having occurred, does not mean it is pleasing to God.
-            He also shows how each time a person disobeys God, there are consequences–polygamy and favoritism (ex.
-            forefathers of Israel) result in familial strife, and adultery and murder (ex. King David) led to calamity
-            for his household. God is righteous and just.{" "}
+            Him. Just because something is written in the Bible as having occurred, does not mean it is pleasing to God. 
+            There are also differences between when the Bible is being descriptive and prescriptive. He also shows how each 
+            time a person disobeys God, there are consequences–polygamy and favoritism (ex.forefathers of Israel) result 
+            in familial strife, and adultery and murder (ex. King David) led to calamity for his household. God is righteous and just.{" "}
           </p>
 
           <p>
             Christians believe that “All Scripture is breathed out by God and profitable for teaching, for reproof, for
             correction, and for training in righteousness” (2 Timothy 3:16). Many people who say they are “Christians”
             pick and choose parts of the Bible to fit their own ideas, but true Christians must trust in and rely on all
-            of the divinely-inspired Holy Bible. So yes, people who ignore parts of the Bible are not truly Christian.{" "}
+            of the divinely-inspired Holy Bible. So no, Christians ought not to choose and pick parts to believe from the Bible but rather believe in its entirety.{" "}
           </p>
         </div>
         <hr />
+        <a href="/contact">
+          <h3>Reach out to any of us if you have any questions!</h3>
+        </a>
       </Subpage>
     </Layout>
   );

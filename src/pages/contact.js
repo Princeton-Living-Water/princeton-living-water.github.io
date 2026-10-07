@@ -8,7 +8,49 @@ import addCollapsible from "../js/collapsible";
 
 const ContactPage = () => {
   useEffect(() => {
+    // 1. Initialize the collapsible functionality
     addCollapsible();
+
+    // 2. Configure Logos RefTagger settings globally
+    window.refTagger = {
+      settings: {
+        bibleVersion: "ESV", // Change to NIV, NASB, NKJV, KJV, etc.
+        tooltipStyle: "light", // "light" or "dark"
+      },
+    };
+
+    // 3. Inject the RefTagger script into the document header
+    const script = document.createElement("script");
+    script.src = "https://api.reftagger.com/v2/RefTagger.js";
+    script.id = "reftagger-script";
+    script.async = true;
+    script.onload = () => {
+      if (window.refTagger && typeof window.refTagger.tag === "function") {
+        window.refTagger.tag();
+      }
+    };
+    document.head.appendChild(script);
+
+    // 4. Set up an observer to re-scan for verses when collapsibles are clicked
+    const handleCollapsibleClick = () => {
+      // Small timeout allows the content block to become visible before tagging
+      setTimeout(() => {
+        if (window.refTagger && typeof window.refTagger.tag === "function") {
+          window.refTagger.tag();
+        }
+      }, 100);
+    };
+
+    // Attach click listeners to all your collapsible headers
+    const elements = document.querySelectorAll(".collapsible");
+    elements.forEach((el) => el.addEventListener("click", handleCollapsibleClick));
+
+    // Cleanup script and event listeners when the component unmounts
+    return () => {
+      const scriptToRemove = document.getElementById("reftagger-script");
+      if (scriptToRemove) scriptToRemove.remove();
+      elements.forEach((el) => el.removeEventListener("click", handleCollapsibleClick));
+    };
   }, []);
 
   return (
@@ -18,7 +60,7 @@ const ContactPage = () => {
         <h2> contact us if you want to talk! </h2>
         <p> Or you can chat with us <a href="/chat">here</a>!</p>
         <a className="collapsible">
-          <h4>Joe Chen &#9660;</h4>
+          <h4>Joe Chen ▼</h4>
         </a>
         <div className="content">
           <p>
@@ -35,7 +77,7 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Tracie Kwon &#9660;</h4>
+          <h4>Tracie Kwon ▼</h4>
         </a>
         <div className="content">
           <p>
@@ -49,7 +91,7 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Allen Park &#9660;</h4>
+          <h4>Allen Park ▼</h4>
         </a>
         <div className="content">
           <p>
@@ -63,7 +105,7 @@ const ContactPage = () => {
           <br />
         </div>
         <a className="collapsible">
-          <h4>Grace Wang &#9660;</h4>
+          <h4>Grace Wang ▼</h4>
         </a>
         <div className="content">
           <p>
@@ -76,7 +118,7 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Fisayo Adeyina &#9660;</h4>
+          <h4>Fisayo Adeyina ▼</h4>
         </a>
         <div className="content">
           <p>
@@ -89,7 +131,7 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Justin Chang &#9660;</h4>
+          <h4>Justin Chang ▼</h4>
         </a>
         <div className="content">
           <p>
@@ -102,7 +144,7 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Richard Zhu &#9660;</h4>
+          <h4>Richard Zhu ▼</h4>
         </a>
         <div className="content">
           <p>
@@ -113,7 +155,7 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Handa -- alumni &#9660;</h4>
+          <h4>Handa -- alumni ▼</h4>
         </a>
         <div className="content">
           <p>
@@ -129,25 +171,25 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
-          <h4>Brian Seo &#9660;</h4>
+          <h4>Brian Seo ▼</h4>
         </a>
         <div className="content">
           <p>
             Throughout many years of his life searching for meaning, Brian realized the simple truth that his greatest purpose of life was to know Jesus more deeply each day. After truly meeting Christ and finding his greatest joy in living for him, he couldn’t help but restart living water out of overflowing joy and desire for even more believers and non-believers to come to know this joy
             <br />
             <br />
-            You can contact him at: <a href="mailto:brian.seo@princeton.edu">bs1207@princeton.edu</a>
+            You can contact him at: <a href="mailto:brian.seo@princeton.edu">brian.seo@princeton.edu</a>
           </p>
         </div>
         <a className="collapsible">
-          <h4>Daniel Tu &#9660;</h4>
+          <h4>Daniel Tu ▼</h4>
         </a>
         <div className="content">
           <p>
-            Daniel Tu test2
+          Daniel’s existentialism made him realize that everything was meaningless and hopeless in a broken and seemingly nonsensical world &mdash; outside of the hope and truth found in Jesus Christ alone. He hopes to share the hope he's found with others &mdash; to show them that through understanding the love, mercy, grace, and truth of Christ, one can have true Hope and find true meaning in the world &mdash; meaning and purpose not contrived by mankind's attempts at philosophizing and self-invention but found in the meaning that God Himself gave it.
             <br />
             <br />
-            You can contact him at: <a href="mailto:dt2225@princeton.edu">dt2225@princeton.edu</a>
+            You can contact him at: <a href="mailto:dt2225@princeton.edu">daniel.tu@princeton.edu</a>
           </p>
         </div>
       </Subpage>
