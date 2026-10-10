@@ -58,116 +58,23 @@ const ContactPage = () => {
       <SEO title="Contact" />
       <Subpage>
         <h2> contact us if you want to talk! </h2>
-        <p> Or you can chat with us <a href="/chat">here</a>!</p>
+        <p> Or you can message us <a href="/chat">here</a>!</p>
         <a className="collapsible">
-          <h4>Joe Chen ▼</h4>
+          <h4>Adam Liu ▼</h4>
         </a>
         <div className="content">
           <p>
-            God taught Joe a simple but awesome truth as a freshman: without Christ, he has nothing, yet with Christ
-            there is joy in everything! It took Joe a while to realize what that meant, but God convinced him that it
-            was true. Filled and overflowing with joy, Joe joined Living Water because he wants everyone to know Gospel
-            is so worth it.
+            Adam grew up in the church, but for a long time, Adam found himself just going through the motions without really thinking about what it meant to follow Jesus. Over time, Adam came to realize that faith isn’t just about attending church or knowing the right answers, but about genuinely seeking to know God and building a personal relationship with Him. Adam is still growing in his faith, but he’s grateful for the ways God has been working in his life and for the opportunity to share God’s love with others through Living Water!
+            <br />
+            <br />
+            Outside of that, Adam loves playing pickleball with friends and is always down for any word game!
+
             <br />
             <br />
             You can contact him at:
-            <a href="mailto:jc84@princeton.edu" className="contact">
-              jc84@princeton.edu
+            <a href="mailto:adamliu@princeton.edu" className="contact">
+              adamliu@princeton.edu
             </a>
-          </p>
-        </div>
-        <a className="collapsible">
-          <h4>Tracie Kwon ▼</h4>
-        </a>
-        <div className="content">
-          <p>
-            Tracie used to shy away from evangelizing because she was ashamed of the Gospel. However, after God revealed
-            to her how amazing and life-changing His Good News is, she couldn't help but feel an urgency to share with
-            those close to her on campus. She joined Living Water on its first day, Dean's Date 2020, to point others to
-            Jesus Christ, her Lord and Savior.
-            <br />
-            <br />
-            You can contact her at: <a href="mailto:ttkwon@princeton.edu">ttkwon@princeton.edu</a>
-          </p>
-        </div>
-        <a className="collapsible">
-          <h4>Allen Park ▼</h4>
-        </a>
-        <div className="content">
-          <p>
-            Allen joined Living Water after hearing about an opportunity to share the gospel with other students on
-            campus. After participating in the initiative for the first couple of weeks, Allen saw the urgent need for
-            the gospel on campus and wanted to help out in any way he can.
-            <br />
-            <br />
-            You can contact him at: <a href="mailto:allenp@princeton.edu">allenp@princeton.edu</a>
-          </p>
-          <br />
-        </div>
-        <a className="collapsible">
-          <h4>Grace Wang ▼</h4>
-        </a>
-        <div className="content">
-          <p>
-            Throughout her freshman and sophomore year, Grace Wang has been in hiding. But the Gospel is so powerful and
-            so good that even Grace Wang cannot remain in the confines of her room - she cannot help but go out to
-            evangelize on Saturday nights, the one time you might see her.
-            <br />
-            <br />
-            You can contact her at: <a href="mailto:gw17@princeton.edu">gw17@princeton.edu</a>
-          </p>
-        </div>
-        <a className="collapsible">
-          <h4>Fisayo Adeyina ▼</h4>
-        </a>
-        <div className="content">
-          <p>
-            Fisayo's first week at Living Water, she was surprised to encounter people curious enough to have a
-            conversation about Jesus in the freezing cold! The harvest is surely ready, and God just needs more
-            laborers. She wants to be one of them.
-            <br />
-            <br />
-            You can contact her at: <a href="mailto:oadeyina@princeton.edu">oadeyina@princeton.edu</a>
-          </p>
-        </div>
-        <a className="collapsible">
-          <h4>Justin Chang ▼</h4>
-        </a>
-        <div className="content">
-          <p>
-            Throughout his time at Princeton, God has reminded Justin in countless ways that He is good and His love is
-            great. Because of this, Justin joined Living Water his junior year, so that he could help spread the joy and
-            peace he’s been able to find in Jesus.
-            <br />
-            <br />
-            You can contact him at: <a href="mailto:jc79@princeton.edu">jc79@princeton.edu</a>
-          </p>
-        </div>
-        <a className="collapsible">
-          <h4>Richard Zhu ▼</h4>
-        </a>
-        <div className="content">
-          <p>
-            Throughout his life, Richard has grown in his relationship with God from first meeting him through an illustrated Bible in daycare. One thing that’s resonated time and again is to let things happen in God’s own time and to not stress out too much about things
-            <br />
-            <br />
-            You can contact him at: <a href="mailto:ryzhu@princeton.edu">ryzhu@princeton.edu</a>
-          </p>
-        </div>
-        <a className="collapsible">
-          <h4>Handa -- alumni ▼</h4>
-        </a>
-        <div className="content">
-          <p>
-            Handa is just a dude trying to share the Gospel.
-            <br />
-            Handa first started Living Water in his junior year when he decided to buy some water bottle to hand out to
-            people on the Street so that he can share the Gospel. He wasn't being original or anything -- he copied the
-            idea from his friend from Cambridge, England. Since then, Living Water has grown and does a bit more than
-            that. He's excited to see how much more God will use it for His Kingdom work.
-            <br />
-            <br />
-            You can contact him at: <a href="mailto:hchun@princeton.edu">hchun@princeton.edu</a>
           </p>
         </div>
         <a className="collapsible">
@@ -175,21 +82,102 @@ const ContactPage = () => {
         </a>
         <div className="content">
           <p>
-            Throughout many years of his life searching for meaning, Brian realized the simple truth that his greatest purpose of life was to know Jesus more deeply each day. After truly meeting Christ and finding his greatest joy in living for him, he couldn’t help but restart living water out of overflowing joy and desire for even more believers and non-believers to come to know this joy
+            Throughout many years of his life searching for meaning, Brian realized the simple truth that his greatest purpose of life was to know Jesus more deeply each day. After truly meeting Christ and finding his greatest joy in living for him, he couldn’t help but restart Living Water out of overflowing joy and desire for even more believers and non-believers to come to know this joy.
             <br />
             <br />
             You can contact him at: <a href="mailto:brian.seo@princeton.edu">brian.seo@princeton.edu</a>
           </p>
         </div>
         <a className="collapsible">
+          <h4>Dabie Isiofia ▼</h4>
+        </a>
+        <div className="content">
+          <p>
+            After spending years in pursuit of gratifying his own desires, Dabie learned that there is nothing that can satisfy the longing of his heart but Christ Jesus. He is still struck by the abundance of the love that the Lord has so freely given Him. After experiencing such a great love, he just seeks to do the will of his Father and share the love that changed his life with others.
+
+            <br />
+            <br />
+            You can contact him at: <a href="mailto:di1200@princeton.edu">di1200@princeton.edu</a>
+          </p>
+          <br />
+        </div>
+        <a className="collapsible">
           <h4>Daniel Tu ▼</h4>
         </a>
         <div className="content">
           <p>
-          Daniel’s existentialism made him realize that everything was meaningless and hopeless in a broken and seemingly nonsensical world &mdash; outside of the hope and truth found in Jesus Christ alone. He hopes to share the hope he's found with others &mdash; to show them that through understanding the love, mercy, grace, and truth of Christ, one can have true Hope and find true meaning in the world &mdash; meaning and purpose not contrived by mankind's attempts at philosophizing and self-invention but found in the meaning that God Himself gave it.
+            Daniel’s existentialism made him realize that everything was meaningless and hopeless in a broken and seemingly nonsensical world — outside of the hope and truth found in Jesus Christ alone. He hopes to share the hope he's found with others who are familiar with hopelessness — to show them that through understanding the love, mercy, grace, and truth of Christ, one can have true Hope and find true meaning in the world — meaning and purpose not contrived by mankind's attempts at philosophizing and self-invention but found in the meaning that God Himself gave it.
             <br />
             <br />
-            You can contact him at: <a href="mailto:dt2225@princeton.edu">daniel.tu@princeton.edu</a>
+            You can contact him at: <a href="mailto:daniel.tu@princeton.edu">daniel.tu@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Joann Amoako ▼</h4>
+        </a>
+        <div className="content">
+          <p>
+          Joann’s tendency to put her hope in people and find joy in relationships left her shattered when these temporary pleasures proved to be unreliable, unlike the steadfastness of the Man, Jesus Christ. Her heart’s desire is that many would come to a place of knowing the true Christ and Him crucified, through an unveiling and revealing of the Scriptures — that hearts would begin to burn, like a fire shut up in their bones, for Jesus, the Word who became flesh and dwelt among us.
+            <br />
+            <br />
+            You can contact her at: <a href="mailto:amoakojoann@princeton.edu">amoakojoann@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Kaisha Brown ▼</h4>
+        </a>
+        <div className="content">
+          <p>
+            In her freshman year, God revealed to Kaisha the greatest truth of all: the gospel. Since then, her time at Princeton has been marked by countless reminders of Christ’s grace, faithfulness, and abundant love. Having experienced the hope and joy found in Christ, Kaisha joined Living Water with a desire to share the gospel with others and to help others encounter the same love that has transformed her life.
+
+            <br />
+            <br />
+            You can contact her at: <a href="mailto:kb9972@princeton.edu">kb9972@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Michael Njoku ▼</h4>
+        </a>
+        <div className="content">
+          <p>
+            Michael found that the Bible spoke all-encompassing truth: about the world in its brokenness, about mankind and its endless search for meaning, and most importantly, about God—the Almighty and Holy Creator of the world who deeply cares for His creation. After realizing that God performed the greatest act of love in the sacrifice of His Son, Jesus Christ, for the forgiveness of the world’s sins, Michael believed in Him, so grateful for the opportunity to know Him, love Him, glorify Him, and enjoy Him forever.
+
+            <br />
+            <br />
+            You can contact him at: <a href="mailto:mn2602@princeton.edu">mn2602@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Nadia McBeth ▼</h4>
+        </a>
+        <div className="content">
+          <p>
+            Nadia’s most impactful introduction to Christianity was reading the Gospel of John. She was moved by the notion of a God who humbled Himself to pursue us and our salvation. Now pursuing Him is the greatest privilege of her life. She came to know Jesus’ love is profound and He makes life meaningful. It’s crazy how awesome life is when selfish desires and motivations are no longer at the center.
+            <br />
+            <br />
+            You can contact her at: <a href="mailto:nm1540@princeton.edu">nm1540@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Rylie Heaton ▼</h4>
+        </a>
+        <div className="content">
+          <p>
+            For years Rylie has loved discussing anything having to do with religion and theology. These abstract thoughts used to be the only way she interacted with her faith, but God has since shown her that there is an unmatched joy and utter fulfillment to be found in a life lived actively for Jesus. Knowledge of God is not the same as love for God, and it is for the beauty and life-saving power of that distinction that she wants to share the good news.
+            <br />
+            <br />
+            You can contact her at: <a href="mailto:rh5482@princeton.edu">rh5482@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
+          <h4>Vincent Stone ▼</h4>
+        </a>
+        <div className="content">
+          <p>
+            Vincent didn’t grow up Christian, but became one when he realized the magnitude of love and the depth of truth contained in God’s word. Being a person who was raised to take matters into his own hands, learning about God has made him realize that God is completely sovereign over our lives, and that we live best when we realize our true dependence on Him in every moment. God has taught Vincent to take joy in His will and to trust God’s plan for the world.
+            <br />
+            <br />
+            You can contact him at: <a href="mailto:vincentmstone@princeton.edu">vincentmstone@princeton.edu</a>
           </p>
         </div>
       </Subpage>

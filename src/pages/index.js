@@ -19,10 +19,16 @@ const IndexPage = () => (
               <strong>COVID-19</strong>
             </a>{" "}
             &#47;  */}
-            <a href="/about">about</a> &#47; <a href="/faq">faq</a> &#47; <a href="/chat">chat</a>{" "}
+            <a href="/about">about</a> &#47; <a href="/faq">faq</a> &#47; <a href="/chat">message us!</a>{" "}
             &#47; <a href="/contact">contact</a>
           </p>
         </div>
+        <a
+          href="https://www.princetonchristianchurch.org/worship-and-fellowship/princeton-uni-students"
+          style={{ marginTop: "0.5rem", fontSize: "1rem", fontWeight: "normal" }}
+        >
+          get connected to a local church!
+        </a>
       </div>
     </div>
   </Layout>

@@ -109,9 +109,8 @@ const AboutPage = () => {
         <a href="/faq">
           <h3>frequently asked questions</h3>
         </a>
-        <br />
         <a href="/contact">
-          <h3>Reach out to any of us if you have any questions!</h3>
+          <h3>reach out to any of us if you have any questions :)</h3>
         </a>
       </Subpage>
     </Layout>

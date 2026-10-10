@@ -1,0 +1,167 @@
+.message-intro {
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+  max-width: 34rem;
+  text-align: center;
+}
+
+.message-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 82vw;
+  width: 34rem;
+}
+
+.message-form label {
+  font-size: 0.9rem;
+  margin: 1rem 0 0.35rem;
+}
+
+.message-form label span,
+.message-mail-note {
+  color: #666;
+}
+
+.message-form input,
+.message-form select,
+.message-form textarea {
+  background: #fff;
+  border: 1px solid #999;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #000;
+  font-family: "Source Code Pro", monospace;
+  font-size: 1rem;
+  outline: none;
+  padding: 0.75rem;
+  width: 100%;
+}
+
+.message-form input:focus,
+.message-form select:focus,
+.message-form textarea:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 1px #000;
+}
+
+.message-form textarea {
+  line-height: 1.5;
+  resize: vertical;
+}
+
+.message-send-button,
+.message-confirm-button,
+.message-secondary-button {
+  background: #fff;
+  border: 2px solid #000;
+  color: #000;
+  cursor: pointer;
+  font-family: "Source Code Pro", monospace;
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.message-send-button {
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.message-send-button:hover,
+.message-send-button:focus,
+.message-confirm-button:hover,
+.message-confirm-button:focus {
+  background: #000;
+  color: #fff;
+}
+
+.message-send-button:disabled,
+.message-confirm-button:disabled,
+.message-secondary-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.message-honeypot {
+  display: none;
+}
+
+.message-mail-note,
+.message-status {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin: 0.75rem auto 0;
+  text-align: center;
+}
+
+.message-status {
+  color: #8d1520;
+}
+
+.message-modal-backdrop {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  padding: 1.5rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10000;
+}
+
+.message-modal {
+  background: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  max-width: 30rem;
+  padding: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.message-modal h2 {
+  margin-top: 0;
+}
+
+.message-modal p {
+  margin: 1.25rem auto 1.75rem;
+}
+
+.message-modal .message-modal-error {
+  color: #8d1520;
+  margin: -0.75rem auto 1.25rem;
+}
+
+.message-modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.message-secondary-button {
+  border-color: #777;
+  color: #444;
+}
+
+.message-secondary-button:hover,
+.message-secondary-button:focus {
+  border-color: #000;
+  color: #000;
+}
+
+@media (max-width: 600px) {
+  .message-form {
+    max-width: 88vw;
+  }
+
+  .message-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .message-confirm-button,
+  .message-secondary-button {
+    width: 100%;
+  }
+}

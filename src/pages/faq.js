@@ -244,7 +244,7 @@ const FAQPage = () => {
         </div>
         <hr />
         <a className="collapsible">
-          <h3> Do Christians ignore the parts of the Bible that they don’t feel are right? &#9660; </h3>
+          <h3> do Christians ignore the parts of the Bible that they don’t feel are right? &#9660; </h3>
         </a>
         <div className="content">
           <p>
@@ -268,7 +268,7 @@ const FAQPage = () => {
         </div>
         <hr />
         <a href="/contact">
-          <h3>Reach out to any of us if you have any questions!</h3>
+          <h3>reach out to any of us if you have any questions :)</h3>
         </a>
       </Subpage>
     </Layout>
