@@ -170,6 +170,17 @@ const ContactPage = () => {
           </p>
         </div>
         <a className="collapsible">
+          <h4>Sarah Cai ▼</h4>
+        </a>
+        <div className="content">
+          <p>
+            Throughout her time on campus, Sarah has experienced the unimaginable goodness of God’s love and provision in undeniable ways that have transformed her life for the better. She joined Living Water to share the hope she has in Jesus.
+            <br />
+            <br />
+            You can contact her at: <a href="mailto:sarah.cai@princeton.edu">rh5482@princeton.edu</a>
+          </p>
+        </div>
+        <a className="collapsible">
           <h4>Vincent Stone ▼</h4>
         </a>
         <div className="content">
